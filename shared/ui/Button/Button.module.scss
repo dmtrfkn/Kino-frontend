@@ -1,0 +1,45 @@
+.button {
+  &Y,
+  &D,
+  &B {
+    width: 422px;
+    cursor: pointer;
+    height: 55px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10px;
+    color: #151a26;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 166.5%;
+    padding: 13px 0;
+    outline: none;
+    border: none;
+    margin: 0 auto;
+  }
+
+  &Y:active,
+  &D:active,
+  &B:active {
+    opacity: 0.8;
+  }
+
+  &Y {
+    background-color: #f2f60f;
+  }
+
+  &B {
+    border-radius: 10px;
+    background: #3657cb;
+    box-shadow: 0px 0px 15px 0px rgba(72, 113, 255, 0.8);
+    width: 138px;
+    height: 53px;
+    cursor: pointer;
+  }
+
+  &D {
+    color: #fff;
+    background-color: #1e2538;
+  }
+}

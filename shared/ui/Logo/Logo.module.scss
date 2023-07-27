@@ -1,0 +1,8 @@
+.logo {
+  cursor: pointer;
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+}
