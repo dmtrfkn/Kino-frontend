@@ -60,9 +60,7 @@ const UpdateUser: FC = () => {
         <div className={styles.flex}>
           <h1>Настройки профиля</h1>
           <div className={styles.button}>
-            <Link href="/myProfile">
-              <Button form="form" image={checkMark} color="default" text="Сохранить" />
-            </Link>
+            <Button form="form" image={checkMark} color="default" text="Сохранить" />
           </div>
         </div>
         <div className={styles.main}>
