@@ -1,6 +1,9 @@
 .main {
   max-width: 815px;
+  background-color: var(--card-bg);
   width: 100%;
+  padding: 40px 0;
+  border-radius: 10px;
 }
 
 .root {
@@ -37,11 +40,11 @@
 
     &:focus,
     &:hover {
-      background-color: #3657cb;
+      background-color: var(--all-bg-active);
     }
 
     &:active {
-      background-color: #2a4299;
+      background-color: var(--all-bg-active);
     }
   }
 }

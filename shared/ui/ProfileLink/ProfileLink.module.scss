@@ -1,0 +1,25 @@
+.root {
+  width: 112px;
+  height: 112px;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--blue);
+  }
+}
+
+.image {
+  background-color: transparent;
+}
+
+.active {
+  width: 112px;
+  height: 112px;
+  border-radius: 10px;
+  padding: 40px;
+  cursor: pointer;
+  background-color: var(--blue);
+}

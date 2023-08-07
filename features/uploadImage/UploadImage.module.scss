@@ -1,0 +1,71 @@
+.root {
+  position: relative;
+  max-width: 477px;
+  height: 54px;
+  text-align: left;
+}
+.flex {
+  display: flex;
+  gap: 5px;
+  max-width: 477px;
+  width: 100%;
+  height: 54px;
+  align-items: center;
+  background-color: var(--all-bg);
+  border-radius: 10px;
+  padding: 14px 20px;
+  padding-right: 0;
+  justify-content: space-between;
+
+  .span {
+    max-width: 100px;
+    width: 100%;
+    color: #fff;
+    font-family: 'Qanelas Medium';
+    font-size: 16px;
+    font-style: normal;
+    line-height: 166.5%;
+  }
+}
+
+.input {
+  display: none;
+}
+/*
+.inputfile {
+  display: none;
+}
+
+.file_box {
+  display: inline-block;
+  background-color: var(--all-bg);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 14px 19px;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.file_button {
+  background: var(--blue);
+  color: white;
+  padding: 16px 46px;
+  max-width: 167px;
+  width: 100%;
+  height: 54px;
+  position: absolute;
+  top: 0px;
+  border-radius: 10px;
+  left: 310px;
+  cursor: pointer;
+} */
+.photo__title {
+  color: var(--gray-text);
+  font-family: 'Qanelas Light';
+  font-size: 17px;
+  font-style: normal;
+  line-height: 166.5%;
+}

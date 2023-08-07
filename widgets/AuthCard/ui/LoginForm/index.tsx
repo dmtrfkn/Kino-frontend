@@ -22,11 +22,7 @@ interface LoginFormProps {
   onChangeForm: () => void;
 }
 const LoginForm: FC<LoginFormProps> = ({ onClickHandler, onChangeForm }) => {
-  // const [value, setValue] = useState('');
   const router = useRouter();
-  // const onChangeHandler = () => {
-  //   setValue(value);
-  // };
 
   const {
     handleSubmit,
@@ -43,7 +39,6 @@ const LoginForm: FC<LoginFormProps> = ({ onClickHandler, onChangeForm }) => {
       router.push('/');
       onClickHandler();
     } catch (error) {
-      // if (error instanceof AxiosError) {
       // setError('email', { message: error.response?.data.message }, { shouldFocus: true });
       setError(
         'email',

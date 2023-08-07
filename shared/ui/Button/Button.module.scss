@@ -2,7 +2,10 @@
   &Y,
   &D,
   &B {
-    width: 422px;
+    max-width: 422px;
+    width: 100%;
+    font-family: 'Qanelas Light';
+
     cursor: pointer;
     height: 55px;
     text-align: center;
@@ -16,6 +19,7 @@
     padding: 13px 0;
     outline: none;
     border: none;
+
     margin: 0 auto;
   }
 
@@ -26,12 +30,12 @@
   }
 
   &Y {
-    background-color: #f2f60f;
+    background-color: var(--yellow);
   }
 
   &B {
     border-radius: 10px;
-    background: #3657cb;
+    background: var(--blue);
     box-shadow: 0px 0px 15px 0px rgba(72, 113, 255, 0.8);
     width: 138px;
     height: 53px;
@@ -40,6 +44,15 @@
 
   &D {
     color: #fff;
-    background-color: #1e2538;
+    background-color: var(--all-bg);
   }
+}
+
+.flex {
+  font-family: 'Qanelas Light';
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 0 23px;
+  justify-content: space-between;
 }

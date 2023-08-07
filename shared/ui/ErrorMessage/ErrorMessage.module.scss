@@ -1,7 +1,17 @@
 .root {
-  color: #da3434;
-  font-family: 'Qanelas SemiBold';
-  margin: 0 auto;
+  color: var(--red);
+  font-family: 'Qanelas Light';
   margin-bottom: 14px;
-  width: 422px;
+  max-width: 300px;
+  line-height: 16px;
+  font-size: 16px;
+  margin: 10px;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  position: absolute;
+  left: 20px;
+  bottom: 50px;
+  background-color: var(--error-bg);
 }

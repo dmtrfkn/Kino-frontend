@@ -1,0 +1,32 @@
+import { Genres } from '@/entities/Genres';
+
+export type User = {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+  secondName: string;
+  vk: string;
+  instagram: string;
+  youtube: string;
+  twitter: string;
+  facebook: string;
+  aboutMe: string;
+  gender: string;
+  birthday: string;
+  country: string;
+  city: string;
+  favoriteGenres: Genres[];
+  films: string[];
+  friends: string[];
+  favoriteFilms: string[];
+  expecredFilms: string[];
+  persons: string[];
+  favoritePersons: string[];
+  reviews: string[];
+  comments: string[];
+  likedFilms: string[];
+  dislikedFilms: string[];
+  avatarImage?: string;
+  wasOnline?: Date;
+};

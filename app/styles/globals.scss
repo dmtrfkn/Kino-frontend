@@ -1,6 +1,5 @@
 * {
   font-family: 'Qanelas Medium', sans-serif;
-  background-color: #191e2e;
   box-sizing: border-box;
 }
 h1 {
@@ -15,7 +14,7 @@ h1 {
 }
 
 html {
-  background-color: #191e2e;
+  background: var(--all-bg);
 }
 body {
   padding: 0;

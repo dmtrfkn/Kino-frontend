@@ -35,8 +35,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ onClickHandler }) => {
       router.push('/');
       onClickHandler();
     } catch (error) {
-      // if (error instanceof AxiosError) {
-      // setError('email', { message: error.response?.data.message }, { shouldFocus: true });
       setError(
         'email',
         { message: 'Ошибка при регистрации, такой email уже существует' },
