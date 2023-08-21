@@ -3,25 +3,33 @@ import styles from './Button.module.scss';
 
 interface ButtonProps {
   text: string;
-  color: 'default' | 'yellow' | 'blue';
+  color:
+    | 'default-small'
+    | 'default-big'
+    | 'yellow'
+    | 'blue-middle'
+    | 'blue-big'
+    | 'blue__and__light'
+    | 'transparent-small'
+    | 'transparent-large'
+    | 'transparent-big'
+    | 'white';
   onClick?: () => void;
   image?: string;
   type?: 'submit' | 'button' | 'reset';
   form?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, color, onClick, image, type, form }) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick, image, type, form, color }) => {
   return (
     <button
       form={form}
-      type={type ? type : 'submit'}
+      type={type}
       onClick={onClick}
-      className={
-        color === 'yellow' ? styles.buttonY : color === 'blue' ? styles.buttonB : styles.buttonD
-      }>
+      className={styles[`bg-${color}`] + ' ' + styles.button}>
       {image ? (
         <div className={styles.flex}>
-          {image ? <Image width={25} height={25} alt="picture" src={image} /> : ''}
+          {image ? <Image width={20} height={20} alt="button_image" src={image} /> : ''}
           {text}
         </div>
       ) : (

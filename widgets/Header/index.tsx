@@ -8,14 +8,28 @@ import LoginForm from '../AuthCard/ui/LoginForm';
 import RegistrationForm from '../AuthCard/ui/RegistrationForm';
 import { useState } from 'react';
 import AuthCard from '../AuthCard/ui/AuthCard';
-import { useAppSelector } from '@/shared/api/redux';
+import { useAppDispatch, useAppSelector } from '@/shared/api/redux';
 import Link from 'next/link';
-
+import arrow from '@/assets/arrow.svg';
+import userProfile from '@/assets/user.png';
+import Image from 'next/image';
+import { removeUser, setUser } from '@/entities/User';
 const Header = () => {
   const [state, setState] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const onCloseModalHandler = () => {
     setState((prev) => !prev);
+  };
+
+  const onClickHandler = () => {
+    setActive((prev) => !prev);
+  };
+
+  const onLogoutHandler = () => {
+    dispatch(removeUser());
+    onClickHandler();
   };
 
   const user = useAppSelector((state) => state.user.data);
@@ -26,13 +40,33 @@ const Header = () => {
       <Navbar />
       <div className={styles.header__flex}>
         <SearchButton />
-        {user ? (
-          <Link href={'myProfile'}>
-            <Button color="blue" text={user.name} />
-          </Link>
-        ) : (
-          <Button onClick={onCloseModalHandler} color="blue" text="Войти" />
-        )}
+        <div className={styles.position}>
+          {user ? (
+            <div className={styles.profile__button} onClick={onClickHandler}>
+              <div className={styles.flex}>
+                <Image alt="arrow" src={arrow} />
+                {user.name}
+              </div>
+              <Image
+                className={styles.image}
+                alt="arrow"
+                src={user?.avatarImage ? user.avatarImage : userProfile}
+                width={52}
+                height={52}
+              />
+            </div>
+          ) : (
+            <Button onClick={onCloseModalHandler} color="blue__and__light" text="Войти" />
+          )}
+          <div className={active ? styles.active : styles.popup}>
+            <Link onClick={onClickHandler} className={styles.link} href={'myProfile'}>
+              Профиль
+            </Link>
+            <Link href={'/'} onClick={onLogoutHandler} className={styles.link}>
+              Выйти
+            </Link>
+          </div>
+        </div>
       </div>
       <AuthCard onCloseModalHandler={onCloseModalHandler} state={state} />
     </div>

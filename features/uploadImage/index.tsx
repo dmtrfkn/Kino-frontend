@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadImage.module.scss';
 import Button from '@/shared/ui/Button';
-import Image from 'next/image';
 import * as Api from './api/upload';
-import axios from 'axios';
 import { setUrl } from '@/entities/File';
 import { useAppDispatch } from '@/shared/api/redux';
 const UploadImage = () => {
@@ -38,7 +36,7 @@ const UploadImage = () => {
         <Button
           type="button"
           onClick={() => (inputFileRef.current ? inputFileRef.current.click() : '')}
-          color="blue"
+          color="blue-middle"
           text="Загрузить"
         />
       </div>

@@ -12,76 +12,40 @@ import twitter from '@/assets/twitter.svg';
 import facebook from '@/assets/facebook.svg';
 import CountOfSomething from '@/shared/ui/СountOfSomething';
 import Link from 'next/link';
+import { chooseMouth } from './utils/chooseMonth';
+import { createData } from '@/shared/utils/createData';
 
 const UserProfileHomePage = () => {
   const user = useAppSelector((state) => selectUser(state));
   const image = `${user?.avatarImage}`;
-  const day = user?.birthday ? user?.birthday[0] + user?.birthday[1] : '';
-  const mounth = user?.birthday ? user?.birthday[3] + user?.birthday[4] : '';
-  const chooseM = (month: string) => {
-    switch (mounth) {
-      case '01':
-        return 'Января';
-        break;
-      case '02':
-        return 'Февраля';
-        break;
-      case '03':
-        return 'Марта';
-        break;
-      case '04':
-        return 'Апреля';
-        break;
-      case '05':
-        return 'Мая';
-        break;
-      case '06':
-        return 'Июнь';
-        break;
-      case '07':
-        return 'Июль';
-        break;
-      case '08':
-        return 'Август';
-        break;
-      case '09':
-        return 'Сентябрь';
-        break;
-      case '10':
-        return 'Октябрь';
-        break;
-      case '11':
-        return 'Ноябрь';
-        break;
-      case '12':
-        return 'Декабрь';
-        break;
-      default:
-        break;
-    }
-  };
-  const calcYear = (year: string) => {
-    const numberYear = Number(year);
-    return 2023 - numberYear;
-  };
   const genres = user?.favoriteGenres.join(', ');
-  const year = user?.birthday
-    ? user?.birthday[6] + user?.birthday[7] + user?.birthday[8] + user?.birthday[9]
-    : '';
-  const birthday = `${day} ${chooseM(mounth)} ${year} г. (${calcYear(year)})`;
+  // const day = user?.birthday ? user?.birthday[0] + user?.birthday[1] : '';
+  // const mounth = user?.birthday ? user?.birthday[3] + user?.birthday[4] : '';
+
+  // const calcYear = (year: string) => {
+  //   const numberYear = Number(year);
+  //   return 2023 - numberYear;
+  // };
+  // const year = user?.birthday
+  //   ? user?.birthday[6] + user?.birthday[7] + user?.birthday[8] + user?.birthday[9]
+  //   : '';
+  // const birthday = `${day} ${chooseMouth(mounth)} ${year} г. (${calcYear(year)})`;
+  const birthday = createData(user?.birthday ? user.birthday : '');
 
   return (
     <div className={styles.root}>
       <div className={styles.flex}>
         <h1 className={styles.title}>Ваш профиль</h1>
         <Link href="/settings">
-          <Button color="default" text="Настройки" image={settings} />
+          <Button color="default-small" text="Настройки" image={settings} />
         </Link>
       </div>
       <div className={styles.block}>
         <Image className={styles.image} alt="" width={478} height={478} src={image} />
         <div className={styles.information}>
-          <h1 className={styles.name}>{user?.name}</h1>
+          <h1 className={styles.name}>
+            {user?.name} {user?.secondName}
+          </h1>
           <div className={styles.information_flex}>
             <div className={styles.links}>
               <SocialLink alt="vk" image={vk} link={user?.vk ? user?.vk : ''} />
@@ -112,7 +76,7 @@ const UserProfileHomePage = () => {
                   {user?.gender ? user?.gender : 'Нужно указать пол'}
                 </li>
                 <li className={styles.information_flex__user__item}>
-                  {user?.birthday ? birthday : 'Нужно указать пол'}
+                  {user?.birthday ? birthday : 'Нужно указать дату рождения'}
                 </li>
                 <li className={styles.information_flex__user__item}>
                   {user?.country ? user?.country : 'Нужно указать страну'}

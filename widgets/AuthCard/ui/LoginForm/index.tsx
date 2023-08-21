@@ -86,8 +86,15 @@ const LoginForm: FC<LoginFormProps> = ({ onClickHandler, onChangeForm }) => {
             }}
           />
         </div>
-        <Button text="Войти" color="yellow" />
-        <Button text="Зарегистрироваться" color="default" onClick={onChangeForm} />
+        <Button text="Войти" height="" width="" color="yellow" />
+        <Button
+          text="Зарегистрироваться"
+          height=""
+          width=""
+          fontSize="big"
+          color="default"
+          onClick={onChangeForm}
+        />
         <Link className={styles.root__link} href="#!">
           Восстановить пароль
         </Link>

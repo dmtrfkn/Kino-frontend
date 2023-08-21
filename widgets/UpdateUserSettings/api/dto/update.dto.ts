@@ -11,11 +11,12 @@ export interface UpdateUserDto {
   facebook: string;
   aboutMe: string;
   avatarImage: string;
-  gender: string;
+  gender: string[];
   birthday: string;
   country: string;
   city: string;
   favoriteGenres: string[];
+  friends: User[];
 }
 
 export interface ResponseUserDto {

@@ -1,7 +1,5 @@
-import { Genres } from '@/entities/Genres';
-
 export type User = {
-  id: string;
+  _id: string;
   email: string;
   password: string;
   name: string;
@@ -16,9 +14,9 @@ export type User = {
   birthday: string;
   country: string;
   city: string;
-  favoriteGenres: Genres[];
+  favoriteGenres: string[];
   films: string[];
-  friends: string[];
+  friends: User[];
   favoriteFilms: string[];
   expecredFilms: string[];
   persons: string[];
@@ -28,5 +26,5 @@ export type User = {
   likedFilms: string[];
   dislikedFilms: string[];
   avatarImage?: string;
-  wasOnline?: Date;
+  wasOnline?: number;
 };

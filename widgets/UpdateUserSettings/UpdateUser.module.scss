@@ -6,15 +6,14 @@
 .root {
   height: auto;
   background: var(--card-bg);
-  padding: 34px 54px;
+  // padding: 34px 54px;
   border-radius: 10px;
   margin-bottom: 100px;
 
   h1 {
-    font-family: 'Qanelas Bold';
+    font-family: 'Qanelas ExtraBold';
     font-size: 30px;
     font-style: normal;
-    font-weight: 900;
     line-height: normal;
   }
   input {
@@ -31,8 +30,7 @@
 .flex {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 23px;
-  /* background-color: transparent; */
+  margin-bottom: 55px;
 }
 
 .button {
@@ -43,11 +41,7 @@
 }
 
 .image {
-  max-width: 478px;
-  width: 100%;
-  height: 478px;
   border-radius: 10px;
-  background-size: cover;
 }
 
 .links {

@@ -1,3 +1,4 @@
+import { cardSlice } from '@/entities/Card/model/store/slice';
 import { fileSlice } from '@/entities/File/model/store/slice';
 import { userSlice } from '@/entities/User';
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
@@ -8,6 +9,7 @@ const createStore = () =>
     reducer: {
       [userSlice.name]: userSlice.reducer,
       [fileSlice.name]: fileSlice.reducer,
+      [cardSlice.name]: cardSlice.reducer,
     },
   });
 

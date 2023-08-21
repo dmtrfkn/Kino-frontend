@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 * {
   font-family: 'Qanelas Medium', sans-serif;
   box-sizing: border-box;
@@ -13,10 +15,9 @@ h1 {
   margin: 0;
 }
 
-html {
-  background: var(--all-bg);
-}
 body {
+  color: #fff;
+  background: #1e2538;
   padding: 0;
   margin: 0;
 }

@@ -1,0 +1,407 @@
+.flex {
+  max-width: 1164px;
+  width: 100%;
+  margin: 0 auto;
+
+  .flex__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+  }
+
+  .link {
+    font-family: 'Qanelas Light';
+    font-size: 16px;
+    font-style: normal;
+    line-height: 168.7%;
+  }
+
+  h1 {
+    font-family: 'Qanelas ExtraBold';
+    font-size: 65px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-family: 'Qanelas Light';
+    font-size: 25px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .text {
+    margin-top: 10px;
+    font-family: 'Qanelas Light';
+    font-size: 20px;
+    font-style: normal;
+    line-height: 166.5%;
+  }
+
+  .desc {
+    text-align: left;
+    width: auto;
+  }
+
+  .flex__container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .image {
+    border-radius: 10px;
+  }
+}
+
+.wrapper {
+  max-width: 87px;
+  width: 100%;
+  height: 77px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  font-family: 'Qanelas Light';
+  font-size: 15px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.circle {
+  position: relative;
+  width: 54px;
+  height: 54px;
+}
+
+.circle__item {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  padding-top: auto;
+
+  z-index: -1;
+
+  &_inner {
+    font-family: 'Qanelas Bold';
+    font-size: 13px;
+    font-style: normal;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 50%;
+    width: 40px;
+    background-color: #fff;
+    height: 40px;
+  }
+}
+
+.p-1 {
+  background: conic-gradient(var(--one-border) 0deg 36deg, var(--one-bg) 36deg 360deg);
+}
+
+.p-2 {
+  background: conic-gradient(var(--two-border) 0deg 72deg, var(--two-bg) 72deg 360deg);
+}
+
+.p-3 {
+  background: conic-gradient(var(--three-border) 0deg 108deg, var(--three-bg) 108deg 360deg);
+}
+
+.p-4 {
+  background: conic-gradient(var(--four-border) 0deg 144deg, var(--four-bg) 144deg 360deg);
+}
+
+.p-5 {
+  background: conic-gradient(var(--five-border) 0deg 180deg, var(--five-bg) 180deg 360deg);
+}
+
+.p-6 {
+  background: conic-gradient(var(--six-border) 0deg 216deg, var(--six-bg) 216deg 360deg);
+}
+
+.p-7 {
+  background: conic-gradient(var(--seven-border) 0deg 252deg, var(--seven-bg) 252deg 360deg);
+}
+
+.p-8 {
+  background: conic-gradient(var(--eight-border) 0deg 288deg, var(--eight-bg) 288deg 360deg);
+}
+
+.p-9 {
+  background: conic-gradient(var(--nine-border) 0deg 324deg, var(--nine-bg) 324deg 360deg);
+}
+
+.p-10 {
+  background: conic-gradient(var(--ten-border) 0deg 360deg, var(--ten-bg) 360deg 360deg);
+}
+
+.pp-1 {
+  background: var(--one-bg);
+}
+
+.pp-2 {
+  background: var(--two-bg);
+}
+
+.pp-3 {
+  background: var(--three-bg);
+}
+
+.pp-4 {
+  background: var(--four-bg);
+}
+
+.pp-5 {
+  background: var(--five-bg);
+}
+
+.pp-6 {
+  background: var(--six-bg);
+}
+
+.pp-7 {
+  background: var(--seven-bg);
+}
+
+.pp-8 {
+  background: var(--eight-bg);
+}
+
+.pp-9 {
+  background: var(--nine-bg);
+}
+
+.pp-10 {
+  background: var(--ten-bg);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin-top: 16px;
+  margin-bottom: 45px;
+
+  .button {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--buttons-bg);
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus,
+    &:active {
+      transform: scale(1.1);
+      background-color: var(--buttons-bg-hover);
+
+      .button__image {
+        path {
+          fill: var(--favorite-red);
+        }
+      }
+
+      .button__image__like {
+        path {
+          fill: var(--green-like);
+        }
+      }
+    }
+  }
+
+  .likes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .like {
+    padding-bottom: 10px;
+
+    &:hover {
+      background-color: var(--green-like-bg);
+    }
+  }
+
+  .dislike {
+    padding-top: 5px;
+  }
+
+  .expected__rating {
+    width: 185px;
+    position: relative;
+    height: 59px;
+    background-color: var(--buttons-bg);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Qanelas Light';
+    color: var(--green);
+
+    &_percent {
+      height: 59px;
+      background-color: var(--green-bg);
+      border-radius: 5px;
+    }
+    span {
+      position: absolute;
+      top: 20px;
+      left: 15px;
+      width: 155px;
+      height: 17px;
+    }
+  }
+
+  .favorite {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &__desc {
+      font-size: 14px;
+      font-family: 'Qanelas Light';
+    }
+  }
+}
+
+// information
+
+.information {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 61px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  &__text {
+    span {
+      color: var(--text);
+      font-family: 'Qanelas SemiBold';
+      font-size: 18px;
+      font-style: normal;
+      line-height: normal;
+    }
+  }
+
+  &__yellow__text {
+    span {
+      color: var(--yellow);
+      font-family: 'Qanelas Light';
+      font-size: 18px;
+      font-style: normal;
+      line-height: normal;
+    }
+  }
+
+  &__block_flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+    text-align: left;
+  }
+
+  &__flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    gap: 40px;
+    text-align: left;
+  }
+}
+
+// producers block
+
+.producers {
+  margin-bottom: 100px;
+  background-color: var(--blue-bg);
+  padding: 36px 41px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  border-radius: 10px;
+
+  .director__flex {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .director {
+    display: flex;
+    max-width: 310px;
+    align-items: center;
+    gap: 27px;
+
+    &__name {
+      font-family: 'Qanelas SemiBold';
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    &__secondName {
+      color: var(--gray-text_second);
+      font-family: 'Qanelas Thin';
+      font-size: 14px;
+    }
+
+    &__role {
+      color: var(--yellow);
+      font-family: 'Qanelas Thin';
+      font-size: 16px;
+      margin-top: 5px;
+    }
+  }
+
+  .production,
+  .dubbling,
+  .production__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+
+    span {
+      font-size: 18px;
+      font-family: 'Qanelas SemiBold';
+    }
+
+    .production__items {
+      color: var(--yellow);
+      display: flex;
+
+      gap: 15px;
+
+      li {
+        font-family: 'Qanelas Light';
+        font-size: 18px;
+        font-style: normal;
+        line-height: 15px;
+      }
+    }
+  }
+
+  .dubbling {
+    gap: 5px;
+  }
+}

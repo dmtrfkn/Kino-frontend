@@ -11,12 +11,10 @@ import { selectFile } from '@/entities/File';
 import Socials from '@/shared/ui/Socials';
 import TextArea from '@/shared/ui/TextArea';
 import Image from 'next/image';
-import userDefault from '@/assets/user.png';
 import ChooseGenges from '@/shared/ui/ChooseGenges';
 import * as Api from './api/update';
 import { setUser } from '@/entities/User';
 import UpdateUserInputs from '@/features/updateUserInputs';
-import Link from 'next/link';
 
 const UpdateUser: FC = () => {
   const userData = useAppSelector((state) => state.user.data);
@@ -60,7 +58,7 @@ const UpdateUser: FC = () => {
         <div className={styles.flex}>
           <h1>Настройки профиля</h1>
           <div className={styles.button}>
-            <Button form="form" image={checkMark} color="default" text="Сохранить" />
+            <Button form="form" image={checkMark} color="default-small" text="Сохранить" />
           </div>
         </div>
         <div className={styles.main}>
@@ -68,8 +66,8 @@ const UpdateUser: FC = () => {
             <Image
               className={styles.image}
               alt="UserImage"
-              width={50}
-              height={50}
+              width={478}
+              height={478}
               src={totallyImage}
             />
             <UploadImage />
