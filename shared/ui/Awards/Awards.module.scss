@@ -1,0 +1,64 @@
+.awards {
+  .title {
+    font-family: 'Qanelas ExtraBold';
+    font-size: 65px;
+  }
+
+  .header {
+    font-family: 'Qanelas Bold';
+    font-size: 22px;
+  }
+
+  &__flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 70px 0;
+
+    &__item {
+      max-width: 350px;
+      height: 160px;
+      border-radius: 10px;
+      padding: 20px 55px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background-color: var(--blue-bg);
+      align-items: center;
+
+      &__flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        flex-direction: column;
+      }
+
+      &__name {
+        // margin-bottom: 3px;
+        font-family: 'Qanelas SemiBold';
+        font-size: 18px;
+      }
+
+      &__whatFor {
+        font-family: 'Qanelas Thin';
+        font-size: 16px;
+        color: var(--yellow);
+      }
+
+      &__year {
+        font-family: 'Qanelas Thin';
+        color: var(--gray-text_second);
+        font-size: 14px;
+      }
+    }
+  }
+}

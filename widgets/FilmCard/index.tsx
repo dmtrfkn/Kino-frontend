@@ -4,17 +4,27 @@ import { Card } from '@/entities/Card/model/types/card';
 import Image from 'next/image';
 import styles from './FilmCard.module.scss';
 import { createData } from '@/shared/utils/createData';
+import defPoster from '@/assets/EmptyPoster.png';
+import arrow from '@/assets/rightArrow.svg';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Button from '@/shared/ui/Button';
+import Trailer from '@/shared/ui/Trailer';
+import Awards from '@/shared/ui/Awards';
 
 const FilmCard = () => {
   useEffect(() => {
     getData();
   }, []);
   const [card, setCard] = useState<Card>();
+  const [active, setActive] = useState<boolean>(false);
   const getData = async () => {
-    const data = (await axios.get('/cards/64df303971b1f2e717f80402')).data;
+    const data = (await axios.get('/cards/64e45841252bed4513e8523e')).data;
     console.log(data);
     setCard(data);
   };
+
+  const router = useRouter(); // чекань как ммылка
   const result = 20;
   const hours = card ? Math.floor(card?.duration / 60) : 0;
   const minutes = card ? card.duration - hours * 60 : 0;
@@ -22,14 +32,22 @@ const FilmCard = () => {
   const image = `${process.env.NEXT_PUBLIC_IMAGE_URL}${card?.posterImage}`;
   const worldPremiere = createData(card?.premiereInWorld ? card.premiereInWorld : '');
   const russianPremiere = createData(card?.premiereInRussia ? card.premiereInRussia : '');
+  const url = process.env.NEXT_PUBLIC_IMAGE_URL;
+  const directors = card?.directors.map((i) => i.name);
   return (
     <>
       <div className={styles.flex}>
         <div className={styles.flex__wrapper}>
-          <Image alt="poster" className={styles.image} src={image} width={395} height={539} />
+          <Image
+            alt="poster"
+            className={styles.image}
+            src={card ? image : defPoster}
+            width={395}
+            height={539}
+          />
           <div className={styles.desc}>
             <div className={styles.link}>link</div>
-            <h1>{card?.name}</h1>
+            <h1 className={styles.h1}>{card?.name}</h1>
             <h3>{card?.secondName}</h3>
             <div className={styles.flex__container}>
               {card?.ratings.map((i, index) => (
@@ -167,7 +185,7 @@ const FilmCard = () => {
               <span>{card?.year}</span>
               <span>{card?.country}</span>
               <span>{card?.slogan}</span>
-              <span>{card?.directors.join(', ')}</span>
+              <span>{directors?.join(', ')}</span>
               <span>{card?.screenwriters.join(', ')}</span>
               <span>{card?.producers.join(', ')}</span>
               <span>{card?.operators.join(', ')}</span>
@@ -255,6 +273,39 @@ const FilmCard = () => {
             </ol>
           </div>
         </div>
+      </div>
+      <div className={styles.persons}>
+        <div className={styles.persons__flex}>
+          <h1 className={styles.h1}>В главных ролях</h1>
+          <div className={styles.persons__flex + ' ' + styles.pointer}>
+            <p>Все актёры</p>
+            <Image src={arrow} alt="Arrow" />
+          </div>
+        </div>
+        <div className={styles.persons__cards}>
+          {card?.persons.map((i) => (
+            <div key={i._id} className={styles.persons__card}>
+              <Image
+                className={styles.persons__card__image}
+                width={250}
+                height={250}
+                alt="actorPicture"
+                src={`${url}${i.avatarImage}`}
+              />
+              <div className={styles.persons__card__name}>{i.name}</div>
+              <div className={styles.persons__card__secondName}>{i.englishName}</div>
+              <div className={styles.persons__card__role}>Актёр</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={styles.links}>
+        {active ? (
+          // <Trailer videoLink={`${url}${card?.trailers[0]}`} videoName="Побег из Притонии" />
+          <Awards awards={card?.awards ? card.awards : []} />
+        ) : (
+          <Button color="yellow-big" text="pop" onClick={() => setActive((prev) => !prev)} />
+        )}
       </div>
     </>
   );

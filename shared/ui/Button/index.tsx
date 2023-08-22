@@ -6,7 +6,8 @@ interface ButtonProps {
   color:
     | 'default-small'
     | 'default-big'
-    | 'yellow'
+    | 'yellow-small'
+    | 'yellow-big'
     | 'blue-middle'
     | 'blue-big'
     | 'blue__and__light'

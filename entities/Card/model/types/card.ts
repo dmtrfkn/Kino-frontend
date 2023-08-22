@@ -1,4 +1,6 @@
+import { Award } from '@/entities/Award/model/types/Award';
 import { Director } from '@/entities/Director/module/types/Director';
+import { Person } from '@/entities/Person/model/types/Person';
 import { Rating } from '@/entities/Rating/model/types/rating';
 
 export type Card = {
@@ -31,9 +33,9 @@ export type Card = {
   production: string[];
   specialEffects: string[];
   dubbingStudios: string[];
-  persons: string[];
+  persons: Person[];
   trailers: string[];
-  awards: string[];
+  awards: Award[];
   posters: string[];
   shots: string[];
   sequelAndPrequels: string[];

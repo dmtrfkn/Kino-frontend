@@ -1,3 +1,9 @@
+.h1 {
+  font-family: 'Qanelas ExtraBold';
+  font-size: 65px;
+  font-style: normal;
+  line-height: normal;
+}
 .flex {
   max-width: 1164px;
   width: 100%;
@@ -14,13 +20,6 @@
     font-size: 16px;
     font-style: normal;
     line-height: 168.7%;
-  }
-
-  h1 {
-    font-family: 'Qanelas ExtraBold';
-    font-size: 65px;
-    font-style: normal;
-    line-height: normal;
   }
 
   h3 {
@@ -403,5 +402,68 @@
 
   .dubbling {
     gap: 5px;
+  }
+}
+
+// persons
+
+.persons {
+  margin-bottom: 85px;
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+
+  p {
+    font-family: 'Qanelas Bold';
+    font-size: 22px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 60px;
+    align-items: center;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 250px;
+    height: 330px;
+
+    &__image {
+      width: 250px;
+      height: 250px;
+      border-radius: 10px;
+    }
+
+    &__name {
+      font-family: 'Qanelas Bold';
+      font-size: 18px;
+    }
+
+    &__secondName {
+      color: var(--gray-text_second);
+      font-family: 'Qanelas Thin';
+      font-size: 14px;
+    }
+
+    &__role {
+      font-family: 'Qanelas Thin';
+      color: var(--yellow);
+      font-size: 16px;
+    }
   }
 }
