@@ -11,6 +11,10 @@ import Link from 'next/link';
 import Button from '@/shared/ui/Button';
 import Trailer from '@/shared/ui/Trailer';
 import Awards from '@/shared/ui/Awards';
+import FlexTitle from '@/shared/ui/FlexTitle';
+import Posters from '@/shared/ui/Posters';
+import Shots from '@/shared/ui/Shots';
+import Quotes from '@/shared/ui/Quotes';
 
 const FilmCard = () => {
   useEffect(() => {
@@ -275,13 +279,7 @@ const FilmCard = () => {
         </div>
       </div>
       <div className={styles.persons}>
-        <div className={styles.persons__flex}>
-          <h1 className={styles.h1}>В главных ролях</h1>
-          <div className={styles.persons__flex + ' ' + styles.pointer}>
-            <p>Все актёры</p>
-            <Image src={arrow} alt="Arrow" />
-          </div>
-        </div>
+        <FlexTitle header="Все актёры" link="/persons" title="В главных ролях:" />
         <div className={styles.persons__cards}>
           {card?.persons.map((i) => (
             <div key={i._id} className={styles.persons__card}>
@@ -302,8 +300,15 @@ const FilmCard = () => {
       <div className={styles.links}>
         {active ? (
           // <Trailer videoLink={`${url}${card?.trailers[0]}`} videoName="Побег из Притонии" />
-          <Awards awards={card?.awards ? card.awards : []} />
+          // <Awards awards={card?.awards ? card.awards : []} />
+          // <Posters
+          //   links={card?.posters ? card.posters : []}
+          //   paragraph={card?.name ? card.name : ''}
+          // />
+          // <Shots links={card?.shots ? card.shots : []} paragraph={card?.name ? card.name : ''} />
+          <Quotes quotes={card?.quotes ? card.quotes : []} />
         ) : (
+          // <Button color="yellow-big" text="pop" onClick={() => setActive((prev) => !prev)} />
           <Button color="yellow-big" text="pop" onClick={() => setActive((prev) => !prev)} />
         )}
       </div>

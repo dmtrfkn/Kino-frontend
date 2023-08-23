@@ -1,0 +1,27 @@
+.flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .title {
+    font-family: 'Qanelas ExtraBold';
+    font-size: 65px;
+  }
+
+  .link {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .header {
+    font-family: 'Qanelas Bold';
+    font-size: 22px;
+  }
+}
+.paragraph {
+  font-family: 'Qanelas SemiBold';
+  font-size: 25px;
+  text-align: left;
+}

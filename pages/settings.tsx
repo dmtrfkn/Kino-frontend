@@ -1,4 +1,4 @@
-import UserLinks from '@/shared/UserLinks';
+import UserLinks from '@/shared/ui/UserLinks';
 import ContainerFlex from '@/shared/ui/Container-flex';
 import ProfileLayout from '@/widgets/ProfileLayout';
 import UpdateUser from '@/widgets/UpdateUserSettings';

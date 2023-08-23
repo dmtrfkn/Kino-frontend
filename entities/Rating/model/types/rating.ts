@@ -1,4 +1,4 @@
-export interface Rating {
+export type Rating = {
   whoose: string;
   rate: string;
-}
+};

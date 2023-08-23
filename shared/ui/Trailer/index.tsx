@@ -2,6 +2,7 @@ import { FC } from 'react';
 import arrow from '@/assets/rightArrow.svg';
 import Image from 'next/image';
 import styles from './Trailer.module.scss';
+import FlexTitle from '../FlexTitle';
 interface TrailerProps {
   videoLink: string;
   videoName: string;
@@ -11,13 +12,7 @@ const Trailer: FC<TrailerProps> = ({ videoLink, videoName }) => {
   const url = 'NEXT_PUBLIC_IMAGE_URL';
   return (
     <div className={styles.trailer}>
-      <div className={styles.trailer__flex}>
-        <h1 className={styles.title}>Трейлеры фильма</h1>
-        <div className={styles.trailer__flex}>
-          <span className={styles.header}>Все трейлеры</span>
-          <Image alt="arrow" src={arrow} />
-        </div>
-      </div>
+      <FlexTitle header="Все трейлеры" link="/trailers" title="Трейлеры" />
       <video
         controls
         preload={`${url}$/uploads/15993660542832137299392574692263611.png`}

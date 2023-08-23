@@ -1,4 +1,4 @@
-import UserLinks from '@/shared/UserLinks';
+import UserLinks from '@/shared/ui/UserLinks';
 import { useState } from 'react';
 import getServerSideProps from '@/shared/utils/getProps/getProps';
 import UpdateUser from '@/widgets/UpdateUserSettings';

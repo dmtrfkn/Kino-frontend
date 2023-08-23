@@ -1,0 +1,12 @@
+.posters__block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.image {
+  border-radius: 10px;
+}

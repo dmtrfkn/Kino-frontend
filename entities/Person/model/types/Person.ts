@@ -1,4 +1,4 @@
-export interface Person {
+export type Person = {
   _id: string;
   name: string;
   englishName: string;
@@ -17,4 +17,4 @@ export interface Person {
   photos: string[];
   films: string[];
   comments: string[];
-}
+};

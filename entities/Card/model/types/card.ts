@@ -1,6 +1,7 @@
 import { Award } from '@/entities/Award/model/types/Award';
 import { Director } from '@/entities/Director/module/types/Director';
 import { Person } from '@/entities/Person/model/types/Person';
+import { Quote } from '@/entities/Quote';
 import { Rating } from '@/entities/Rating/model/types/rating';
 
 export type Card = {
@@ -39,7 +40,7 @@ export type Card = {
   posters: string[];
   shots: string[];
   sequelAndPrequels: string[];
-  quotes: string[];
+  quotes: Quote[];
   seemFilms: string[];
   description: string;
 };

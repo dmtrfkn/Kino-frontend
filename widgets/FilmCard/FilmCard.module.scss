@@ -410,18 +410,6 @@
 .persons {
   margin-bottom: 85px;
 
-  &__flex {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: center;
-  }
-
-  p {
-    font-family: 'Qanelas Bold';
-    font-size: 22px;
-  }
-
   &__cards {
     display: flex;
     flex-wrap: wrap;
@@ -431,33 +419,32 @@
     align-items: center;
   }
 
-  .pointer {
-    cursor: pointer;
-  }
-
   &__card {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
     max-width: 250px;
-    height: 330px;
+    height: 340px;
 
     &__image {
       width: 250px;
       height: 250px;
       border-radius: 10px;
+      margin-bottom: 15px;
     }
 
     &__name {
       font-family: 'Qanelas Bold';
       font-size: 18px;
+      margin-bottom: 3px;
     }
 
     &__secondName {
       color: var(--gray-text_second);
       font-family: 'Qanelas Thin';
       font-size: 14px;
+      margin-bottom: 5px;
     }
 
     &__role {

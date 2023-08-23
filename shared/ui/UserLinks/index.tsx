@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './UserLinks.module.scss';
-import ProfileLink from '../ui/ProfileLink';
+import ProfileLink from '../ProfileLink';
 import profile from '@/assets/home.svg';
 import friend from '@/assets/friend.svg';
 import review from '@/assets/review.svg';
