@@ -1,0 +1,156 @@
+.review {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 5px solid var(--white);
+  padding: 50px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 50px;
+
+    &__user {
+      &__block {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+
+        &__flex {
+          display: flex;
+          // align-items: center;
+          flex-wrap: wrap;
+          flex-direction: column;
+          gap: 20px;
+          align-items: flex-start;
+
+          &__information {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+          }
+
+          &__name {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+
+  &__main {
+    margin-bottom: 15px;
+
+    &__flex {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .image {
+    border-radius: 50%;
+  }
+
+  .nickName {
+    font-family: 'Qanelas Bold';
+    font-size: 30px;
+  }
+
+  .information {
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .title {
+    font-family: 'Qanelas Bold';
+    font-size: 30px;
+  }
+
+  .date {
+    margin-top: 5px;
+    font-size: 15px;
+    font-family: 'Qanelas Light';
+    color: var(--gray-date);
+  }
+
+  .text {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .complain,
+  .link {
+    font-family: 'Qanelas SemiBold';
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &__flex {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .complain {
+    color: var(--red-alert);
+  }
+
+  .typeOfReview {
+    width: 208px;
+    height: 36px;
+    font-size: 15px;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+
+    &-good {
+      background-color: var(--green-like-bg);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    &-middle {
+      background-color: var(--yellow-bg);
+      color: var(--yellow-border);
+    }
+
+    &-bad {
+      background-color: var(--red-bg);
+      color: var(--red-border);
+    }
+  }
+}
+
+.border {
+  &-good {
+    border-color: var(--green);
+  }
+
+  &-middle {
+    border-color: var(--yellow-border);
+  }
+
+  &-bad {
+    border-color: var(--red-border);
+  }
+}

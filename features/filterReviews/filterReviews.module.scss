@@ -1,0 +1,50 @@
+.filter {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .title {
+    font-family: 'Qanelas SemiBold';
+    font-size: 20px;
+  }
+
+  .filterButton {
+    display: flex;
+    background-color: var(--buttons-bg);
+    gap: 40px;
+    align-items: center;
+    padding: 25px 20px;
+    height: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    .bg-green {
+      color: var(--green);
+      background-color: var(--green-like-bg);
+    }
+    .bg-blue {
+      color: var(--blue);
+      background-color: var(--blue-bg);
+    }
+    .bg-red {
+      color: var(--red-border);
+      background-color: var(--red-bg-filter);
+    }
+    .bg_yellow {
+      color: var(--yellow-border);
+      background-color: var(--yellow-bg);
+    }
+
+    &__count {
+      font-family: 'Qanelas Light';
+      font-size: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+}

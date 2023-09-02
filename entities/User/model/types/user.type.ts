@@ -26,5 +26,5 @@ export type User = {
   likedFilms: string[];
   dislikedFilms: string[];
   avatarImage?: string;
-  wasOnline?: number;
+  wasOnline?: Date;
 };

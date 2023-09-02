@@ -3,12 +3,13 @@ import { Director } from '@/entities/Director/module/types/Director';
 import { Person } from '@/entities/Person/model/types/Person';
 import { Quote } from '@/entities/Quote';
 import { Rating } from '@/entities/Rating/model/types/rating';
+import { Review } from '@/entities/Review/models/types/Review';
 
 export type Card = {
   _id: string;
   posterImage: string;
   backgroundImage: string;
-  reviews: string[];
+  reviews: Review[];
   name: string;
   secondName: string;
   ratings: Rating[];
