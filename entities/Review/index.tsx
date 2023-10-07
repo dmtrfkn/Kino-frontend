@@ -10,11 +10,11 @@ import complain from '@/assets/complainLogo.svg';
 import { createDateFromDate } from '@/shared/utils/createDateFromDate';
 
 interface ReviewProps {
-  reviews: Review[];
+  review: Review;
 }
 
-const ReviewCard: FC<ReviewProps> = ({ reviews }) => {
-  const review = reviews[0];
+const ReviewCard: FC<ReviewProps> = ({ review }) => {
+  // const review = reviews[0];
   const date = new Date(review.date);
   const trueDate = createDateFromDate(date);
 

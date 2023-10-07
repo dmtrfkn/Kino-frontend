@@ -5,6 +5,11 @@
   border: 5px solid var(--white);
   padding: 50px;
 
+  .name {
+    font-size: 30px;
+    font-family: 'Qanelas Bold';
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -91,6 +96,7 @@
     margin-bottom: 15px;
     text-align: left;
     font-size: 20px;
+    font-family: 'Qanelas Light';
   }
 
   .complain,

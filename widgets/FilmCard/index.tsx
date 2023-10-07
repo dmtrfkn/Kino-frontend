@@ -14,6 +14,7 @@ import Likes from '@/shared/ui/Likes';
 import FilterReviews from '@/features/filterReviews';
 import { Review } from '@/entities/Review/models/types/Review';
 import ReviewCard from '@/entities/Review';
+import ReviewsBlock from './ui/ReviewsBlock';
 
 const FilmCard = () => {
   const [card, setCard] = useState<Card>();
@@ -250,13 +251,13 @@ const FilmCard = () => {
           // />
           // <Shots links={card?.shots ? card.shots : []} paragraph={card?.name ? card.name : ''} />
           // <Quotes quotes={card?.quotes ? card.quotes : []} />
-          <div>
+          <div className={styles.reviews__block}>
             <FilterReviews
               cardId={card?._id ? card._id : ''}
               reviews={card?.reviews ? card.reviews : []}
               setReviews={setReviews}
             />
-            <ReviewCard reviews={reviews} />
+            <ReviewsBlock reviews={reviews} />
           </div>
         ) : (
           // <Button color="yellow-big" text="pop" onClick={() => setActive((prev) => !prev)} />
