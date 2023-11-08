@@ -77,7 +77,11 @@ const UpdateUser: FC = () => {
             <div className={styles.genges}>
               <ChooseGenges arrayOfChoosenGenres={choosedGenres} setGenres={setChoosedGenres} />
             </div>
-            <TextArea setValue={setTextareaValue} value={textareaValue} />
+            <TextArea
+              setSelectedValue={() => console.log()}
+              setValue={setTextareaValue}
+              value={textareaValue}
+            />
           </div>
         </div>
         <div className={styles.links}>

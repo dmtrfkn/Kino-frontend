@@ -25,19 +25,31 @@
 }
 
 .bg-yellow-small,
+.bg-yellow-middle,
 .bg-yellow-big {
   background-color: var(--yellow);
   color: var(--dark-text);
+  font-family: 'Qanelas Bold';
 }
 .bg-yellow-small {
   width: 182px;
   height: 71px;
   font-size: 17px;
-  font-family: 'Qanelas SemiBold';
+  font-family: 'Qanelas Bold';
+}
+
+.bg-yellow-middle {
+  width: 286px;
+  height: 71px;
+  font-size: 18px;
+  font-family: 'Qanelas Bold';
+  div {
+    font-family: 'Qanelas Bold';
+  }
 }
 
 .bg-yellow-big {
-  font-family: 'Qanelas Medium';
+  font-family: 'Qanelas Bold';
   width: 100%;
   font-size: 17px;
   height: 55px;
@@ -68,6 +80,16 @@
   box-shadow: 0px 0px 15px 0px var(--blue-shadow);
   font-family: 'Qanelas Bold';
   font-size: 16px;
+
+  &__middle {
+    background-color: var(--blue);
+    padding: 13px 46px;
+    box-shadow: 0px 0px 15px 0px var(--blue-shadow);
+    font-family: 'Qanelas Bold';
+    font-size: 16px;
+    width: 224px;
+    height: 71px;
+  }
 }
 
 .bg-transparent-small,
@@ -88,13 +110,15 @@
 .bg-transparent-big {
   font-size: 18px;
   padding: 26px 36px;
+  padding: 0;
 }
 
 .bg-transparent-large {
   width: 296px;
   height: 71px;
   font-size: 18px;
-  padding: 21px 28px;
+  padding: 10px 28px;
+  padding: 0;
 }
 
 .bg-white {

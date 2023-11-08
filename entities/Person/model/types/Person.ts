@@ -1,3 +1,7 @@
+import { Award } from '@/entities/Award/model/types/Award';
+import { Card } from '@/entities/Card/model/types/card';
+import { Comment } from '@/entities/Comment/types/comment';
+
 export type Person = {
   _id: string;
   name: string;
@@ -11,10 +15,10 @@ export type Person = {
   genres: string[];
   totalCountOfFilmsAndYears: string[];
   favorites: number;
-  awards: string[];
-  bestFilms: string[];
+  awards: Award[];
+  bestFilms: Card[];
   lastNews: string[];
   photos: string[];
-  films: string[];
-  comments: string[];
+  films: Card[];
+  comments: Comment[];
 };

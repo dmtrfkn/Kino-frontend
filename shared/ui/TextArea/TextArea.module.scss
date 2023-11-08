@@ -1,5 +1,4 @@
 .root {
-  max-width: 540px;
   width: 100%;
   height: 252px;
   background-color: var(--all-bg);
@@ -14,4 +13,9 @@
   outline: none;
   resize: none;
   margin-top: 20px;
+
+  &::placeholder {
+    color: var(--gray-text);
+    font-family: 'Qanelas Thin';
+  }
 }

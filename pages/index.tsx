@@ -9,11 +9,7 @@ import { useAppSelector } from '@/shared/api/redux';
 // const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  return (
-    <div>
-      <Button color="yellow" text="sdf" />
-    </div>
-  );
+  return <div>фыва</div>;
 }
 
 export { getServerSideProps };

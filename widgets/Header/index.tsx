@@ -17,6 +17,7 @@ import { removeUser, setUser } from '@/entities/User';
 const Header = () => {
   const [state, setState] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
+  const [activeArrow, setActiveArrow] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   const onCloseModalHandler = () => {
@@ -25,6 +26,7 @@ const Header = () => {
 
   const onClickHandler = () => {
     setActive((prev) => !prev);
+    setActiveArrow((prev) => !prev);
   };
 
   const onLogoutHandler = () => {
@@ -44,7 +46,11 @@ const Header = () => {
           {user ? (
             <div className={styles.profile__button} onClick={onClickHandler}>
               <div className={styles.flex}>
-                <Image alt="arrow" src={arrow} />
+                <Image
+                  className={activeArrow ? styles.active__arrow : styles.arrow}
+                  alt="arrow"
+                  src={arrow}
+                />
                 {user.name}
               </div>
               <Image

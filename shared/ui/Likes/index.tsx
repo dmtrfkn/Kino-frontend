@@ -2,11 +2,19 @@ import { FC } from 'react';
 import styles from './Likes.module.scss';
 
 interface LikesProps {
-  countLike?: number;
-  countDislike?: number;
+  countLike: number;
+  countDislike: number;
+  addLike: (like: number) => void;
+  addDisLike: (like: number) => void;
 }
 
-const Likes: FC<LikesProps> = ({ countDislike, countLike }) => {
+const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike }) => {
+  const addLikeHandler = () => {
+    addLike(countLike + 1);
+  };
+  const addDisLikeHandler = () => {
+    addDisLike(countLike + 1);
+  };
   return (
     <div className={styles.likes}>
       <div className={styles.flex}>
@@ -35,7 +43,11 @@ const Likes: FC<LikesProps> = ({ countDislike, countLike }) => {
             </defs>
           </svg>
         </span>
-        {countLike && <span className={styles.count}>{countLike}</span>}
+        {countLike && (
+          <span onClick={addLikeHandler} className={styles.count}>
+            {countLike}
+          </span>
+        )}
       </div>
       <div className={styles.flex}>
         <span className={styles.button + ' ' + styles.dislike}>
@@ -68,7 +80,11 @@ const Likes: FC<LikesProps> = ({ countDislike, countLike }) => {
             </defs>
           </svg>
         </span>
-        {countDislike && <span className={styles.count}>{countDislike}</span>}
+        {countDislike && (
+          <span onClick={addDisLikeHandler} className={styles.count}>
+            {countDislike}
+          </span>
+        )}
       </div>
     </div>
   );

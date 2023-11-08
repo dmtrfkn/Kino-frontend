@@ -33,3 +33,39 @@
     grid-area: 2 / 3 / 3 / 5;
   }
 }
+
+.person__shots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+
+  &__item-1,
+  &__item-2,
+  &__item-3,
+  &__item-4,
+  &__item-5,
+  &__item-6 {
+    border-radius: 10px;
+  }
+
+  &__item-1 {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+  &__item-2 {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+  &__item-3 {
+    grid-area: 1 / 4 / 2 / 5;
+  }
+  &__item-4 {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  &__item-5 {
+    grid-area: 2 / 2 / 3 / 4;
+  }
+  &__item-6 {
+    grid-area: 2 / 4 / 3 / 5;
+  }
+}

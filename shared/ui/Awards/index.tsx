@@ -6,7 +6,7 @@ import { FC } from 'react';
 import FlexTitle from '../FlexTitle';
 
 interface AwardsProps {
-  awards: Award[];
+  awards?: Award[];
 }
 
 const Awards: FC<AwardsProps> = ({ awards }) => {
@@ -16,18 +16,19 @@ const Awards: FC<AwardsProps> = ({ awards }) => {
       <FlexTitle header="Все награды" link="/awards" title="Награды" />
 
       <div className={styles.awards__block}>
-        {awards.map((i) => (
-          <div key={i._id} className={styles.awards__block__item}>
-            <Image width={45} height={115} alt="awardPoster" src={`${url}${i.picture}`} />
-            <div className={styles.awards__block__item__flex}>
-              <div className={styles.awards__block__item__flex__mini}>
-                <span className={styles.awards__block__item__name}>{i.name}</span>
-                <span className={styles.awards__block__item__description}>{i.description}</span>
+        {awards &&
+          awards.map((i) => (
+            <div key={i._id} className={styles.awards__block__item}>
+              <Image width={45} height={115} alt="awardPoster" src={`${url}${i.picture}`} />
+              <div className={styles.awards__block__item__flex}>
+                <div className={styles.awards__block__item__flex__mini}>
+                  <span className={styles.awards__block__item__name}>{i.name}</span>
+                  <span className={styles.awards__block__item__description}>{i.description}</span>
+                </div>
+                <span className={styles.awards__block__item__year}>{i.year}</span>
               </div>
-              <span className={styles.awards__block__item__year}>{i.year}</span>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
