@@ -146,6 +146,9 @@
   }
 
   &__text {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
     font-family: 'Qanelas Light';
     // background-color: var(--input);
     width: 100%;
@@ -153,6 +156,40 @@
     // text-align: left;
     // border-radius: 10px;
     margin-bottom: 30px;
+
+    .textArea_markdown {
+      width: 100%;
+      background-color: var(--all-bg);
+      margin-top: 20px;
+      border-radius: 10px;
+      text-align: left;
+      padding: 13px 26px;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 166.5%;
+
+      p {
+        margin: 0;
+        padding: 0;
+        font-family: 'Qanelas Light';
+        strong {
+          u {
+            font-family: inherit;
+          }
+
+          em {
+            font-family: inherit;
+          }
+        }
+        u {
+          font-family: 'Qanelas Light';
+        }
+
+        em {
+          font-family: 'Qanelas Light';
+        }
+      }
+    }
   }
 
   &__buttons {
@@ -199,8 +236,4 @@
       gap: 20px;
     }
   }
-}
-
-.textArea {
-  border-radius: 50%;
 }

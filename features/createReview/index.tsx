@@ -11,27 +11,53 @@ import TextArea from '@/shared/ui/TextArea';
 import Input from '@/shared/ui/Input';
 import { typeOfReview } from './utils/typeOfReview';
 import ReactMarkdown from 'react-markdown';
-import MDEditor from '@uiw/react-md-editor';
+import rehypeRaw from 'rehype-raw';
 interface CreateReviewProps {
   user: User;
 }
 
 const CreateReview: FC<CreateReviewProps> = ({ user }) => {
   const [listState, setListState] = useState<boolean>(false);
-  const [textareaValue, setTextareaValue] = useState('');
+  const [textareaValue, setTextareaValue] = useState(``);
   const [inputValue, setInputValue] = useState('');
   const [type, setType] = useState('');
   const [activeArrow, setActiveArrow] = useState<boolean>(false);
-  const [selectedValue, setSelectedValue] = useState<string | undefined>();
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(textareaValue);
   const createReviewHandler = async () => {
     // const newReview =
+  };
+
+  const onClickMarkdownButtonHandler = (text: string | undefined, sign: string) => {
+    const oldText = text ? text : textareaValue;
+    let endText = text ? text : textareaValue;
+
+    if (endText[0] === sign || endText[0] + endText[1] + endText[2] === sign) {
+      endText =
+        sign === '*' ? endText.slice(2) : sign === '_' ? endText.slice(1) : endText.slice(3);
+      endText =
+        sign === '*'
+          ? endText.slice(0, endText.length - 2)
+          : sign === '_'
+          ? endText.slice(0, endText.length - 1)
+          : endText.slice(0, endText.length - 4);
+    } else {
+      endText =
+        sign === '*'
+          ? sign + sign + endText + sign + sign
+          : sign === '_'
+          ? sign + endText + sign
+          : sign + endText + '</u>';
+    }
+
+    const textareaNewText = textareaValue.replace(oldText, endText);
+    setTextareaValue(textareaNewText);
+    setSelectedValue(endText);
   };
 
   const onClickHandler = () => {
     setListState((prev) => !prev);
     setActiveArrow((prev) => !prev);
   };
-  // const strin = '**' + textareaValue + '**';
   return (
     <div className={styles.flex}>
       <div className={styles.flex__header}>
@@ -90,13 +116,19 @@ const CreateReview: FC<CreateReviewProps> = ({ user }) => {
         </div>
       </div>
       <div className={styles.flex__buttons}>
-        <div className={styles.flex__buttons__item__first + ' ' + styles.flex__buttons__item}>
+        <div
+          className={styles.flex__buttons__item__first + ' ' + styles.flex__buttons__item}
+          onClick={() => onClickMarkdownButtonHandler(textareaValue, '*')}>
           Ж
         </div>
-        <div className={styles.flex__buttons__item__second + ' ' + styles.flex__buttons__item}>
+        <div
+          className={styles.flex__buttons__item__second + ' ' + styles.flex__buttons__item}
+          onClick={() => onClickMarkdownButtonHandler(textareaValue, '_')}>
           К
         </div>
-        <div className={styles.flex__buttons__item__third + ' ' + styles.flex__buttons__item}>
+        <div
+          className={styles.flex__buttons__item__third + ' ' + styles.flex__buttons__item}
+          onClick={() => onClickMarkdownButtonHandler(textareaValue, '<u>')}>
           А
         </div>
       </div>
@@ -107,11 +139,8 @@ const CreateReview: FC<CreateReviewProps> = ({ user }) => {
           setValue={setTextareaValue}
           placeholder="тут писать надо"
         />
-        <div className={styles.textArea}>
-          {/* <MDEditor
-            value={textareaValue}
-            onChange={(newValue = '') => setTextareaValue(newValue)}
-          /> */}
+        <div className={styles.textArea_markdown}>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{textareaValue}</ReactMarkdown>
         </div>
       </div>
       <div className={styles.flex__agree__block}>
