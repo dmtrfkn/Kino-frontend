@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import styles from './createReview.module.scss';
-import { useAppSelector } from '@/shared/api/redux';
 import { User } from '@/entities/User';
-import { FC, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
 import arrow from '@/assets/arrow.svg';
 import Link from 'next/link';
 import Button from '@/shared/ui/Button';
@@ -12,19 +11,40 @@ import Input from '@/shared/ui/Input';
 import { typeOfReview } from './utils/typeOfReview';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import { createReview } from './api';
+import { Review } from '@/entities/Review/models/types/Review';
 interface CreateReviewProps {
   user: User;
+  setReviews: (reviews: Review[], newReview: Review) => void;
+  reviews: Review[];
 }
 
-const CreateReview: FC<CreateReviewProps> = ({ user }) => {
+const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
   const [listState, setListState] = useState<boolean>(false);
   const [textareaValue, setTextareaValue] = useState(``);
   const [inputValue, setInputValue] = useState('');
   const [type, setType] = useState('');
   const [activeArrow, setActiveArrow] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string | undefined>(textareaValue);
+
   const createReviewHandler = async () => {
-    // const newReview =
+    const newReview: Review | undefined = await createReview({
+      text: textareaValue,
+      title: inputValue,
+      typeOfReview: type,
+      user: user._id,
+      complaints: [],
+      comments: [],
+      date: Date.now(),
+      dislikes: 0,
+      likes: 0,
+    });
+    const newArr = newReview && [...reviews, newReview];
+
+    if (newArr) {
+      console.log(newReview);
+      setReviews(newArr, newReview);
+    }
   };
 
   const onClickMarkdownButtonHandler = (text: string | undefined, sign: string) => {
@@ -118,17 +138,17 @@ const CreateReview: FC<CreateReviewProps> = ({ user }) => {
       <div className={styles.flex__buttons}>
         <div
           className={styles.flex__buttons__item__first + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(textareaValue, '*')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '*')}>
           Ж
         </div>
         <div
           className={styles.flex__buttons__item__second + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(textareaValue, '_')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '_')}>
           К
         </div>
         <div
           className={styles.flex__buttons__item__third + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(textareaValue, '<u>')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '<u>')}>
           А
         </div>
       </div>
@@ -147,7 +167,7 @@ const CreateReview: FC<CreateReviewProps> = ({ user }) => {
         <CheckboxInput text="Я соглашаюсь на" linkText=" правила публицации рецензии" />
         <div className={styles.flex__agree__block__buttons}>
           <Button color="transparent-large" text="Предварительный просмотр" />
-          <Button color="yellow-small" text="Отправить" />
+          <Button onClick={createReviewHandler} color="yellow-small" text="Отправить" />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ export interface CreateReviewDto {
   likes?: number;
   dislikes?: number;
   title: string;
-  date?: Date;
+  date?: number;
   text: string;
   comments?: string[];
   complaints?: string[];

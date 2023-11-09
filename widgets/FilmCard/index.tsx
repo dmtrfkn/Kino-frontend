@@ -8,14 +8,11 @@ import defPoster from '@/assets/EmptyPoster.png';
 import Button from '@/shared/ui/Button';
 import FlexTitle from '@/shared/ui/FlexTitle';
 import Likes from '@/shared/ui/Likes';
-import FilterReviews from '@/features/filterReviews';
 import { Review } from '@/entities/Review/models/types/Review';
-import ReviewsBlock from './ui/ReviewsBlock';
 import CreateReview from '@/features/createReview';
-import { useAppSelector } from '@/shared/api/redux';
-import { User } from '@/entities/User';
 import FavoriteButton from '@/shared/ui/FavoriteButton';
-import Posters from '@/shared/ui/Posters';
+import ReviewsBlock from './ui/ReviewsBlock';
+import { updateCard } from './api/update';
 
 const FilmCard = () => {
   const [card, setCard] = useState<Card>();
@@ -30,6 +27,27 @@ const FilmCard = () => {
     setCard(data);
     setReviews(data.reviews);
   };
+
+  const updateCardThere = async (newReview: Review[]) => {
+    const updatedCard = await updateCard(
+      {
+        dislikes: dislikes,
+        favorites: card ? card.favorites : 0,
+        likes: likes,
+        reviews: newReview.map((i) => i._id),
+      },
+      card ? card._id : '',
+    );
+    setCard(updatedCard);
+  };
+
+  const setReviewsHandler = (reviews: Review[], newReview: Review) => {
+    if (reviews) {
+      setReviews(reviews);
+      updateCardThere([newReview]);
+    }
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -233,8 +251,14 @@ const FilmCard = () => {
           //     reviews={card?.reviews ? card.reviews : []}
           //     setReviews={setReviews}
           //   />
-          //   <ReviewsBlock reviews={reviews} />
-          <CreateReview user={reviews[0].user[0]} />
+          <div>
+            <ReviewsBlock reviews={reviews} />
+            <CreateReview
+              reviews={reviews}
+              setReviews={setReviewsHandler}
+              user={reviews[0].user[0]}
+            />
+          </div>
         ) : (
           // </div>
           // <Posters
