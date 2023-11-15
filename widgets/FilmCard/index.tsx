@@ -13,6 +13,11 @@ import CreateReview from '@/features/createReview';
 import FavoriteButton from '@/shared/ui/FavoriteButton';
 import ReviewsBlock from './ui/ReviewsBlock';
 import { updateCard } from './api/update';
+import FilterReviews from '@/features/filterReviews';
+import Quotes from '@/shared/ui/Quotes';
+import Shots from '@/shared/ui/Shots';
+import Awards from '@/shared/ui/Awards';
+import Trailer from '@/shared/ui/Trailer';
 
 const FilmCard = () => {
   const [card, setCard] = useState<Card>();
@@ -51,6 +56,10 @@ const FilmCard = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  // useEffect(() => {
+  //   updateCardThere([]);
+  // }, [likes, dislikes]);
 
   const result = 20;
   const hours = card ? Math.floor(card?.duration / 60) : 0;
@@ -112,7 +121,9 @@ const FilmCard = () => {
             <span>Рейтинг ожиданий {result}%</span>
             <div className={styles.expected__rating_percent} style={{ width: `${result}%` }}></div>
           </div>
-          <FavoriteButton countOfFavorites={card?.favorites} />
+          <div className={styles.favorite}>
+            <FavoriteButton countOfFavorites={card?.favorites} />
+          </div>
         </div>
         <div className={styles.information}>
           <div className={styles.information__block_flex}>
@@ -240,18 +251,19 @@ const FilmCard = () => {
       </div>
       <div className={styles.links}>
         {active ? (
-          // <Trailer videoLink={`${url}${card?.trailers[0]}`} videoName="Побег из Притонии" />
-          // <Awards awards={card?.awards ? card.awards : []} />
-
-          // <Shots links={card?.shots ? card.shots : []} paragraph={card?.name ? card.name : ''} />
-          // <Quotes quotes={card?.quotes ? card.quotes : []} />
-          // <div className={styles.reviews__block}>
-          //   <FilterReviews
-          //     cardId={card?._id ? card._id : ''}
-          //     reviews={card?.reviews ? card.reviews : []}
-          //     setReviews={setReviews}
-          //   />
           <div>
+            {/* <Trailer videoLink={`${url}${card?.trailers[0]}`} videoName="Побег из Притонии" /> */}
+            <Awards awards={card?.awards ? card.awards : []} />
+
+            <Shots links={card?.shots ? card.shots : []} paragraph={card?.name ? card.name : ''} />
+            <Quotes quotes={card?.quotes ? card.quotes : []} />
+            <div className={styles.reviews__block}>
+              <FilterReviews
+                cardId={card?._id ? card._id : ''}
+                reviews={card?.reviews ? card.reviews : []}
+                setReviews={setReviews}
+              />
+            </div>
             <ReviewsBlock reviews={reviews} />
             <CreateReview
               reviews={reviews}

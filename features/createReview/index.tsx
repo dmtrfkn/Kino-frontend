@@ -51,20 +51,24 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
     const oldText = text ? text : textareaValue;
     let endText = text ? text : textareaValue;
 
-    if (endText[0] === sign || endText[0] + endText[1] + endText[2] === sign) {
+    if (
+      endText[0] === sign ||
+      endText[0] + endText[1] + endText[2] === sign ||
+      endText[0] + endText[1] === sign
+    ) {
       endText =
-        sign === '*' ? endText.slice(2) : sign === '_' ? endText.slice(1) : endText.slice(3);
+        sign === '**' ? endText.slice(2) : sign === '*' ? endText.slice(1) : endText.slice(3);
       endText =
-        sign === '*'
+        sign === '**'
           ? endText.slice(0, endText.length - 2)
-          : sign === '_'
+          : sign === '*'
           ? endText.slice(0, endText.length - 1)
           : endText.slice(0, endText.length - 4);
     } else {
       endText =
-        sign === '*'
-          ? sign + sign + endText + sign + sign
-          : sign === '_'
+        sign === '**'
+          ? sign + endText + sign
+          : sign === '*'
           ? sign + endText + sign
           : sign + endText + '</u>';
     }
@@ -138,12 +142,12 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
       <div className={styles.flex__buttons}>
         <div
           className={styles.flex__buttons__item__first + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(selectedValue, '*')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '**')}>
           Ж
         </div>
         <div
           className={styles.flex__buttons__item__second + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(selectedValue, '_')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '*')}>
           К
         </div>
         <div

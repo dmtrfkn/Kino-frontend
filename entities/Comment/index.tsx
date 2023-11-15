@@ -11,6 +11,7 @@ import { updateComment } from './api/update';
 import axios from '@/shared/utils/axios';
 import { useAppSelector } from '@/shared/api/redux';
 import { chooseMouth } from '@/shared/utils/chooseMount';
+import { createDateFromString } from '@/shared/utils/createDateFromString';
 interface CommentProps {
   currentComment: Comment;
 }
@@ -36,23 +37,29 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
     setAddCommToComm((prev) => !prev);
   };
 
-  const onClickUpdateCommentHandler = async () => {
-    const createdComment: Comment = await (
-      await axios.post(`${process.env.NEXT_PUBLIC_URL}/comments/create`, {
-        user: userData?._id ? userData._id : '',
-        likes: 0,
-        dislikes: 0,
-        text: textareaValue,
-        date: Date.now(),
-        comments: [],
-        complains: [],
-      })
-    ).data;
-    console.log(createdComment);
+  useEffect(() => {
+    onClickUpdateCommentHandler();
+  }, [likes, dislikes]);
 
+  const onClickUpdateCommentHandler = async (flag?: boolean) => {
+    const createdComment: Comment = flag
+      ? await (
+          await axios.post(`${process.env.NEXT_PUBLIC_URL}/comments/create`, {
+            user: userData?._id ? userData._id : '',
+            likes: 0,
+            dislikes: 0,
+            text: textareaValue,
+            date: Date.now(),
+            comments: [],
+            complains: [],
+          })
+        ).data
+      : '';
+    // console.log(createdComment);
     const updatedComment = await updateComment(
       {
-        comments: [...comment.comments.map((i) => i._id), createdComment._id],
+        // ...comment.comments.map((i) => i._id),
+        comments: createdComment ? [createdComment._id] : [],
         dislikes: dislikes,
         likes: likes,
         text: textareaValue,
@@ -61,7 +68,7 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
     );
     console.log(updatedComment);
     updatedComment && setComment(updatedComment);
-    setAddCommToComm((prev) => !prev);
+    flag && setAddCommToComm((prev) => !prev);
   };
   return (
     <>
@@ -81,7 +88,7 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
                   {comment.user[0].name}
                 </h2>
                 <span className={styles.comment__flex__header__description__head__date}>
-                  {comment.date.toString()[8] !== '0'
+                  {/* `{comment.date.toString()[8] !== '0'
                     ? comment.date.toString()[8] + comment.date.toString()[9]
                     : comment.date.toString()[9]}{' '}
                   {chooseMouth(comment.date.toString()[5] + comment.date.toString()[6])}{' '}
@@ -94,7 +101,8 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
                     comment.date.toString()[12] +
                     comment.date.toString()[13] +
                     comment.date.toString()[14] +
-                    comment.date.toString()[15]}{' '}
+                    comment.date.toString()[15]}{' '} */}
+                  {createDateFromString(comment.date)}
                 </span>
               </div>
               <p className={styles.comment__flex__header__description__text}>{comment.text}</p>
@@ -164,7 +172,11 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
             setValue={setTextAreaValue}
             placeholder="Введите ответ на комментарий"
           />
-          <Button color="yellow-middle" text="Ответить" onClick={onClickUpdateCommentHandler} />
+          <Button
+            color="yellow-middle"
+            text="Ответить"
+            onClick={() => onClickUpdateCommentHandler(true)}
+          />
         </div>
       )}
       {comment.comments.length >= 1 ? (

@@ -9,7 +9,7 @@ interface ReviewsBlockProps {
 const ReviewsBlock: FC<ReviewsBlockProps> = ({ reviews }) => {
   return (
     <div className={styles.root}>
-      {reviews && reviews.map((review) => <ReviewCard review={review} key={review._id} />)}
+      {reviews && reviews.map((review) => <ReviewCard currentReview={review} key={review._id} />)}
     </div>
   );
 };

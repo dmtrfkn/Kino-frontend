@@ -186,9 +186,14 @@
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 11px;
+  align-items: normal;
+  gap: 13px;
   margin-top: 16px;
   margin-bottom: 45px;
+
+  .favorite {
+    margin-top: -30px;
+  }
 
   .button {
     width: 60px;

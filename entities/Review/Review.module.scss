@@ -83,6 +83,10 @@
   .title {
     font-family: 'Qanelas Bold';
     font-size: 30px;
+    p {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .date {
@@ -98,6 +102,11 @@
     text-align: left;
     font-size: 20px;
     font-family: 'Qanelas Light';
+
+    P {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .complain,

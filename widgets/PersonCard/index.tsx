@@ -30,6 +30,10 @@ const PersonCard = () => {
     getData();
   }, []);
 
+  const onChangePerson = (person: Person) => {
+    setPerson(person);
+  };
+
   // console.log(person?.films[0].ratings[0].rate);
 
   return (
@@ -127,7 +131,7 @@ const PersonCard = () => {
       </div>
       {/* <div className={styles.rate}></div> */}
       <div className={styles.films__block}>
-        <h1>Фильмы</h1>
+        {/* <h1>Фильмы</h1> */}
         {person?.films.map((film) => (
           <div className={styles.films__block__flex} key={film._id}>
             <div className={styles.films__block__flex__first}>
@@ -182,7 +186,12 @@ const PersonCard = () => {
         ))}
       </div>
       <div className={styles.comments}>
-        <CreateComment person={person} setPerson={setPerson} user={user} />
+        <CreateComment
+          entityId={person?._id ? person._id : ''}
+          setEntity={onChangePerson}
+          type="comments"
+          user={user}
+        />
         <div className={styles.comments__block}>
           {person?.comments.map((i, index) => (
             <Comment currentComment={i} key={index} />

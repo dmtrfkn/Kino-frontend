@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './Likes.module.scss';
 
 interface LikesProps {
@@ -9,16 +9,21 @@ interface LikesProps {
 }
 
 const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike }) => {
+  const [likesFlag, setLikesFlag] = useState<boolean>(false);
+  const [dislikesFlag, setDislikesFlag] = useState<boolean>(false);
+
   const addLikeHandler = () => {
-    addLike(countLike + 1);
+    !likesFlag ? addLike(countLike + 1) : addLike(countLike - 1);
+    setLikesFlag((prev) => !prev);
   };
   const addDisLikeHandler = () => {
-    addDisLike(countLike + 1);
+    !dislikesFlag ? addDisLike(countDislike + 1) : addDisLike(countDislike - 1);
+    setDislikesFlag((prev) => !prev);
   };
   return (
     <div className={styles.likes}>
       <div className={styles.flex}>
-        <span className={styles.button + ' ' + styles.like}>
+        <span className={styles.button + ' ' + styles.like} onClick={addLikeHandler}>
           <svg
             className={styles.button__image__like}
             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +55,7 @@ const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike })
         )}
       </div>
       <div className={styles.flex}>
-        <span className={styles.button + ' ' + styles.dislike}>
+        <span className={styles.button + ' ' + styles.dislike} onClick={addDisLikeHandler}>
           <svg
             className={styles.button__image}
             xmlns="http://www.w3.org/2000/svg"
