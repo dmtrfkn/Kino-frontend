@@ -1,8 +1,5 @@
 import { FC, SelectHTMLAttributes, useEffect, useState } from 'react';
 import styles from './ChooseGenges.module.scss';
-import { UpdateUserDto } from '@/widgets/UpdateUserSettings/api/dto/update.dto';
-import { UseFormRegister } from 'react-hook-form';
-
 interface ChooseGengesProps {
   setGenres: (genres: string[]) => void;
   arrayOfChoosenGenres: string[];

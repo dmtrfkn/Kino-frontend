@@ -5,9 +5,9 @@ import styles from './PersonCard.module.scss';
 import Image from 'next/image';
 import { createData } from '@/shared/utils/createData';
 import FavoriteButton from '@/shared/ui/FavoriteButton';
-import Awards from '@/shared/ui/Awards';
-import Poster from '@/shared/ui/Poster';
-import Shots from '@/shared/ui/Shots';
+import Awards from '@/entities/Award/ui/AwardsBlock';
+import Poster from '@/shared/ui/PosterOfFilm';
+import Shots from '@/widgets/FilmCard/ui/Shots';
 import FlexTitle from '@/shared/ui/FlexTitle';
 import Button from '@/shared/ui/Button';
 import { selectUser } from '@/entities/User';
@@ -16,7 +16,6 @@ import Comment from '@/entities/Comment';
 import CreateComment from '@/features/createComment';
 
 const PersonCard = () => {
-  //6529000c145a8c0e1352af45
   const user = useAppSelector((state) => selectUser(state));
   const [person, setPerson] = useState<Person | undefined>();
   const [avatar, setAvatar] = useState<string>('');
@@ -33,8 +32,6 @@ const PersonCard = () => {
   const onChangePerson = (person: Person) => {
     setPerson(person);
   };
-
-  // console.log(person?.films[0].ratings[0].rate);
 
   return (
     <div className={styles.root}>
@@ -129,9 +126,7 @@ const PersonCard = () => {
           title="Фото"
         />
       </div>
-      {/* <div className={styles.rate}></div> */}
       <div className={styles.films__block}>
-        {/* <h1>Фильмы</h1> */}
         {person?.films.map((film) => (
           <div className={styles.films__block__flex} key={film._id}>
             <div className={styles.films__block__flex__first}>

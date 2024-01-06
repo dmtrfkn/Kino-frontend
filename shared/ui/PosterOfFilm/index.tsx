@@ -4,13 +4,13 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface PosterProps {
+interface PosterOfFilmProps {
   poster: Card;
   width: number;
   height: number;
 }
 
-const Poster: FC<PosterProps> = ({ width, height, poster }) => {
+const PosterOfFilm: FC<PosterOfFilmProps> = ({ width, height, poster }) => {
   const img = `${process.env.NEXT_PUBLIC_IMAGE_URL}${poster.posterImage}`;
   return (
     <Link href="/3" className={styles.link}>
@@ -32,4 +32,4 @@ const Poster: FC<PosterProps> = ({ width, height, poster }) => {
   );
 };
 
-export default Poster;
+export default PosterOfFilm;

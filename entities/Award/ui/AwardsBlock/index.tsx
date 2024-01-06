@@ -1,20 +1,18 @@
 import Image from 'next/image';
-import styles from './Awards.module.scss';
-import arrow from '@/assets/rightArrow.svg';
+import styles from './AwardsBlock.module.scss';
 import { Award } from '@/entities/Award/model/types/Award';
 import { FC } from 'react';
-import FlexTitle from '../FlexTitle';
+import FlexTitle from '../../../../shared/ui/FlexTitle';
 
 interface AwardsProps {
   awards?: Award[];
 }
 
-const Awards: FC<AwardsProps> = ({ awards }) => {
+const AwardsBlock: FC<AwardsProps> = ({ awards }) => {
   const url = process.env.NEXT_PUBLIC_IMAGE_URL;
   return (
     <div className={styles.awards}>
       <FlexTitle header="Все награды" link="/awards" title="Награды" />
-
       <div className={styles.awards__block}>
         {awards &&
           awards.map((i) => (
@@ -34,4 +32,4 @@ const Awards: FC<AwardsProps> = ({ awards }) => {
   );
 };
 
-export default Awards;
+export default AwardsBlock;

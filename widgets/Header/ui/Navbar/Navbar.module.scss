@@ -13,3 +13,21 @@
   line-height: normal;
   text-decoration: none;
 }
+
+@media screen and (max-width: 1170px) {
+  .block {
+    gap: 20px;
+  }
+  .link {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .block {
+    gap: 10px;
+  }
+  .link {
+    font-size: 12px;
+  }
+}

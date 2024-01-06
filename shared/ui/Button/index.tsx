@@ -16,16 +16,19 @@ interface ButtonProps {
     | 'transparent-small'
     | 'transparent-large'
     | 'transparent-big'
-    | 'white';
+    | 'white'
+    | 'non-active';
   onClick?: () => void;
   image?: string;
   type?: 'submit' | 'button' | 'reset';
   form?: string;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, image, type, form, color }) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick, image, type, form, color, disabled }) => {
   return (
     <button
+      disabled={disabled && disabled}
       form={form}
       type={type}
       onClick={onClick}

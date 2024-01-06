@@ -66,7 +66,7 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
       },
       comment._id,
     );
-    console.log(updatedComment);
+    // console.log(updatedComment);
     updatedComment && setComment(updatedComment);
     flag && setAddCommToComm((prev) => !prev);
   };

@@ -1,4 +1,5 @@
 .flex {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -226,6 +227,7 @@
   }
 
   &__agree__block {
+    position: relative;
     width: 100%;
     display: flex;
     gap: 10px;
@@ -234,6 +236,48 @@
     &__buttons {
       display: flex;
       gap: 20px;
+    }
+  }
+}
+
+.error__checkbox {
+  position: absolute;
+  top: -20px;
+  text-align: left;
+  margin-left: 30px;
+  color: var(--red);
+}
+
+@media screen and (max-width: 1170px) {
+  .flex {
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 50px;
+
+    .custom_select {
+      width: 100%;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &__title {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flex {
+    max-width: 660px;
+
+    &__agree__block {
+      flex-direction: column;
+      gap: 30px;
     }
   }
 }

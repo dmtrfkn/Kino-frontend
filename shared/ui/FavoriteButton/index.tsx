@@ -12,7 +12,6 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ countOfFavorites }) => {
   return (
     <div className={styles.favorite} onClick={onClickHandler}>
       <span className={active ? styles.button + ' ' + styles.active : styles.button}>
-        {/* <Image className={styles.button__image} src={favorite} alt="favorite" /> */}
         <svg
           className={styles.button__image}
           xmlns="http://www.w3.org/2000/svg"

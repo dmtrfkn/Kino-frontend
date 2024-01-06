@@ -1,4 +1,4 @@
-import UserLinks from '@/shared/ui/UserLinks';
+import UserLinks from '@/widgets/ProfileLayout/ui/UserLinks';
 import ContainerFlex from '@/shared/ui/Container-flex';
 import { FC, ReactNode } from 'react';
 import styles from './ProfileLayout.module.scss';

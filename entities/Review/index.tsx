@@ -15,34 +15,33 @@ import CreateComment from '@/features/createComment';
 import { useAppSelector } from '@/shared/api/redux';
 import { selectUser } from '../User';
 import { updateReview } from './api/update';
+import Comment from '../Comment';
 
 interface ReviewProps {
   currentReview: Review;
 }
 
 const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
-  // const review = reviews[0];
-  // const date = new Date(review.date);
-
-  // const trueDate = createDateFromDate(date);
-  // console.log(trueDate);
-  // console.log(review.date);
   const user = useAppSelector((state) => selectUser(state));
   const [review, setReview] = useState<Review>(currentReview);
   const [activeCreatePanel, setActiveCreatePanel] = useState<boolean>(false);
   const [likes, setAddLikes] = useState(review.likes);
   const [dislikes, setAddDislikes] = useState(review.dislikes);
+  const [openComments, setOpenComments] = useState<boolean>(false);
 
   const onClickActive = () => {
     setActiveCreatePanel((prev) => !prev);
   };
 
-  const onClickLike = (likes?: number, dislikes?: number) => {
-    likes && setAddLikes(likes);
-    dislikes && setAddDislikes(dislikes);
+  const onClickLike = (likes: number) => {
+    setAddLikes(likes);
     onUpdateReview();
   };
 
+  const onClickDisike = (dislikes: number) => {
+    setAddDislikes(dislikes);
+    onUpdateReview();
+  };
   const onChangeReviewHandler = (review: Review) => {
     setReview(review);
   };
@@ -63,7 +62,7 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
       : 'Отрицательная';
 
   return (
-    <>
+    <div>
       <div className={styles.review + ' ' + styles[`border-${review.typeOfReview}`]}>
         <div className={styles.review__header}>
           <div className={styles.review__header__user__block}>
@@ -103,12 +102,14 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
               </div>
             </div>
           </div>
-          <Likes
-            addDisLike={setAddDislikes}
-            addLike={setAddLikes}
-            countDislike={dislikes}
-            countLike={likes}
-          />
+          <div className={styles.likes}>
+            <Likes
+              addDisLike={onClickDisike}
+              addLike={onClickLike}
+              countDislike={dislikes}
+              countLike={likes}
+            />
+          </div>
         </div>
         <div className={styles.review__main}>
           <div className={styles.review__main__flex}>
@@ -127,9 +128,9 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
               <Image alt="comment" src={comment} />
               <span className={styles.link}>Комментировать</span>
             </div>
-            <div className={styles.link__flex}>
+            <div onClick={() => setOpenComments((prev) => !prev)} className={styles.link__flex}>
               <Image alt="comment" src={shared} />
-              <span className={styles.link}>Прямая ссылка</span>
+              <span className={styles.link}>Комменты</span>
             </div>
           </div>
           <div className={styles.link__flex}>
@@ -137,18 +138,26 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
             <span className={styles.complain}>Пожаловаться на спойлер</span>
           </div>
         </div>
-        <button onClick={onUpdateReview}>jsadlfhasjldkfha</button>
       </div>
-      {/* {activeCreatePanel && (
-        <CreateComment
-          type="reviews"
-          user={user}
-          entityId={review._id}
-          setEntity={onChangeReviewHandler}
-          key={123123}
-        />
-      )} */}
-    </>
+      {activeCreatePanel && (
+        <div className={styles.create__comment}>
+          <CreateComment
+            type="reviews"
+            user={user}
+            entityId={review._id}
+            setEntity={onChangeReviewHandler}
+            key={123123}
+          />
+        </div>
+      )}
+      {openComments &&
+        review.comments &&
+        review.comments.map((comment, index) => (
+          <div key={index} className={styles.comment}>
+            <Comment currentComment={comment} />
+          </div>
+        ))}
+    </div>
   );
 };
 

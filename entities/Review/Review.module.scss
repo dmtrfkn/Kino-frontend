@@ -170,3 +170,101 @@
     border-color: var(--red-border);
   }
 }
+
+.comment {
+  margin-left: 50px;
+  position: relative;
+  margin-top: 30px;
+  &::before {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    content: '';
+    width: 2px;
+    border-radius: 50%;
+    margin-top: 59px;
+    height: 132px;
+    margin-left: -43px;
+    background-color: var(--border-line);
+    color: var(--border-line);
+  }
+  div {
+    margin: 0;
+  }
+}
+
+.create__comment {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1170px) {
+  .review {
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .review {
+    padding-right: 40px;
+    padding-left: 40px;
+    max-width: 660px;
+    padding-top: 20px;
+
+    .title {
+      font-family: 'Qanelas Bold';
+      font-size: 25px;
+    }
+
+    .date {
+      font-size: 14px;
+    }
+
+    .text {
+      p {
+        font-size: 17px;
+        font-family: 'Qanelas Light';
+      }
+      margin: 0;
+      margin-top: 12px;
+    }
+
+    .information {
+      font-size: 15px;
+    }
+
+    &__header {
+      flex-direction: row;
+      gap: 0;
+      margin-bottom: 20px;
+
+      &__user__block {
+        gap: 15px;
+        &__flex {
+          gap: 10px;
+
+          &__name {
+            gap: 10px;
+          }
+          &__information {
+            // margin: 0 auto;
+            font-size: 15px;
+            // display: none;
+          }
+        }
+      }
+    }
+    .name {
+      font-size: 22px;
+    }
+  }
+  .likes {
+    // margin-top: -10px;
+  }
+  .image {
+    width: 75px;
+    height: 75px;
+  }
+}

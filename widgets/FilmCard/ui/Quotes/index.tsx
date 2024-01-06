@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import quoteMarks from '@/assets/quoteMarks.svg';
 import styles from './Quotes.module.scss';
-import FlexTitle from '../FlexTitle';
+import FlexTitle from '../../../../shared/ui/FlexTitle';
 
 interface QuotesProps {
   quotes: Quote[];
@@ -11,7 +11,7 @@ interface QuotesProps {
 
 const Quotes: FC<QuotesProps> = ({ quotes }) => {
   return (
-    <>
+    <div className={styles.quotes}>
       <FlexTitle title="Цитаты из фильма" />
       <div className={styles.quotes__block}>
         {quotes.map((quote) => (
@@ -28,7 +28,7 @@ const Quotes: FC<QuotesProps> = ({ quotes }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

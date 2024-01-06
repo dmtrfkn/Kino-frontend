@@ -26,24 +26,36 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
   const [type, setType] = useState('');
   const [activeArrow, setActiveArrow] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string | undefined>(textareaValue);
+  const [activeCheckbox, setActiveCheckbox] = useState(false);
+  const [falseClick, setFalseClick] = useState(false);
+
+  let errorMessage = '';
+  const changeCheckboxHandler = () => {
+    setActiveCheckbox((prev) => !prev);
+    setFalseClick((prev) => !prev);
+  };
 
   const createReviewHandler = async () => {
-    const newReview: Review | undefined = await createReview({
-      text: textareaValue,
-      title: inputValue,
-      typeOfReview: type,
-      user: user._id,
-      complaints: [],
-      comments: [],
-      date: Date.now(),
-      dislikes: 0,
-      likes: 0,
-    });
-    const newArr = newReview && [...reviews, newReview];
+    if (activeCheckbox) {
+      const newReview: Review | undefined = await createReview({
+        text: textareaValue,
+        title: inputValue,
+        typeOfReview: type,
+        user: user._id,
+        complaints: [],
+        comments: [],
+        date: Date.now(),
+        dislikes: 0,
+        likes: 0,
+      });
+      const newArr = newReview && [...reviews, newReview];
 
-    if (newArr) {
-      console.log(newReview);
-      setReviews(newArr, newReview);
+      if (newArr) {
+        setReviews(newArr, newReview);
+      }
+      setFalseClick(false);
+    } else {
+      setFalseClick(true);
     }
   };
 
@@ -168,10 +180,22 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
         </div>
       </div>
       <div className={styles.flex__agree__block}>
-        <CheckboxInput text="Я соглашаюсь на" linkText=" правила публицации рецензии" />
+        <div>
+          {falseClick && <div className={styles.error__checkbox}>Подтвердите соглашение</div>}
+          <CheckboxInput
+            activeState={activeCheckbox}
+            setActiveState={changeCheckboxHandler}
+            text="Я соглашаюсь на"
+            linkText=" правила публицации рецензии"
+          />
+        </div>
         <div className={styles.flex__agree__block__buttons}>
-          <Button color="transparent-large" text="Предварительный просмотр" />
-          <Button onClick={createReviewHandler} color="yellow-small" text="Отправить" />
+          {/* <Button color="transparent-large" text="Предварительный просмотр" /> */}
+          <Button
+            onClick={createReviewHandler}
+            color={activeCheckbox ? 'yellow-small' : 'non-active'}
+            text={activeCheckbox ? 'Отправить' : 'Галочка не закрашена'}
+          />
         </div>
       </div>
     </div>

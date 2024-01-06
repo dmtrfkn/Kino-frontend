@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import FlexTitle from '../FlexTitle';
+import FlexTitle from '../../../../shared/ui/FlexTitle';
 import styles from './Posters.module.scss';
 import Image from 'next/image';
 
@@ -12,13 +12,8 @@ const Posters: FC<PostersProps> = ({ links, paragraph }) => {
   const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
   return (
-    <>
-      <FlexTitle
-        paragraph={paragraph}
-        header="Все постеры"
-        link="/posters"
-        title="Постеры к фильму"
-      />
+    <div className={styles.wrapper}>
+      <FlexTitle paragraph={paragraph} header="Все постеры" link="/posters" title="Постеры" />
 
       <div className={styles.posters__block}>
         {links.map(
@@ -35,7 +30,7 @@ const Posters: FC<PostersProps> = ({ links, paragraph }) => {
             ),
         )}
       </div>
-    </>
+    </div>
   );
 };
 
