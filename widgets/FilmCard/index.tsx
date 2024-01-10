@@ -15,7 +15,7 @@ import ReviewsBlock from './ui/ReviewsBlock';
 import { updateCard } from './api/update';
 import FilterReviews from '@/features/filterReviews';
 import Quotes from '@/widgets/FilmCard/ui/Quotes';
-import Shots from '@/widgets/FilmCard/ui/Shots';
+import Shots from '@/shared/ui/Shots';
 import Awards from '@/entities/Award/ui/AwardsBlock';
 import Trailer from '@/shared/ui/Trailer';
 import Posters from '@/widgets/FilmCard/ui/Posters';

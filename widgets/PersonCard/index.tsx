@@ -7,23 +7,35 @@ import { createData } from '@/shared/utils/createData';
 import FavoriteButton from '@/shared/ui/FavoriteButton';
 import Awards from '@/entities/Award/ui/AwardsBlock';
 import Poster from '@/shared/ui/PosterOfFilm';
-import Shots from '@/widgets/FilmCard/ui/Shots';
+import Shots from '@/shared/ui/Shots';
 import FlexTitle from '@/shared/ui/FlexTitle';
-import Button from '@/shared/ui/Button';
 import { selectUser } from '@/entities/User';
-import { useAppSelector } from '@/shared/api/redux';
+import { useAppDispatch, useAppSelector } from '@/shared/api/redux';
 import Comment from '@/entities/Comment';
 import CreateComment from '@/features/createComment';
+import ShortFilmCardWithRate from '@/shared/ui/ShortFilmCardWithRate';
+import { updatePersonHandler } from './api/update';
+import { setUser } from '@/entities/User';
+import { updateUser } from '../UpdateUserSettings/api/update';
 
 const PersonCard = () => {
   const user = useAppSelector((state) => selectUser(state));
   const [person, setPerson] = useState<Person | undefined>();
   const [avatar, setAvatar] = useState<string>('');
+  const [favorites, setFavorites] = useState(0);
+  const [activeFavoriteButton, setActiveFavoriteButton] = useState(true);
+  const [preActive, setPreActive] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+
   const getData = async () => {
     const data: Person = (await axios.get('/persons/652e7197051d9d2bc03b025e')).data;
     console.log(data);
     setPerson(data);
+    user && setPreActive(user.persons.includes(data._id));
+    setFavorites(data.favorites);
     setAvatar(`${process.env.NEXT_PUBLIC_IMAGE_URL}${data?.avatarImage}`);
+    console.log(user?.persons);
+    console.log(data._id);
   };
   useEffect(() => {
     getData();
@@ -31,6 +43,44 @@ const PersonCard = () => {
 
   const onChangePerson = (person: Person) => {
     setPerson(person);
+  };
+
+  const onUpdatePerson = async () => {
+    setActiveFavoriteButton((prev) => !prev);
+    console.log(activeFavoriteButton);
+    console.log(preActive);
+    console.log(user?.persons);
+    console.log(person?._id);
+    setFavorites((activeFavoriteButton === preActive) === true ? favorites - 1 : favorites + 1);
+    const updatedPerson = await updatePersonHandler(person?._id ? person._id : '', {
+      comments: [],
+      favorites: (activeFavoriteButton === preActive) === true ? -1 : +1,
+    });
+    setPerson(updatedPerson);
+    setPreActive((prev) => !prev);
+
+    if (user && person) {
+      const updatedUser = await updateUser({
+        person: person._id,
+        aboutMe: user.aboutMe,
+        avatarImage: user.avatarImage,
+        birthday: user.birthday,
+        city: user.city,
+        country: user.country,
+        email: user.email,
+        facebook: user.facebook,
+        favoriteGenres: user.favoriteGenres,
+        friends: user.friends,
+        gender: user.gender,
+        instagram: user.instagram,
+        name: user.name,
+        secondName: user.secondName,
+        twitter: user.twitter,
+        vk: user.vk,
+        youtube: user.youtube,
+      });
+      dispatch(setUser(updatedUser));
+    }
   };
 
   return (
@@ -46,9 +96,11 @@ const PersonCard = () => {
           />
           <div className={styles.avatar__block__flex}>
             <div className={styles.avatar__block__flex__header}>
-              <a href="#!">link</a>
-              <h1>{person?.name}</h1>
-              <p>{person?.englishName}</p>
+              <a className={styles.avatar__block__flex__header__link} href="#!">
+                link
+              </a>
+              <h1 className={styles.avatar__block__flex__header__name}>{person?.name}</h1>
+              <p className={styles.avatar__block__flex__header__name__eng}>{person?.englishName}</p>
             </div>
             <div>
               <div className={styles.avatar__block__flex__information}>
@@ -97,7 +149,11 @@ const PersonCard = () => {
                   </li>
                 </ul>
               </div>
-              <FavoriteButton countOfFavorites={person?.favorites} />
+              <FavoriteButton
+                preActive={preActive}
+                onClick={onUpdatePerson}
+                countOfFavorites={favorites}
+              />
             </div>
           </div>
         </div>
@@ -109,7 +165,10 @@ const PersonCard = () => {
         <FlexTitle title="Лучшие фильмы" link="все фильмы" header="Все фильмы" />
         <div className={styles.best__films__flex__block}>
           {person?.bestFilms.map(
-            (i, index) => index <= 3 && <Poster height={520} poster={i} width={340} key={i._id} />,
+            (i, index) =>
+              index <= 3 && (
+                <Poster height={520} poster={i} width={340} key={i._id + String(Math.random())} />
+              ),
           )}
         </div>
       </div>
@@ -127,69 +186,22 @@ const PersonCard = () => {
         />
       </div>
       <div className={styles.films__block}>
+        <FlexTitle title="Фильмы" header="" link="/films" />
         {person?.films.map((film) => (
-          <div className={styles.films__block__flex} key={film._id}>
-            <div className={styles.films__block__flex__first}>
-              <Image
-                className={styles.films__block__flex__first__image}
-                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${film.posterImage}`}
-                width={200}
-                height={275}
-                alt="Poster"
-              />
-              <div className={styles.films__block__flex__first__description}>
-                <h2 className={styles.films__block__flex__first__description__header}>
-                  {film.name}
-                </h2>
-                <h2 className={styles.films__block__flex__first__description__header_english}>
-                  {film.secondName}
-                </h2>
-                <div className={styles.films__block__flex__first__description__genres}>
-                  {film.genres &&
-                    film.genres.map((i) =>
-                      i !== film.genres[film.genres.length - 1] ? i + ', ' : i,
-                    )}
-                </div>
-                <p className={styles.films__block__flex__first__description__author}>
-                  {film.producers &&
-                    film.producers.map((i) =>
-                      i !== film.producers[film.producers.length - 1] ? i + ', ' : i,
-                    )}
-                </p>
-              </div>
-            </div>
-            <div className={styles.films__block__flex__second}>
-              <div className={styles.films__block__flex__second__rate}>
-                {film.ratings &&
-                  film.ratings.map((rate, index) => (
-                    <div key={index} className={styles.films__block__flex__second__rate__flex}>
-                      <span
-                        className={
-                          styles.films__block__flex__second__rate__item +
-                          ' ' +
-                          styles[`p-${Math.floor(Number(rate.rate))}`]
-                        }>
-                        {rate.rate}
-                      </span>
-                      <p>{rate.whoose}</p>
-                    </div>
-                  ))}
-              </div>
-              <Button color="blue__and__light__middle" text="Карточка фильма" type="button" />
-            </div>
-          </div>
+          <ShortFilmCardWithRate film={film} key={film._id + Math.random()} />
         ))}
       </div>
+
       <div className={styles.comments}>
         <CreateComment
           entityId={person?._id ? person._id : ''}
           setEntity={onChangePerson}
-          type="comments"
+          type="persons"
           user={user}
         />
         <div className={styles.comments__block}>
           {person?.comments.map((i, index) => (
-            <Comment currentComment={i} key={index} />
+            <Comment currentComment={i} key={i._id + Math.random()} />
           ))}
         </div>
       </div>

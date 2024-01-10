@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import FlexTitle from '../../../../shared/ui/FlexTitle';
+import FlexTitle from '../FlexTitle';
 import styles from './Shots.module.scss';
 import Image from 'next/image';
 

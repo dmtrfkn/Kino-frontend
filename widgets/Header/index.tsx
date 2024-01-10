@@ -33,7 +33,7 @@ const Header = () => {
 
   const user = useAppSelector((state) => state.user.data);
   const { width } = useGetWindowSize();
-  return width && width > 1170 ? (
+  return width && width > 1440 ? (
     <div className={styles.header}>
       <Logo />
       <div className={styles.header__navbar}>

@@ -48,10 +48,12 @@ const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike })
             </defs>
           </svg>
         </span>
-        {countLike && (
+        {countLike ? (
           <span onClick={addLikeHandler} className={styles.count}>
             {countLike}
           </span>
+        ) : (
+          <span className={styles.count}>0</span>
         )}
       </div>
       <div className={styles.flex}>
@@ -85,10 +87,12 @@ const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike })
             </defs>
           </svg>
         </span>
-        {countDislike && (
+        {countDislike ? (
           <span onClick={addDisLikeHandler} className={styles.count}>
             {countDislike}
           </span>
+        ) : (
+          <span className={styles.count}>0</span>
         )}
       </div>
     </div>

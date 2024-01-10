@@ -24,7 +24,7 @@ const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity
       const comment: Comment = (
         await axios.post(`${process.env.NEXT_PUBLIC_URL}/comments/create`, data)
       ).data;
-      console.log(comment);
+      // console.log(comment);
       // const comments = comment
       //   ? person?.comments
       //     ? [...person.comments, comment]
@@ -37,8 +37,9 @@ const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity
           comments: [comment._id],
         })
       ).data;
-      console.log(newEntity);
+      // console.log(newEntity);
       setEntity(newEntity);
+      setTextAreaValue('');
       // console.log(`${process.env.NEXT_PUBLIC_URL}/persons/update/${person?._id}`);
       // console.log(person?._id);
     } catch (error) {
@@ -60,7 +61,7 @@ const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity
   };
 
   return (
-    <>
+    <div>
       <div className={styles.comments__create}>
         <div className={styles.comments__create__header}>
           <Image
@@ -93,7 +94,7 @@ const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

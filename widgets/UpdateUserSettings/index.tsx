@@ -39,12 +39,13 @@ const UpdateUser: FC = () => {
 
   const updateHandler = async (data: UpdateUserDto) => {
     try {
-      const updatedUser = await Api.update({
+      const updatedUser = await Api.updateUser({
         ...data,
         avatarImage: totallyImage,
         aboutMe: textareaValue,
         favoriteGenres: choosedGenres,
         email: userData ? userData.email : '',
+        person: '',
       });
       dispatch(setUser(updatedUser));
       console.log(updatedUser);
