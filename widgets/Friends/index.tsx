@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/shared/api/redux';
 import styles from './Friends.module.scss';
 import { selectUser } from '@/entities/User';
-import FriendCard from '@/shared/ui/FriendCard';
+import FriendCard from '@/widgets/Friends/ui/FriendCard';
 
 const Friends = () => {
   const user = useAppSelector((state) => selectUser(state));
@@ -20,7 +20,7 @@ const Friends = () => {
           <FriendCard
             img={i?.avatarImage ? i.avatarImage : ''}
             name={i.name}
-            wasOnline={i?.wasOnline ? i.wasOnline : Date.now()}
+            wasOnline={i?.wasOnline ? Number(i.wasOnline) : Date.now()}
             key={index}
           />
         ))}

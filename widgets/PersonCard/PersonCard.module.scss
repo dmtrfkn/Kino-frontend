@@ -1,3 +1,7 @@
+.root {
+  width: 100%;
+}
+
 .avatar__wrapper {
   margin: 0 auto;
 }
@@ -5,12 +9,12 @@
 // avatar start
 
 .avatar__block {
-  margin-left: 178px;
+  // margin-left: 178px;
   display: flex;
   gap: 50px;
   text-align: left;
-  align-items: c/enter;
-  // margin: 0 auto;
+  align-items: center;
+  margin: 0 auto;
 
   &__image {
     border-radius: 10px;
@@ -19,22 +23,29 @@
   &__flex {
     &__header {
       display: flex;
-      flex-direction: column;
-      // gap: 30px;
-
-      display: flex;
       flex-wrap: wrap;
       flex-direction: column;
       gap: 15px;
+
+      &__link {
+        font-size: 16px;
+        font-family: 'Qanelas Light';
+      }
+
+      &__name {
+        margin: 0;
+        font-size: 65px;
+
+        &__eng {
+          font-size: 25px;
+        }
+      }
 
       a {
         text-decoration: none;
         color: var(--text);
       }
 
-      h1 {
-        margin-top: 10px;
-      }
       p {
         margin: 0;
       }
@@ -129,6 +140,7 @@
   margin-top: 80px;
   text-align: left;
   display: flex;
+  flex-direction: column;
 
   h1 {
     font-size: 65px;
@@ -136,215 +148,7 @@
   }
 }
 
-.films__block__flex {
-  border-bottom: 1px solid var(--border--gray);
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  align-items: center;
-  padding-bottom: 25px;
-  padding-top: 25px;
-
-  &:last-child {
-    border: none;
-    padding-bottom: 0;
-  }
-
-  &__first {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-
-    p {
-      margin: 0;
-    }
-    h2 {
-      margin: 0;
-      padding: 0px;
-    }
-    &__image {
-      border-radius: 10px;
-    }
-
-    &__description {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-
-      &__header {
-        font-size: 25px;
-        font-family: 'Qanelas Bold';
-        margin-bottom: 5px;
-
-        &_english {
-          color: var(--new__gray);
-          font-size: 17px;
-          font-family: 'Qanelas Light';
-        }
-      }
-
-      &__genres {
-        font-size: 15px;
-        font-family: 'Qanelas Thin';
-        margin-top: 5px;
-        margin-bottom: 10px;
-        color: var(--yellow);
-      }
-
-      &__author {
-        font-size: 15px;
-        color: var(--new__gray);
-        font-family: 'Qanelas Thin';
-      }
-    }
-  }
-
-  &__second {
-    display: flex;
-    gap: 75px;
-    align-items: center;
-
-    &__rate {
-      display: flex;
-      gap: 15px;
-
-      &__flex {
-        margin-top: 10px;
-        display: flex;
-        gap: 5px;
-        flex-direction: column;
-        align-items: center;
-        p {
-          margin: 0;
-        }
-      }
-
-      &__item {
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-size: 18px;
-        font-family: 'Qanelas Bold';
-      }
-    }
-  }
-}
-
 // films end
-
-.circle {
-  position: relative;
-  width: 54px;
-  height: 54px;
-}
-
-.circle__item {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  padding-top: auto;
-
-  z-index: -1;
-
-  &_inner {
-    font-family: 'Qanelas Bold';
-    font-size: 13px;
-    font-style: normal;
-    line-height: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    border-radius: 50%;
-    width: 40px;
-    background-color: #fff;
-    height: 40px;
-  }
-}
-
-.p-1 {
-  background: var(--one-border);
-}
-
-.p-2 {
-  background: var(--two-border);
-}
-
-.p-3 {
-  background: var(--three-border);
-}
-
-.p-4 {
-  background: var(--four-border);
-}
-
-.p-5 {
-  background: var(--five-border);
-}
-
-.p-6 {
-  background: var(--six-border);
-}
-
-.p-7 {
-  background: var(--six-border);
-}
-
-.p-8 {
-  background: var(--six-border);
-}
-
-.p-9 {
-  background: var(--nine-border);
-}
-
-.p-10 {
-  background: var(--ten-border);
-}
-
-.pp-1 {
-  background: var(--one-bg);
-}
-
-.pp-2 {
-  background: var(--two-bg);
-}
-
-.pp-3 {
-  background: var(--three-bg);
-}
-
-.pp-4 {
-  background: var(--four-bg);
-}
-
-.pp-5 {
-  background: var(--five-bg);
-}
-
-.pp-6 {
-  background: var(--six-bg);
-}
-
-.pp-7 {
-  background: var(--seven-bg);
-}
-
-.pp-8 {
-  background: var(--eight-bg);
-}
-
-.pp-9 {
-  background: var(--nine-bg);
-}
-
-.pp-10 {
-  background: var(--ten-bg);
-}
 
 //comments start
 
@@ -390,3 +194,81 @@
 }
 
 //comments end
+@media screen and (max-width: 1440px) {
+  .avatar__block {
+    gap: 15px;
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+
+    &__image {
+      width: 330px;
+      height: 450px;
+    }
+
+    &__flex {
+      &__header {
+        &__name {
+          font-size: 40px;
+
+          &__eng {
+            font-size: 20px;
+          }
+        }
+      }
+
+      &__information {
+        margin: 10px 0;
+        &__values__item,
+        &__values__item__link {
+          font-size: 16px;
+        }
+        &__names {
+          &__item {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .best__films__flex,
+  .photos__block,
+  .films__block {
+    margin: 0 auto;
+    max-width: 850px;
+    width: 100%;
+  }
+
+  .best__films__flex {
+    gap: 25px;
+
+    &__block {
+      gap: 50px;
+    }
+  }
+
+  .comments {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .avatar__block {
+    &__flex {
+      &__information {
+        margin: 20px 0;
+
+        &__values__item,
+        &__values__item__link {
+          font-size: 13px;
+        }
+        &__names {
+          &__item {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

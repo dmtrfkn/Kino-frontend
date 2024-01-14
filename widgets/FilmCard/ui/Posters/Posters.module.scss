@@ -1,0 +1,36 @@
+.wrapper {
+  margin-bottom: 100px;
+}
+.posters__block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  // justify-content: space-between;
+  margin-top: 20px;
+}
+
+.image {
+  border-radius: 10px;
+}
+@media screen and (max-width: 1440px) {
+  .wrapper {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+  }
+  .image {
+    width: 211px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    max-width: 660px;
+  }
+  .posters__block {
+    gap: 5px;
+    justify-content: space-between;
+  }
+}

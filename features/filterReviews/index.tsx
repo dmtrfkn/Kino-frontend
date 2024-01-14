@@ -27,33 +27,33 @@ const FilterReviews: FC<filterReviewsProps> = ({ cardId, setReviews, reviews }) 
   };
   return (
     <div className={styles.filter}>
-      <div onClick={() => onFilterClickHandler('all')} className={styles.filterButton}>
+      <div onClick={() => onFilterClickHandler('all')} className={styles.filter__button}>
         <span className={styles.title}>Всего</span>
-        <span className={styles.filterButton__count + ' ' + styles['bg-blue']}>
+        <span className={styles.filter__button__count + ' ' + styles['bg-blue']}>
           {reviews.length}
         </span>
       </div>
-      <div onClick={() => onFilterClickHandler('good')} className={styles.filterButton}>
+      <div onClick={() => onFilterClickHandler('good')} className={styles.filter__button}>
         <span className={styles.title}>Положительных</span>
-        <span className={styles.filterButton__count + ' ' + styles['bg-green']}>
+        <span className={styles.filter__button__count + ' ' + styles['bg-green']}>
           {goodReviewsCount}
         </span>
       </div>
-      <div onClick={() => onFilterClickHandler('bad')} className={styles.filterButton}>
+      <div onClick={() => onFilterClickHandler('bad')} className={styles.filter__button}>
         <span className={styles.title}>Отрицательных</span>
-        <span className={styles.filterButton__count + ' ' + styles['bg-red']}>
+        <span className={styles.filter__button__count + ' ' + styles['bg-red']}>
           {badReviewsCound}
         </span>
       </div>
-      <div onClick={() => onFilterClickHandler('middle')} className={styles.filterButton}>
+      <div onClick={() => onFilterClickHandler('middle')} className={styles.filter__button}>
         <span className={styles.title}>Нейтральных</span>
-        <span className={styles.filterButton__count + ' ' + styles.bg_yellow}>
+        <span className={styles.filter__button__count + ' ' + styles.bg_yellow}>
           {neitralReviewsCound}
         </span>
       </div>
-      <div className={styles.filterButton}>
+      <div className={styles.filter__button}>
         <span className={styles.title}>Процент</span>
-        <span className={styles.filterButton__count + ' ' + styles['bg-green']}>{percent}%</span>
+        <span className={styles.filter__button__count + ' ' + styles['bg-green']}>{percent}%</span>
       </div>
     </div>
   );

@@ -10,26 +10,14 @@ import youtube from '@/assets/youtube.svg';
 import instagram from '@/assets/instagram.svg';
 import twitter from '@/assets/twitter.svg';
 import facebook from '@/assets/facebook.svg';
-import CountOfSomething from '@/shared/ui/СountOfSomething';
+import CountOfSomething from '@/widgets/UserProfile/ui/СountOfSomething';
 import Link from 'next/link';
-import { chooseMouth } from './utils/chooseMonth';
 import { createData } from '@/shared/utils/createData';
 
 const UserProfileHomePage = () => {
   const user = useAppSelector((state) => selectUser(state));
   const image = `${user?.avatarImage}`;
   const genres = user?.favoriteGenres.join(', ');
-  // const day = user?.birthday ? user?.birthday[0] + user?.birthday[1] : '';
-  // const mounth = user?.birthday ? user?.birthday[3] + user?.birthday[4] : '';
-
-  // const calcYear = (year: string) => {
-  //   const numberYear = Number(year);
-  //   return 2023 - numberYear;
-  // };
-  // const year = user?.birthday
-  //   ? user?.birthday[6] + user?.birthday[7] + user?.birthday[8] + user?.birthday[9]
-  //   : '';
-  // const birthday = `${day} ${chooseMouth(mounth)} ${year} г. (${calcYear(year)})`;
   const birthday = createData(user?.birthday ? user.birthday : '');
 
   return (

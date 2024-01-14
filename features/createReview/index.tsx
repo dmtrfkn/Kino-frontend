@@ -26,24 +26,36 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
   const [type, setType] = useState('');
   const [activeArrow, setActiveArrow] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string | undefined>(textareaValue);
+  const [activeCheckbox, setActiveCheckbox] = useState(false);
+  const [falseClick, setFalseClick] = useState(false);
+
+  let errorMessage = '';
+  const changeCheckboxHandler = () => {
+    setActiveCheckbox((prev) => !prev);
+    setFalseClick((prev) => !prev);
+  };
 
   const createReviewHandler = async () => {
-    const newReview: Review | undefined = await createReview({
-      text: textareaValue,
-      title: inputValue,
-      typeOfReview: type,
-      user: user._id,
-      complaints: [],
-      comments: [],
-      date: Date.now(),
-      dislikes: 0,
-      likes: 0,
-    });
-    const newArr = newReview && [...reviews, newReview];
+    if (activeCheckbox) {
+      const newReview: Review | undefined = await createReview({
+        text: textareaValue,
+        title: inputValue,
+        typeOfReview: type,
+        user: user._id,
+        complaints: [],
+        comments: [],
+        date: Date.now(),
+        dislikes: 0,
+        likes: 0,
+      });
+      const newArr = newReview && [...reviews, newReview];
 
-    if (newArr) {
-      console.log(newReview);
-      setReviews(newArr, newReview);
+      if (newArr) {
+        setReviews(newArr, newReview);
+      }
+      setFalseClick(false);
+    } else {
+      setFalseClick(true);
     }
   };
 
@@ -51,20 +63,24 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
     const oldText = text ? text : textareaValue;
     let endText = text ? text : textareaValue;
 
-    if (endText[0] === sign || endText[0] + endText[1] + endText[2] === sign) {
+    if (
+      endText[0] === sign ||
+      endText[0] + endText[1] + endText[2] === sign ||
+      endText[0] + endText[1] === sign
+    ) {
       endText =
-        sign === '*' ? endText.slice(2) : sign === '_' ? endText.slice(1) : endText.slice(3);
+        sign === '**' ? endText.slice(2) : sign === '*' ? endText.slice(1) : endText.slice(3);
       endText =
-        sign === '*'
+        sign === '**'
           ? endText.slice(0, endText.length - 2)
-          : sign === '_'
+          : sign === '*'
           ? endText.slice(0, endText.length - 1)
           : endText.slice(0, endText.length - 4);
     } else {
       endText =
-        sign === '*'
-          ? sign + sign + endText + sign + sign
-          : sign === '_'
+        sign === '**'
+          ? sign + endText + sign
+          : sign === '*'
           ? sign + endText + sign
           : sign + endText + '</u>';
     }
@@ -138,12 +154,12 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
       <div className={styles.flex__buttons}>
         <div
           className={styles.flex__buttons__item__first + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(selectedValue, '*')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '**')}>
           Ж
         </div>
         <div
           className={styles.flex__buttons__item__second + ' ' + styles.flex__buttons__item}
-          onClick={() => onClickMarkdownButtonHandler(selectedValue, '_')}>
+          onClick={() => onClickMarkdownButtonHandler(selectedValue, '*')}>
           К
         </div>
         <div
@@ -164,10 +180,22 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
         </div>
       </div>
       <div className={styles.flex__agree__block}>
-        <CheckboxInput text="Я соглашаюсь на" linkText=" правила публицации рецензии" />
+        <div>
+          {falseClick && <div className={styles.error__checkbox}>Подтвердите соглашение</div>}
+          <CheckboxInput
+            activeState={activeCheckbox}
+            setActiveState={changeCheckboxHandler}
+            text="Я соглашаюсь на"
+            linkText=" правила публицации рецензии"
+          />
+        </div>
         <div className={styles.flex__agree__block__buttons}>
-          <Button color="transparent-large" text="Предварительный просмотр" />
-          <Button onClick={createReviewHandler} color="yellow-small" text="Отправить" />
+          {/* <Button color="transparent-large" text="Предварительный просмотр" /> */}
+          <Button
+            onClick={createReviewHandler}
+            color={activeCheckbox ? 'yellow-small' : 'non-active'}
+            text={activeCheckbox ? 'Отправить' : 'Галочка не закрашена'}
+          />
         </div>
       </div>
     </div>

@@ -26,7 +26,8 @@
 
 .bg-yellow-small,
 .bg-yellow-middle,
-.bg-yellow-big {
+.bg-yellow-big,
+.bg-non-active {
   background-color: var(--yellow);
   color: var(--dark-text);
   font-family: 'Qanelas Bold';
@@ -38,13 +39,22 @@
   font-family: 'Qanelas Bold';
 }
 
-.bg-yellow-middle {
+.bg-yellow-middle,
+.bg-non-active {
   width: 286px;
   height: 71px;
   font-size: 18px;
-  font-family: 'Qanelas Bold';
+  font-family: 'Qanelas SemiBold';
   div {
-    font-family: 'Qanelas Bold';
+    font-family: 'Qanelas SemiBold';
+  }
+}
+
+.bg-non-active {
+  background-color: var(--blue-shadow);
+  color: var(--text);
+  div {
+    font-family: 'Qanelas Light';
   }
 }
 

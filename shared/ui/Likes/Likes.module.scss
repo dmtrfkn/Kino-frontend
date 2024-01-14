@@ -47,7 +47,7 @@
 }
 
 .count {
-  font-family: 'Qanelas Thin';
+  font-family: 'Qanelas Light';
   font-size: 15px;
 }
 
@@ -56,4 +56,21 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: 45px;
+    height: 45px;
+
+    &__image,
+    &__image__like {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .likes {
+    gap: 6px;
+  }
 }

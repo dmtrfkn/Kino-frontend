@@ -1,3 +1,4 @@
+import { Comment } from '@/entities/Comment/types/comment';
 import { User } from '@/entities/User';
 
 export type Review = {
@@ -9,6 +10,6 @@ export type Review = {
   title: string;
   date: Date;
   text: string;
-  comments: string[];
+  comments: Comment[];
   complaints: string[];
 };

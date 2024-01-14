@@ -7,17 +7,17 @@ import out_checkbox from '@/assets/outlined_checkbox.svg';
 interface CheckboxProps {
   text: string;
   linkText?: string;
+  activeState: boolean;
+  setActiveState: (state: boolean) => void;
 }
 
-const CheckboxInput: FC<CheckboxProps> = ({ text, linkText }) => {
-  const [active, setActive] = useState(false);
-
+const CheckboxInput: FC<CheckboxProps> = ({ text, linkText, activeState, setActiveState }) => {
   const onClickHandler = () => {
-    setActive((prev) => !prev);
+    setActiveState(!activeState);
   };
   return (
     <div className={styles.root}>
-      {active ? (
+      {activeState ? (
         <Image onClick={onClickHandler} alt="checkbox" src={fill_checkbox} />
       ) : (
         <Image onClick={onClickHandler} alt="checkbox" src={out_checkbox} />

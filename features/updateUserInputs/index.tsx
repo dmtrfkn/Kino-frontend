@@ -1,7 +1,7 @@
 import { User } from '@/entities/User';
 import Input from '@/shared/ui/Input';
 import Select from '@/shared/ui/Select';
-import SelectCountry from '@/shared/ui/SelectCountry';
+import SelectCountry from '@/widgets/UserProfile/ui/SelectCountry';
 import { UpdateUserDto } from '@/widgets/UpdateUserSettings/api/dto/update.dto';
 import { FC } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';

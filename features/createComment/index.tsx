@@ -11,11 +11,12 @@ import styles from './createComment.module.scss';
 import { Comment } from '@/entities/Comment/types/comment';
 interface createCommentProps {
   user: User | undefined;
-  person: Person | undefined;
-  setPerson(person: Person): void;
+  type: string;
+  entityId: string;
+  setEntity(entity: { _id: string }): void;
 }
 
-const CreateComment: FC<createCommentProps> = ({ user, person, setPerson }) => {
+const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity }) => {
   const [textAreaValue, setTextAreaValue] = useState('');
 
   const createCommentFunc = async (data: createCommentDto) => {
@@ -23,7 +24,7 @@ const CreateComment: FC<createCommentProps> = ({ user, person, setPerson }) => {
       const comment: Comment = (
         await axios.post(`${process.env.NEXT_PUBLIC_URL}/comments/create`, data)
       ).data;
-      console.log(comment);
+      // console.log(comment);
       // const comments = comment
       //   ? person?.comments
       //     ? [...person.comments, comment]
@@ -31,13 +32,14 @@ const CreateComment: FC<createCommentProps> = ({ user, person, setPerson }) => {
       //   : person?.comments
       //   ? [...person.comments]
       //   : [];
-      const newPerson = (
-        await axios.put(`${process.env.NEXT_PUBLIC_URL}/persons/update/${person?._id}`, {
+      const newEntity = (
+        await axios.put(`${process.env.NEXT_PUBLIC_URL}/${type}/update/${entityId}`, {
           comments: [comment._id],
         })
       ).data;
-      console.log(newPerson);
-      setPerson(newPerson);
+      // console.log(newEntity);
+      setEntity(newEntity);
+      setTextAreaValue('');
       // console.log(`${process.env.NEXT_PUBLIC_URL}/persons/update/${person?._id}`);
       // console.log(person?._id);
     } catch (error) {
@@ -59,7 +61,7 @@ const CreateComment: FC<createCommentProps> = ({ user, person, setPerson }) => {
   };
 
   return (
-    <>
+    <div>
       <div className={styles.comments__create}>
         <div className={styles.comments__create__header}>
           <Image
@@ -92,7 +94,7 @@ const CreateComment: FC<createCommentProps> = ({ user, person, setPerson }) => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

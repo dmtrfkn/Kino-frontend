@@ -14,3 +14,37 @@
     margin: 0;
   }
 }
+
+@media screen and (max-width: 1440px) {
+  .trailer__video,
+  .trailer {
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    .name {
+      font-size: 35px;
+    }
+  }
+
+  .trailer {
+    margin-bottom: 60px;
+  }
+
+  .trailer__video {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .trailer__video,
+  .trailer {
+    max-width: 660px;
+    width: 100%;
+    height: 100%;
+    .name {
+      font-size: 30px;
+    }
+  }
+}

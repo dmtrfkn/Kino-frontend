@@ -1,0 +1,84 @@
+.awards {
+  &__block {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 70px 0;
+
+    &__item {
+      max-width: 350px;
+      height: 160px;
+      border-radius: 10px;
+      padding: 20px 55px;
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--blue-bg);
+      align-items: center;
+      gap: 30px;
+
+      &__flex {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        flex-direction: column;
+
+        &__mini {
+          align-items: flex-start;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          flex-direction: column;
+        }
+      }
+
+      &__name {
+        // margin-bottom: 3px;
+        font-family: 'Qanelas SemiBold';
+        font-size: 18px;
+      }
+
+      &__description {
+        font-family: 'Qanelas Thin';
+        font-size: 16px;
+        color: var(--yellow);
+      }
+
+      &__year {
+        font-family: 'Qanelas Thin';
+        color: var(--gray-text_second);
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .awards {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+
+    &__block {
+      margin-top: 20px;
+      margin-top: 60px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .awards {
+    max-width: 660px;
+    width: 100%;
+
+    &__block {
+      // gap: 5px;
+      &__item {
+        gap: 8px;
+      }
+    }
+  }
+}
