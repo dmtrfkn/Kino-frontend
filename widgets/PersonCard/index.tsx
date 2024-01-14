@@ -13,7 +13,7 @@ import { selectUser } from '@/entities/User';
 import { useAppDispatch, useAppSelector } from '@/shared/api/redux';
 import Comment from '@/entities/Comment';
 import CreateComment from '@/features/createComment';
-import ShortFilmCardWithRate from '@/shared/ui/ShortFilmCardWithRate';
+import ShortFilmCardWithRate from '@/shared/ui/ShortCardWithRate';
 import { updatePersonHandler } from './api/update';
 import { setUser } from '@/entities/User';
 import { updateUser } from '../UpdateUserSettings/api/update';

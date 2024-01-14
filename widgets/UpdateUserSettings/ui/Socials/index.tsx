@@ -4,7 +4,7 @@ import youtube_profile from '@/assets/youtube_profile.svg';
 import instagram_profile from '@/assets/instagram_profile.svg';
 import facebook_profile from '@/assets/facebook_profile.svg';
 import twitter_profile from '@/assets/twitter_profile.svg';
-import Input from '../Input';
+import Input from '../../../../shared/ui/Input';
 import { UpdateUserDto } from '@/widgets/UpdateUserSettings/api/dto/update.dto';
 import { FieldErrors, UseFormRegister, useForm } from 'react-hook-form';
 import { FC } from 'react';

@@ -10,7 +10,7 @@ import youtube from '@/assets/youtube.svg';
 import instagram from '@/assets/instagram.svg';
 import twitter from '@/assets/twitter.svg';
 import facebook from '@/assets/facebook.svg';
-import CountOfSomething from '@/shared/ui/СountOfSomething';
+import CountOfSomething from '@/widgets/UserProfile/ui/СountOfSomething';
 import Link from 'next/link';
 import { createData } from '@/shared/utils/createData';
 

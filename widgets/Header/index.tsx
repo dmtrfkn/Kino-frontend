@@ -1,4 +1,3 @@
-import Button from '@/shared/ui/Button';
 import Navbar from './ui/Navbar';
 import styles from './Header.module.scss';
 import SearchButton from '@/features/searchButton/ui';
@@ -10,6 +9,7 @@ import Link from 'next/link';
 import { removeUser } from '@/entities/User';
 import { useGetWindowSize } from '@/shared/hooks/useGetWindowSize';
 import LoginButton from './ui/loginButton';
+import Search from '@/features/searchButton';
 
 const Header = () => {
   const [state, setState] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const Header = () => {
         <Navbar />
       </div>
       <div className={styles.header__flex}>
-        <SearchButton />
+        <Search />
         <div className={styles.position}>
           <LoginButton
             activeArrow={activeArrow}

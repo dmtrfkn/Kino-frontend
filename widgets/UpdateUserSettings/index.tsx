@@ -8,7 +8,7 @@ import UploadImage from '@/features/uploadImage';
 import { useAppDispatch, useAppSelector } from '@/shared/api/redux';
 import { selectFile } from '@/entities/File';
 
-import Socials from '@/shared/ui/Socials';
+import Socials from '@/widgets/UpdateUserSettings/ui/Socials';
 import TextArea from '@/shared/ui/TextArea';
 import Image from 'next/image';
 import ChooseGenges from '@/shared/ui/ChooseGenges';

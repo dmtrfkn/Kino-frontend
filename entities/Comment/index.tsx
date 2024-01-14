@@ -3,29 +3,17 @@ import styles from './Comment.module.scss';
 import Image from 'next/image';
 import { Comment } from './types/comment';
 import { FC, useEffect, useState } from 'react';
-import { createDateFromDate } from '@/shared/utils/createDateFromDate';
-import { createData } from '@/shared/utils/createData';
 import TextArea from '@/shared/ui/TextArea';
 import Button from '@/shared/ui/Button';
 import { updateComment } from './api/update';
 import axios from '@/shared/utils/axios';
 import { useAppSelector } from '@/shared/api/redux';
-import { chooseMouth } from '@/shared/utils/chooseMount';
 import { createDateFromString } from '@/shared/utils/createDateFromString';
 interface CommentProps {
   currentComment: Comment;
 }
 
 const Comment: FC<CommentProps> = ({ currentComment }) => {
-  // const asyncSetCommentById = async (commentId: string) => {
-  //   const comment = (await axios.get(`${process.env.NEXT_PUBLIC_URL}/comments/${commentId}`)).data;
-  //   setComment(comment);
-  // };
-
-  // useEffect(() => {
-  //   // asyncSetCommentById(comment._id);
-  // }, []);
-
   const [comment, setComment] = useState<Comment>(currentComment);
 
   const { data: userData } = useAppSelector((state) => state.user);
@@ -55,10 +43,8 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
           })
         ).data
       : '';
-    // console.log(createdComment);
     const updatedComment = await updateComment(
       {
-        // ...comment.comments.map((i) => i._id),
         comments: createdComment ? [createdComment._id] : [],
         dislikes: dislikes,
         likes: likes,
@@ -66,7 +52,6 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
       },
       comment._id,
     );
-    // console.log(updatedComment);
     updatedComment && setComment(updatedComment);
     flag && setAddCommToComm((prev) => !prev);
   };
@@ -88,20 +73,6 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
                   {comment.user[0].name}
                 </h2>
                 <span className={styles.comment__flex__header__description__head__date}>
-                  {/* `{comment.date.toString()[8] !== '0'
-                    ? comment.date.toString()[8] + comment.date.toString()[9]
-                    : comment.date.toString()[9]}{' '}
-                  {chooseMouth(comment.date.toString()[5] + comment.date.toString()[6])}{' '}
-                  {comment.date.toString()[0] +
-                    comment.date.toString()[1] +
-                    comment.date.toString()[2] +
-                    comment.date.toString()[3]}{' '}
-                  |{' '}
-                  {comment.date.toString()[11] +
-                    comment.date.toString()[12] +
-                    comment.date.toString()[13] +
-                    comment.date.toString()[14] +
-                    comment.date.toString()[15]}{' '} */}
                   {createDateFromString(comment.date)}
                 </span>
               </div>

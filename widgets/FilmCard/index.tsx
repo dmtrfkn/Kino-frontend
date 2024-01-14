@@ -4,7 +4,7 @@ import { Card } from '@/entities/Card/model/types/card';
 import Image from 'next/image';
 import styles from './FilmCard.module.scss';
 import { createData } from '@/shared/utils/createData';
-import defPoster from '@/assets/EmptyPoster.png';
+import defPoster from '@/assets/ПостерБезФото.png';
 import Button from '@/shared/ui/Button';
 import FlexTitle from '@/shared/ui/FlexTitle';
 import Likes from '@/shared/ui/Likes';

@@ -3,12 +3,14 @@ import styles from './ShortFilmCardWithRate.module.scss';
 import { Card } from '@/entities/Card/model/types/card';
 import { FC } from 'react';
 import Button from '../Button';
+import { Person } from '@/entities/Person/model/types/Person';
+import Rate from '../Rate';
 
-interface ShortFilmCardWithRateProps {
+interface ShortCardProps {
   film: Card;
 }
 
-const ShortFilmCardWithRate: FC<ShortFilmCardWithRateProps> = ({ film }) => {
+const ShortFilmCardWithRate: FC<ShortCardProps> = ({ film }) => {
   return (
     <>
       <div className={styles.films__block__flex} key={film._id}>
@@ -44,15 +46,10 @@ const ShortFilmCardWithRate: FC<ShortFilmCardWithRateProps> = ({ film }) => {
               (rate, index) =>
                 index < 2 && (
                   <div key={index} className={styles.films__block__flex__second__rate__flex}>
-                    <span
-                      className={
-                        styles.films__block__flex__second__rate__item +
-                        ' ' +
-                        styles[`p-${Math.floor(Number(rate.rate))}`]
-                      }>
-                      {rate.rate}
+                    <span>
+                      <Rate rate={rate.rate} />
                     </span>
-                    <p>{rate.whoose}</p>
+                    <p className={styles.whoose}>{rate.whoose}</p>
                   </div>
                 ),
             )}

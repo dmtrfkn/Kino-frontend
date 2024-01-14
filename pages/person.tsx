@@ -4,7 +4,7 @@ import getServerSideProps from '@/shared/utils/getProps/getProps';
 const Person = () => {
   return (
     <>
-      <PersonCard></PersonCard>
+      <PersonCard />
     </>
   );
 };
