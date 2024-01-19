@@ -1,6 +1,6 @@
 import { Person } from '@/entities/Person/model/types/Person';
 import axios from '@/shared/utils/axios';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './PersonCard.module.scss';
 import Image from 'next/image';
 import { createData } from '@/shared/utils/createData';
@@ -18,6 +18,10 @@ import { updatePersonHandler } from './api/update';
 import { setUser } from '@/entities/User';
 import { updateUser } from '../UpdateUserSettings/api/update';
 
+interface PersonCardProps {
+  personId: string;
+}
+
 const PersonCard = () => {
   const user = useAppSelector((state) => selectUser(state));
   const [person, setPerson] = useState<Person | undefined>();
@@ -28,14 +32,14 @@ const PersonCard = () => {
   const dispatch = useAppDispatch();
 
   const getData = async () => {
-    const data: Person = (await axios.get('/persons/652e7197051d9d2bc03b025e')).data;
+    const data: Person = (await axios.get(`/persons/652e7197051d9d2bc03b025e`)).data;
     console.log(data);
     setPerson(data);
     user && setPreActive(user.persons.includes(data._id));
     setFavorites(data.favorites);
     setAvatar(`${process.env.NEXT_PUBLIC_IMAGE_URL}${data?.avatarImage}`);
-    console.log(user?.persons);
-    console.log(data._id);
+    // console.log(user?.persons);
+    // console.log(data._id);
   };
   useEffect(() => {
     getData();
@@ -47,18 +51,18 @@ const PersonCard = () => {
 
   const onUpdatePerson = async () => {
     setActiveFavoriteButton((prev) => !prev);
-    console.log(activeFavoriteButton);
-    console.log(preActive);
-    console.log(user?.persons);
-    console.log(person?._id);
-    setFavorites((activeFavoriteButton === preActive) === true ? favorites - 1 : favorites + 1);
+    // console.log(activeFavoriteButton);
+    // console.log(preActive);
+    // console.log(user?.persons);
+    // console.log(person?._id);
+    // setFavorites((activeFavoriteButton === preActive) === true ? favorites - 1 : favorites + 1);
     const updatedPerson = await updatePersonHandler(person?._id ? person._id : '', {
       comments: [],
       favorites: (activeFavoriteButton === preActive) === true ? -1 : +1,
     });
     setPerson(updatedPerson);
     setPreActive((prev) => !prev);
-
+    console.log(user?.avatarImage);
     if (user && person) {
       const updatedUser = await updateUser({
         person: person._id,
@@ -78,6 +82,9 @@ const PersonCard = () => {
         twitter: user.twitter,
         vk: user.vk,
         youtube: user.youtube,
+        dislikedFilm: '',
+        favoriteFilm: '',
+        likedFilm: '',
       });
       dispatch(setUser(updatedUser));
     }
@@ -150,6 +157,7 @@ const PersonCard = () => {
                 </ul>
               </div>
               <FavoriteButton
+                setFavorites={setFavorites}
                 preActive={preActive}
                 onClick={onUpdatePerson}
                 countOfFavorites={favorites}

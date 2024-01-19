@@ -1,7 +1,8 @@
 import Container from '@/shared/ui/Container';
 import Header from '@/widgets/Header';
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
+
 // import styles from '@/app/styles/variables.scss';
 
 interface LayoutProps {

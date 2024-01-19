@@ -1,18 +1,25 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './FavoriteButton.module.scss';
+import { Card } from '@/entities/Card/model/types/card';
+import { User } from '@/entities/User';
+import { Dispatch } from 'redux';
 interface FavoriteButtonProps {
-  countOfFavorites: number | undefined;
-  onClick?: () => void;
+  countOfFavorites: number;
+  onClick?: (favorite: number) => void;
+  setFavorites: (favorites: number) => void;
   preActive?: boolean;
 }
 
 const FavoriteButton: FC<FavoriteButtonProps> = ({
   countOfFavorites,
+  setFavorites,
   onClick,
   preActive = false,
 }) => {
   const [active, setActive] = useState<boolean>(preActive);
   const onClickHandler = () => {
+    onClick && onClick(active ? -1 : 1);
+    active ? setFavorites(countOfFavorites - 1) : setFavorites(countOfFavorites + 1);
     setActive((prev) => !prev);
   };
 
@@ -21,7 +28,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
   }, [preActive]);
 
   return (
-    <div onClick={onClick}>
+    <div>
       <div className={styles.favorite} onClick={onClickHandler}>
         <span className={active ? styles.button + ' ' + styles.active : styles.button}>
           <svg

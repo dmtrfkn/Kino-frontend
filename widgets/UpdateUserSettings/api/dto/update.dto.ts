@@ -18,6 +18,9 @@ export interface UpdateUserDto {
   favoriteGenres: string[];
   friends: User[];
   person: string;
+  favoriteFilm: string;
+  likedFilm: string;
+  dislikedFilm: string;
 }
 
 export interface ResponseUserDto {

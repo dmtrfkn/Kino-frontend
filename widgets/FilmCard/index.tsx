@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import axios from '@/shared/utils/axios';
 import { Card } from '@/entities/Card/model/types/card';
 import Image from 'next/image';
@@ -12,21 +12,38 @@ import { Review } from '@/entities/Review/models/types/Review';
 import CreateReview from '@/features/createReview';
 import FavoriteButton from '@/shared/ui/FavoriteButton';
 import ReviewsBlock from './ui/ReviewsBlock';
-import { updateCard } from './api/update';
 import FilterReviews from '@/features/filterReviews';
 import Quotes from '@/widgets/FilmCard/ui/Quotes';
 import Shots from '@/shared/ui/Shots';
 import Awards from '@/entities/Award/ui/AwardsBlock';
 import Trailer from '@/shared/ui/Trailer';
 import Posters from '@/widgets/FilmCard/ui/Posters';
-import RatingComponent from '@/entities/Rating/RatingComponent';
+import RatingCurcle from '@/shared/ui/RatingCurcle';
+import { useAppSelector } from '@/shared/api/redux';
+import { selectUser } from '@/entities/User';
+import { useDispatch } from 'react-redux';
+import {
+  updateCardFavorite,
+  updateCardLikes,
+  updateCardReviews,
+  updateUserThere,
+} from './api/funcs';
 
-const FilmCard = () => {
+interface FilmCardProps {
+  filmId: string;
+}
+
+const FilmCard: FC<FilmCardProps> = ({ filmId }) => {
   const [card, setCard] = useState<Card>();
+  const user = useAppSelector((state) => selectUser(state));
   const [active, setActive] = useState<boolean>(false);
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [likes, setLikes] = useState(card?.userLike ? card.userLike : 0);
-  const [dislikes, setDisLikes] = useState(card?.userDislike ? card.userDislike : 0);
+  const [favorites, setFavorites] = useState<number>(card ? card.favorites : 0);
+  const [likes, setLikes] = useState<number>(card ? card.userLike : 0);
+  const [dislikes, setDisLikes] = useState(card ? card.userDislike : 0);
+  const [preFavoriteActive, setPreFavoriteActive] = useState<boolean>(false);
+  const [preLikesActive, setPreLikesActive] = useState<boolean>(false);
+  const [preDislikesActive, setPreDislikesActive] = useState<boolean>(false);
   const result = 20;
   const hours = card ? Math.floor(card?.duration / 60) : 0;
   const minutes = card ? card.duration - hours * 60 : 0;
@@ -36,36 +53,44 @@ const FilmCard = () => {
   const russianPremiere = createData(card?.premiereInRussia ? card.premiereInRussia : '');
   const url = process.env.NEXT_PUBLIC_IMAGE_URL;
   const directors = card?.directors.map((i) => i.name);
+  const dispatch = useDispatch();
 
   const getData = async () => {
-    const data: Card = (await axios.get('/cards/64e80bd63a53068d0b5b6eda')).data;
+    const data: Card = (await axios.get(`/cards/${filmId}`)).data;
     setCard(data);
     setReviews(data.reviews);
-  };
-
-  const updateCardThere = async (newReview: Review[]) => {
-    const updatedCard = await updateCard(
-      {
-        dislikes: dislikes,
-        favorites: card ? card.favorites : 0,
-        likes: likes,
-        reviews: newReview.map((i) => i._id),
-      },
-      card ? card._id : '',
-    );
-    setCard(updatedCard);
+    setLikes(data.userLike);
+    setDisLikes(data.userDislike);
+    setFavorites(data.favorites);
+    user && setPreLikesActive(user.likedFilms.includes(data._id));
+    user && setPreDislikesActive(user.dislikedFilms.includes(data._id));
+    user && setPreFavoriteActive(user.favoriteFilms.includes(data._id));
   };
 
   const setReviewsHandler = (reviews: Review[], newReview: Review) => {
     if (reviews) {
       setReviews(reviews);
-      updateCardThere([newReview]);
+      updateCardReviews([newReview], card?._id ? card._id : '', setCard);
     }
   };
 
   useEffect(() => {
     getData();
   }, []);
+
+  const onClickLikes = (like: number, dislike: number) => {
+    updateCardLikes(like, dislike, card ? card._id : '', setCard);
+    if (user && card) {
+      updateUserThere(user, card, dispatch, like, dislike);
+    }
+  };
+
+  const onClickFavorite = (favorite: number) => {
+    updateCardFavorite(favorite, card ? card._id : '', setCard);
+    if (user && card) {
+      updateUserThere(user, card, dispatch, undefined, undefined, favorite ? true : true);
+    }
+  };
 
   return (
     <>
@@ -79,12 +104,12 @@ const FilmCard = () => {
             height={539}
           />
           <div className={styles.desc}>
-            <div className={styles.link}>link</div>
+            {card && <div className={styles.link}>link</div>}
             <h1 className={styles.h1}>{card?.name}</h1>
             <h3>{card?.secondName}</h3>
             <div className={styles.flex__container}>
               {card?.ratings.map((i, index) => (
-                <RatingComponent key={index} rate={i} />
+                <RatingCurcle key={index} rate={i} />
               ))}
             </div>
             <div className={styles.text}>{card?.description}</div>
@@ -92,6 +117,9 @@ const FilmCard = () => {
         </div>
         <div className={styles.buttons}>
           <Likes
+            onClick={onClickLikes}
+            preDislikes={preDislikesActive}
+            preLikes={preLikesActive}
             countDislike={dislikes}
             countLike={likes}
             addLike={setLikes}
@@ -102,7 +130,12 @@ const FilmCard = () => {
             <div className={styles.expected__rating_percent} style={{ width: `${result}%` }}></div>
           </div>
           <div className={styles.favorite}>
-            <FavoriteButton countOfFavorites={card?.favorites} />
+            <FavoriteButton
+              onClick={onClickFavorite}
+              preActive={preFavoriteActive}
+              setFavorites={setFavorites}
+              countOfFavorites={favorites}
+            />
           </div>
         </div>
         <div className={styles.information}>
