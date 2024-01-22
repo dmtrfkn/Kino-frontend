@@ -81,16 +81,12 @@ const UserProfileHomePage = () => {
         </div>
       </div>
       <div className={styles.benefits}>
-        <CountOfSomething count={user ? user?.films.length : 0} text="Фильмы" />
+        <CountOfSomething count={user ? user?.favoriteFilms.length : 0} text="Фильмы" />
         <CountOfSomething count={user ? user?.friends.length : 0} text="Друзья" />
         <CountOfSomething count={user ? user?.favoriteFilms.length : 0} text="Любимые фильмы" />
-        <CountOfSomething count={user ? user?.favoritePersons.length : 0} text="Любимые Актеры" />
+        <CountOfSomething count={user ? user?.persons.length : 0} text="Любимые Актеры" />
         <CountOfSomething count={user ? user?.reviews.length : 0} text="Рецензии" />
         <CountOfSomething count={user ? user?.comments.length : 0} text="Комментарии" />
-        <CountOfSomething
-          count={user?.expecredFilms ? user.expecredFilms.length : 0}
-          text="Ожидаемые фильмы"
-        />
       </div>
     </div>
   );

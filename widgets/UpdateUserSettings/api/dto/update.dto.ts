@@ -21,6 +21,10 @@ export interface UpdateUserDto {
   favoriteFilm: string;
   likedFilm: string;
   dislikedFilm: string;
+  likedComment: string;
+  dislikedComment: string;
+  likedReview: string;
+  dislikedReview: string;
 }
 
 export interface ResponseUserDto {

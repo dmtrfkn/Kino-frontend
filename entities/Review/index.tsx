@@ -7,15 +7,15 @@ import Link from 'next/link';
 import comment from '@/assets/miniComment.svg';
 import shared from '@/assets/share.svg';
 import complain from '@/assets/complainLogo.svg';
-import { createDateFromDate } from '@/shared/utils/createDateFromDate';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { createDateFromString } from '@/shared/utils/createDateFromString';
 import CreateComment from '@/features/createComment';
 import { useAppSelector } from '@/shared/api/redux';
 import { selectUser } from '../User';
-import { updateReview } from './api/update';
 import Comment from '../Comment';
+import { onUpdateReview, onUpdateUser } from './api/funcs';
+import { useDispatch } from 'react-redux';
 
 interface ReviewProps {
   currentReview: Review;
@@ -24,34 +24,41 @@ interface ReviewProps {
 const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
   const user = useAppSelector((state) => selectUser(state));
   const [review, setReview] = useState<Review>(currentReview);
-  const [activeCreatePanel, setActiveCreatePanel] = useState<boolean>(false);
-  const [likes, setAddLikes] = useState(review.likes);
-  const [dislikes, setAddDislikes] = useState(review.dislikes);
-  const [openComments, setOpenComments] = useState<boolean>(false);
-
+  const [activeCreatePanel, setActiveCreatePanel] = useState(false);
+  const [likes, setLikes] = useState(review.likes);
+  const [dislikes, setDislikes] = useState(review.dislikes);
+  const [openComments, setOpenComments] = useState(false);
+  const dispatch = useDispatch();
   const onClickActive = () => {
     setActiveCreatePanel((prev) => !prev);
   };
 
-  const onClickLike = (likes: number) => {
-    setAddLikes(likes);
-    onUpdateReview();
+  const onClickHandler = (like: number, dislike: number) => {
+    onUpdateReview(dislike, like, review, setReview);
+    user && onUpdateUser(user, review, dispatch, like, dislike);
   };
 
-  const onClickDisike = (dislikes: number) => {
-    setAddDislikes(dislikes);
-    onUpdateReview();
-  };
+  // const onClickLike = (likes: number) => {
+  //   setAddLikes(likes);
+  //   onUpdateReview(dislikes, likes, review, setReview);
+  //   if (user?.dislikedReviews.includes(review._id)) {
+  //     user && onUpdateUser(user, review, dispatch, true, true);
+  //   } else {
+  //     user && onUpdateUser(user, review, dispatch, true, false);
+  //   }
+  // };
+
+  // const onClickDisike = (dislikes: number) => {
+  //   setAddDislikes(dislikes);
+  //   onUpdateReview(dislikes, likes, review, setReview);
+  //   if (user?.likedReviews.includes(review._id)) {
+  //     user && onUpdateUser(user, review, dispatch, true, true);
+  //   } else {
+  //     user && onUpdateUser(user, review, dispatch, true, false);
+  //   }
+  // };
   const onChangeReviewHandler = (review: Review) => {
     setReview(review);
-  };
-
-  const onUpdateReview = async () => {
-    const newReview = await updateReview(
-      { comments: [], dislikes: dislikes, likes: likes },
-      review._id,
-    );
-    newReview && setReview(newReview);
   };
 
   const reviewType =
@@ -104,8 +111,11 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
           </div>
           <div className={styles.likes}>
             <Likes
-              addDisLike={onClickDisike}
-              addLike={onClickLike}
+              onClick={onClickHandler}
+              preDislikes={user && user.dislikedReviews.includes(review._id)}
+              preLikes={user && user.likedReviews.includes(review._id)}
+              addDisLike={setDislikes}
+              addLike={setLikes}
               countDislike={dislikes}
               countLike={likes}
             />

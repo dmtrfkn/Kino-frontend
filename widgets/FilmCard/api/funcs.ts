@@ -87,6 +87,10 @@ export const updateUserThere = async (
       twitter: user.twitter,
       vk: user.vk,
       youtube: user.youtube,
+      dislikedComment: '',
+      dislikedReview: '',
+      likedComment: '',
+      likedReview: '',
     });
 
     dispatch(setUser(updatedUser));

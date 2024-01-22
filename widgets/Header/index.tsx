@@ -6,7 +6,7 @@ import { useState } from 'react';
 import AuthCard from '../AuthCard/ui/AuthCard';
 import { useAppDispatch, useAppSelector } from '@/shared/api/redux';
 import Link from 'next/link';
-import { removeUser } from '@/entities/User';
+import { removeUser, setUser } from '@/entities/User';
 import { useGetWindowSize } from '@/shared/hooks/useGetWindowSize';
 import LoginButton from './ui/loginButton';
 import Search from '@/features/searchButton';
