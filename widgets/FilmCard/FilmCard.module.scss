@@ -1,0 +1,424 @@
+.h1 {
+  font-family: 'Qanelas ExtraBold';
+  font-size: 65px;
+  font-style: normal;
+  line-height: normal;
+}
+.flex {
+  max-width: 1164px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+  }
+
+  .link {
+    font-family: 'Qanelas Light';
+    font-size: 16px;
+    font-style: normal;
+    line-height: 168.7%;
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-family: 'Qanelas Light';
+    font-size: 25px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .text {
+    margin-top: 10px;
+    font-family: 'Qanelas Light';
+    font-size: 20px;
+    font-style: normal;
+    line-height: 166.5%;
+  }
+
+  .desc {
+    text-align: left;
+    width: auto;
+  }
+
+  &__container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .image {
+    border-radius: 10px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: normal;
+  gap: 13px;
+  margin-top: 16px;
+  margin-bottom: 45px;
+
+  .favorite {
+    margin-top: -30px;
+  }
+
+  .button {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--buttons-bg);
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus,
+    &:active {
+      transform: scale(1.1);
+      background-color: var(--buttons-bg-hover);
+
+      .button__image {
+        path {
+          fill: var(--favorite-red);
+        }
+      }
+
+      .button__image__like {
+        path {
+          fill: var(--green-like);
+        }
+      }
+    }
+  }
+
+  .expected__rating {
+    width: 185px;
+    position: relative;
+    height: 59px;
+    background-color: var(--buttons-bg);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Qanelas Light';
+    color: var(--green);
+
+    &_percent {
+      height: 59px;
+      background-color: var(--green-bg);
+      border-radius: 5px;
+    }
+    span {
+      position: absolute;
+      top: 20px;
+      left: 15px;
+      width: 155px;
+      height: 17px;
+    }
+  }
+
+  .favorite {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &__desc {
+      font-size: 14px;
+      font-family: 'Qanelas Light';
+    }
+  }
+}
+
+// information
+
+.information {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 61px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  &__text {
+    span {
+      color: var(--text);
+      font-family: 'Qanelas SemiBold';
+      font-size: 18px;
+      font-style: normal;
+      line-height: normal;
+    }
+  }
+
+  &__yellow__text {
+    span {
+      color: var(--yellow);
+      font-family: 'Qanelas Light';
+      font-size: 18px;
+      font-style: normal;
+      line-height: normal;
+    }
+  }
+
+  &__block_flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+    text-align: left;
+  }
+
+  &__flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    gap: 40px;
+    text-align: left;
+  }
+}
+
+// producers block
+
+.producers {
+  margin-bottom: 100px;
+  background-color: var(--blue-bg);
+  padding: 36px 41px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  border-radius: 10px;
+
+  .director__flex {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .director {
+    display: flex;
+    max-width: 310px;
+    align-items: center;
+    gap: 27px;
+
+    &__name {
+      font-family: 'Qanelas SemiBold';
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    &__secondName {
+      color: var(--gray-text_second);
+      font-family: 'Qanelas Thin';
+      font-size: 14px;
+    }
+
+    &__role {
+      color: var(--yellow);
+      font-family: 'Qanelas Thin';
+      font-size: 16px;
+      margin-top: 5px;
+    }
+  }
+
+  .production,
+  .dubbling,
+  .production__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+
+    span {
+      font-size: 18px;
+      font-family: 'Qanelas SemiBold';
+    }
+
+    .production__items {
+      color: var(--yellow);
+      display: flex;
+
+      gap: 15px;
+
+      li {
+        font-family: 'Qanelas Light';
+        font-size: 18px;
+        font-style: normal;
+        line-height: 15px;
+      }
+    }
+  }
+
+  .dubbling {
+    gap: 5px;
+  }
+}
+
+// persons
+
+.persons {
+  margin-bottom: 85px;
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 60px;
+    align-items: center;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 250px;
+    height: 340px;
+
+    &__image {
+      width: 250px;
+      height: 250px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    &__name {
+      font-family: 'Qanelas Bold';
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    &__secondName {
+      color: var(--gray-text_second);
+      font-family: 'Qanelas Thin';
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    &__role {
+      font-family: 'Qanelas Thin';
+      color: var(--yellow);
+      font-size: 16px;
+    }
+  }
+}
+
+.reviews__block {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media screen and (max-width: 1440px) {
+  .image {
+    width: 291px;
+    height: 387px;
+  }
+
+  .h1 {
+    font-size: 40px;
+  }
+  .flex {
+    h3 {
+      font-size: 20px;
+    }
+
+    .text {
+      font-size: 15px;
+    }
+  }
+
+  .flex,
+  .persons,
+  .shots {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .persons {
+    &__cards {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .information {
+    justify-content: space-between;
+
+    &__text,
+    &__yellow__text {
+      gap: 30px;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flex,
+  .persons,
+  .shots {
+    max-width: 660px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .text {
+    max-width: 310px;
+  }
+
+  .flex {
+    &__container {
+      gap: 5px;
+    }
+    &__wrapper {
+      gap: 15px;
+    }
+  }
+
+  .information {
+    &__text,
+    &__yellow__text {
+      gap: 20px;
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .producers {
+    .director {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  .persons {
+    &__cards {
+      gap: 50px;
+    }
+
+    &__card {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      &__image {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+}

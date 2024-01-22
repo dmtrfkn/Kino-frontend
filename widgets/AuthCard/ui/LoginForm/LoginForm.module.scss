@@ -1,0 +1,57 @@
+.main {
+  max-width: 815px;
+  background-color: var(--card-bg);
+  width: 100%;
+  padding: 40px 0;
+  border-radius: 10px;
+}
+
+.root {
+  display: flex;
+  gap: 18px;
+  flex-direction: column;
+  margin-top: 34px;
+
+  &__link {
+    color: #3657cb;
+    text-align: center;
+    font-family: Qanelas Medium;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 166.5%; /* 28.305px */
+    text-decoration-line: underline;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  &__image {
+    width: 41px;
+    height: 41px;
+    padding: 10px;
+    background-color: #1e2538;
+    border-radius: 10px;
+
+    &:focus,
+    &:hover {
+      background-color: var(--all-bg-active);
+    }
+
+    &:active {
+      background-color: var(--all-bg-active);
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 14px;
+}

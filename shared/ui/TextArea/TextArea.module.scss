@@ -1,0 +1,21 @@
+.root {
+  width: 100%;
+  height: 252px;
+  background-color: var(--all-bg);
+  font-family: 'Qanelas light';
+  border: none;
+  border-radius: 10px;
+  color: var(--text);
+  padding: 13px 26px;
+  font-size: 17px;
+  font-style: normal;
+  line-height: 166.5%;
+  outline: none;
+  resize: none;
+  margin-top: 20px;
+
+  &::placeholder {
+    color: var(--gray-text);
+    font-family: 'Qanelas Thin';
+  }
+}

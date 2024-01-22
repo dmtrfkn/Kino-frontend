@@ -1,0 +1,274 @@
+.root {
+  width: 100%;
+}
+
+.avatar__wrapper {
+  margin: 0 auto;
+}
+
+// avatar start
+
+.avatar__block {
+  // margin-left: 178px;
+  display: flex;
+  gap: 50px;
+  text-align: left;
+  align-items: center;
+  margin: 0 auto;
+
+  &__image {
+    border-radius: 10px;
+  }
+
+  &__flex {
+    &__header {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 15px;
+
+      &__link {
+        font-size: 16px;
+        font-family: 'Qanelas Light';
+      }
+
+      &__name {
+        margin: 0;
+        font-size: 65px;
+
+        &__eng {
+          font-size: 25px;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    &__information {
+      margin-top: 30px;
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      &__names {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: 150px;
+        list-style: none;
+
+        &__item {
+          color: var(--gray-text_third);
+          font-size: 18px;
+          font-family: 'Qanelas SemiBold';
+        }
+      }
+
+      &__values {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        &__item {
+          display: flex;
+          font-family: 'Qanelas Light';
+          font-size: 18px;
+          color: var(--yellow);
+          // text-decoration-line: underline;
+
+          &__link {
+            color: var(--gray-text_third);
+            transition: 0.2s all;
+
+            &:hover,
+            &:active,
+            &:focus {
+              transition: 0.2s all;
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        &__item:last-child {
+          margin-top: 3px;
+        }
+      }
+    }
+  }
+}
+// avatar end
+
+// awards start
+// awards end
+
+// best films start
+
+.best__films__flex {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: 70px;
+
+  &__block {
+    justify-content: space-between;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
+
+// best films end
+
+// films start
+
+.films__block {
+  margin-top: 80px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 65px;
+    font-family: 'Qanelas ExtraBold';
+  }
+}
+
+// films end
+
+//comments start
+
+.comments {
+  margin-top: 100px;
+
+  &__create {
+    background-color: var(--card-bg);
+    padding: 50px 60px;
+    border-radius: 10px;
+
+    &__header {
+      text-align: left;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin-bottom: 30px;
+
+      &__title {
+        margin: 0;
+        margin-bottom: 7px;
+      }
+
+      &__link {
+        font-size: 18px;
+        color: var(--text);
+        text-decoration: none;
+        font-family: 'Qanelas Light';
+        margin: 0;
+      }
+
+      &__image {
+        border-radius: 50%;
+      }
+    }
+
+    &__flex {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+}
+
+//comments end
+@media screen and (max-width: 1440px) {
+  .avatar__block {
+    gap: 15px;
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+
+    &__image {
+      width: 330px;
+      height: 450px;
+    }
+
+    &__flex {
+      &__header {
+        &__name {
+          font-size: 40px;
+
+          &__eng {
+            font-size: 20px;
+          }
+        }
+      }
+
+      &__information {
+        margin: 10px 0;
+        &__values__item,
+        &__values__item__link {
+          font-size: 16px;
+        }
+        &__names {
+          &__item {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .best__films__flex,
+  .photos__block,
+  .films__block {
+    margin: 0 auto;
+    max-width: 850px;
+    width: 100%;
+  }
+
+  .best__films__flex {
+    gap: 25px;
+
+    &__block {
+      gap: 50px;
+    }
+  }
+
+  .comments {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .avatar__block {
+    &__flex {
+      &__information {
+        margin: 20px 0;
+
+        &__values__item,
+        &__values__item__link {
+          font-size: 13px;
+        }
+        &__names {
+          &__item {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

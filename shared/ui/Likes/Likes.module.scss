@@ -1,0 +1,95 @@
+.button {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--buttons-bg);
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.1);
+    background-color: var(--buttons-bg-hover);
+
+    .button__image {
+      path {
+        fill: var(--favorite-red);
+      }
+    }
+
+    .button__image__like {
+      path {
+        fill: var(--green-like);
+      }
+    }
+  }
+}
+
+.likes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.like {
+  padding-bottom: 10px;
+
+  &:hover {
+    background-color: var(--green-like-bg);
+  }
+}
+
+.dislike {
+  padding-top: 5px;
+}
+
+.count {
+  font-family: 'Qanelas Light';
+  font-size: 15px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: 45px;
+    height: 45px;
+
+    &__image,
+    &__image__like {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .likes {
+    gap: 6px;
+  }
+}
+
+.active {
+  &__like {
+    background-color: var(--green-like-bg);
+    .button__image__like {
+      path {
+        fill: var(--green-like);
+      }
+    }
+  }
+  &__dislike {
+    background-color: var(--buttons-bg-hover);
+    .button__image {
+      path {
+        fill: var(--favorite-red);
+      }
+    }
+  }
+}

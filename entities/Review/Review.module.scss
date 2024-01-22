@@ -1,0 +1,270 @@
+.review {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: 5px solid var(--white);
+  padding: 50px;
+  background-color: var(--card-bg);
+
+  .name {
+    font-size: 30px;
+    font-family: 'Qanelas Bold';
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 50px;
+
+    &__user {
+      &__block {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+
+        &__flex {
+          display: flex;
+          // align-items: center;
+          flex-wrap: wrap;
+          flex-direction: column;
+          gap: 20px;
+          align-items: flex-start;
+
+          &__information {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+          }
+
+          &__name {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+
+  &__main {
+    margin-bottom: 15px;
+
+    &__flex {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .image {
+    border-radius: 50%;
+  }
+
+  .nickName {
+    font-family: 'Qanelas Bold';
+    font-size: 30px;
+  }
+
+  .information {
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .title {
+    font-family: 'Qanelas Bold';
+    font-size: 30px;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .date {
+    margin-top: 5px;
+    font-size: 15px;
+    font-family: 'Qanelas Light';
+    color: var(--gray-date);
+  }
+
+  .text {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Qanelas Light';
+
+    P {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .complain,
+  .link {
+    font-family: 'Qanelas SemiBold';
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &__flex {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .complain {
+    color: var(--red-alert);
+  }
+
+  .typeOfReview {
+    width: 208px;
+    height: 36px;
+    font-size: 15px;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+
+    &-good {
+      background-color: var(--green-like-bg);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    &-middle {
+      background-color: var(--yellow-bg);
+      color: var(--yellow-border);
+    }
+
+    &-bad {
+      background-color: var(--red-bg);
+      color: var(--red-border);
+    }
+  }
+}
+
+.border {
+  &-good {
+    border-color: var(--green);
+  }
+
+  &-middle {
+    border-color: var(--yellow-border);
+  }
+
+  &-bad {
+    border-color: var(--red-border);
+  }
+}
+
+.comment {
+  margin-left: 50px;
+  position: relative;
+  margin-top: 30px;
+  &::before {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    content: '';
+    width: 2px;
+    border-radius: 50%;
+    margin-top: 59px;
+    height: 132px;
+    margin-left: -43px;
+    background-color: var(--border-line);
+    color: var(--border-line);
+  }
+  div {
+    margin: 0;
+  }
+}
+
+.create__comment {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1440px) {
+  .review {
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .review {
+    padding-right: 40px;
+    padding-left: 40px;
+    max-width: 660px;
+    padding-top: 20px;
+
+    .title {
+      font-family: 'Qanelas Bold';
+      font-size: 25px;
+    }
+
+    .date {
+      font-size: 14px;
+    }
+
+    .text {
+      p {
+        font-size: 17px;
+        font-family: 'Qanelas Light';
+      }
+      margin: 0;
+      margin-top: 12px;
+    }
+
+    .information {
+      font-size: 15px;
+    }
+
+    &__header {
+      flex-direction: row;
+      gap: 0;
+      margin-bottom: 20px;
+
+      &__user__block {
+        gap: 15px;
+        &__flex {
+          gap: 10px;
+
+          &__name {
+            gap: 10px;
+          }
+          &__information {
+            // margin: 0 auto;
+            font-size: 15px;
+            // display: none;
+          }
+        }
+      }
+    }
+    .name {
+      font-size: 22px;
+    }
+  }
+  .likes {
+    // margin-top: -10px;
+  }
+  .image {
+    width: 75px;
+    height: 75px;
+  }
+}

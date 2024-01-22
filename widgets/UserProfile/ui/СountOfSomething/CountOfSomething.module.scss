@@ -1,0 +1,27 @@
+.root {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-wrap: wrap;
+  color: var(--nonhovertext);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: var(--text);
+  }
+
+  span {
+    font-family: 'Qanelas Medium';
+    font-size: 35px;
+    line-height: 42.25px;
+  }
+
+  p {
+    font-family: 'Qanelas Bold';
+    font-size: 21px;
+    line-height: 26.02px;
+    margin: 0;
+  }
+}
