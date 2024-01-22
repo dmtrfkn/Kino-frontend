@@ -1,4 +1,5 @@
 import Container from '@/shared/ui/Container';
+import Footer from '@/widgets/Footer';
 import Header from '@/widgets/Header';
 import { FC, ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -16,6 +17,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <Header />
         <main>{children}</main>
       </Container>
+      <Footer />
       {/* <ToastContainer
         position="top-right"
         autoClose={5000}

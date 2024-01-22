@@ -22,7 +22,7 @@ interface PersonCardProps {
   personId: string;
 }
 
-const PersonCard = () => {
+const PersonCard: FC<PersonCardProps> = ({ personId }) => {
   const user = useAppSelector((state) => selectUser(state));
   const [person, setPerson] = useState<Person | undefined>();
   const [avatar, setAvatar] = useState<string>('');
@@ -32,7 +32,7 @@ const PersonCard = () => {
   const dispatch = useAppDispatch();
 
   const getData = async () => {
-    const data: Person = (await axios.get(`/persons/652e7197051d9d2bc03b025e`)).data;
+    const data: Person = (await axios.get(`/persons/${personId}`)).data;
     console.log(data);
     setPerson(data);
     user && setPreActive(user.persons.includes(data._id));

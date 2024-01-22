@@ -1,0 +1,158 @@
+.root {
+  width: 100%;
+  margin: 0;
+  background: var(--dark-text);
+  padding: 0;
+  padding-top: 70px;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    max-width: 1428px;
+    width: 100%;
+  }
+
+  // .presubscribe {
+  //   background: #000;
+  // }
+
+  .subscribe {
+    z-index: 1;
+    padding: 76px 300px;
+    text-align: center;
+    border-radius: 10px;
+    text-align: center;
+    height: 548px;
+    box-shadow: inset;
+    background-image: url('../.././assets/footer-bg.png');
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, contain;
+    margin-bottom: 70px;
+
+    &__logo {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__title {
+      margin-bottom: 26px;
+      font-size: 50px;
+      font-family: 'Qanelas Bold';
+    }
+    &__description {
+      font-size: 22px;
+      font-family: 'Qanelas Light';
+      margin: 0 auto;
+      max-width: 704px;
+      margin-bottom: 34px;
+    }
+
+    &__input {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 22px;
+
+      input {
+        &::placeholder {
+          color: var(--dark-text);
+        }
+        height: 71px;
+        background: var(--white);
+        color: var(--dark-text);
+      }
+
+      button {
+        margin: 0;
+      }
+    }
+
+    &__checkbox {
+      div {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .links {
+    max-width: 261px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 34px;
+  }
+
+  .navbar {
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+
+  .bottom {
+    font-size: 15px;
+    line-height: 119%;
+    font-family: 'Qanelas Thin';
+
+    &:last-child {
+      width: 220px;
+      margin: 0 auto;
+      margin-top: 25px;
+      margin-bottom: 50px;
+      border-bottom: 1px solid var(--gray-text_second);
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .root {
+    .subscribe {
+      padding: 50px 100px;
+      margin: 0 auto;
+      width: 851px;
+      height: 396px;
+      margin-bottom: 40px;
+
+      &__title {
+        font-size: 35px;
+        margin-bottom: 15px;
+      }
+
+      &__description {
+        margin-bottom: 15px;
+        font-size: 17px;
+        line-height: 140.2%;
+      }
+
+      &__input {
+        input {
+          max-width: 378px;
+        }
+
+        button {
+          max-width: 164px;
+        }
+      }
+    }
+    .bottom {
+      font-size: 13px;
+      &:last-child {
+        max-width: 190px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .root {
+    .subscribe {
+      padding: 32px 45px;
+      width: 660px;
+      height: 370px;
+      margin-bottom: 34px;
+    }
+  }
+}

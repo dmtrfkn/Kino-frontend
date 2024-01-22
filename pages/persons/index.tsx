@@ -1,5 +1,5 @@
 const persons = () => {
-  return <div>index</div>;
+  return <div>PERSONWẞ</div>;
 };
 
 export default persons;
