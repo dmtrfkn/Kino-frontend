@@ -1,6 +1,6 @@
 import { chooseMouth } from './chooseMount';
 
-export const createDateFromString = (date: Date) => {
+export const createDateFromString = (date: Date | string) => {
   return `${
     date.toString()[8] !== '0' ? date.toString()[8] + date.toString()[9] : date.toString()[9]
   }${' '}

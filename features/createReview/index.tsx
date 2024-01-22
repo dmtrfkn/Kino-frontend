@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './createReview.module.scss';
-import { User } from '@/entities/User';
+import { User, selectUser } from '@/entities/User';
 import { Dispatch, FC, SetStateAction, useState } from 'react';
 import arrow from '@/assets/arrow.svg';
 import Link from 'next/link';
@@ -13,13 +13,13 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { createReview } from './api';
 import { Review } from '@/entities/Review/models/types/Review';
+import { useAppSelector } from '@/shared/api/redux';
 interface CreateReviewProps {
-  user: User;
   setReviews: (reviews: Review[], newReview: Review) => void;
   reviews: Review[];
 }
 
-const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
+const CreateReview: FC<CreateReviewProps> = ({ reviews, setReviews }) => {
   const [listState, setListState] = useState<boolean>(false);
   const [textareaValue, setTextareaValue] = useState(``);
   const [inputValue, setInputValue] = useState('');
@@ -28,6 +28,7 @@ const CreateReview: FC<CreateReviewProps> = ({ user, reviews, setReviews }) => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(textareaValue);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
   const [falseClick, setFalseClick] = useState(false);
+  const user = useAppSelector((state) => selectUser(state));
 
   let errorMessage = '';
   const changeCheckboxHandler = () => {

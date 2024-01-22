@@ -44,7 +44,7 @@ const FilmCard: FC<FilmCardProps> = ({ filmId }) => {
   const [preFavoriteActive, setPreFavoriteActive] = useState<boolean>(false);
   const [preLikesActive, setPreLikesActive] = useState<boolean>(false);
   const [preDislikesActive, setPreDislikesActive] = useState<boolean>(false);
-  const result = 20;
+  const result = Math.floor((likes / (likes + dislikes)) * 100);
   const hours = card ? Math.floor(card?.duration / 60) : 0;
   const minutes = card ? card.duration - hours * 60 : 0;
   const anotherTime = card?.duration ? `${hours}:${minutes}` : 0;
@@ -273,11 +273,7 @@ const FilmCard: FC<FilmCardProps> = ({ filmId }) => {
               />
             </div>
             <ReviewsBlock reviews={reviews} />
-            <CreateReview
-              reviews={reviews}
-              setReviews={setReviewsHandler}
-              user={reviews[0].user[0]}
-            />
+            <CreateReview reviews={reviews} setReviews={setReviewsHandler} />
           </div>
         ) : (
           <Button color="yellow-big" text="pop" onClick={() => setActive((prev) => !prev)} />

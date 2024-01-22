@@ -5,10 +5,11 @@ import { Comment } from './types/comment';
 import { FC, useEffect, useState } from 'react';
 import TextArea from '@/shared/ui/TextArea';
 import Button from '@/shared/ui/Button';
-import { updateComment } from './api/update';
-import axios from '@/shared/utils/axios';
 import { useAppSelector } from '@/shared/api/redux';
 import { createDateFromString } from '@/shared/utils/createDateFromString';
+import { selectUser } from '../User';
+import { onClickUpdateCommentHandler, onClickUpdateUser } from './api/funcs';
+import { useDispatch } from 'react-redux';
 interface CommentProps {
   currentComment: Comment;
 }
@@ -16,45 +17,32 @@ interface CommentProps {
 const Comment: FC<CommentProps> = ({ currentComment }) => {
   const [comment, setComment] = useState<Comment>(currentComment);
 
-  const { data: userData } = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => selectUser(state));
   const [addCommToComm, setAddCommToComm] = useState(false);
   const [textareaValue, setTextAreaValue] = useState('');
   const [likes, setLikes] = useState(comment.likes);
   const [dislikes, setDisLikes] = useState(comment.dislikes);
+  const dispatch = useDispatch();
+
   const onClickAddCommentToCommentHandler = () => {
     setAddCommToComm((prev) => !prev);
   };
 
-  useEffect(() => {
-    onClickUpdateCommentHandler();
-  }, [likes, dislikes]);
-
-  const onClickUpdateCommentHandler = async (flag?: boolean) => {
-    const createdComment: Comment = flag
-      ? await (
-          await axios.post(`${process.env.NEXT_PUBLIC_URL}/comments/create`, {
-            user: userData?._id ? userData._id : '',
-            likes: 0,
-            dislikes: 0,
-            text: textareaValue,
-            date: Date.now(),
-            comments: [],
-            complains: [],
-          })
-        ).data
-      : '';
-    const updatedComment = await updateComment(
-      {
-        comments: createdComment ? [createdComment._id] : [],
-        dislikes: dislikes,
-        likes: likes,
-        text: textareaValue,
-      },
-      comment._id,
-    );
-    updatedComment && setComment(updatedComment);
-    flag && setAddCommToComm((prev) => !prev);
+  const onClickUpdate = (like: number, dislike: number) => {
+    if (user) {
+      onClickUpdateCommentHandler(
+        user,
+        like,
+        dislike,
+        textareaValue,
+        setComment,
+        setAddCommToComm,
+        comment._id,
+      );
+      onClickUpdateUser(user, comment, dispatch, like, dislike);
+    }
   };
+
   return (
     <>
       <div className={styles.comment}>
@@ -73,13 +61,16 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
                   {comment.user[0].name}
                 </h2>
                 <span className={styles.comment__flex__header__description__head__date}>
-                  {createDateFromString(comment.date)}
+                  {createDateFromString(comment.date.toString())}
                 </span>
               </div>
               <p className={styles.comment__flex__header__description__text}>{comment.text}</p>
             </div>
           </div>
           <Likes
+            preDislikes={user && user.dislikedComments.includes(comment._id)}
+            preLikes={user && user.likedComments.includes(comment._id)}
+            onClick={onClickUpdate}
             countDislike={dislikes}
             countLike={likes}
             addLike={setLikes}
@@ -146,7 +137,19 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
           <Button
             color="yellow-middle"
             text="Ответить"
-            onClick={() => onClickUpdateCommentHandler(true)}
+            onClick={() =>
+              user &&
+              onClickUpdateCommentHandler(
+                user,
+                0,
+                0,
+                textareaValue,
+                setComment,
+                setAddCommToComm,
+                comment._id,
+                true,
+              )
+            }
           />
         </div>
       )}
