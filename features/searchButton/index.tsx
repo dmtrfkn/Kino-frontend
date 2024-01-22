@@ -29,11 +29,20 @@ const Search = () => {
   };
 
   const getSearch = async () => {
-    const persons = await personSearch(inputValue);
-    persons && setPersons(persons);
-    const cards = await cardSearch(inputValue);
-    cards && setCards(cards);
+    if (inputValue !== '') {
+      const persons = await personSearch(inputValue);
+      persons && setPersons(persons);
+      const cards = await cardSearch(inputValue);
+      cards && setCards(cards);
+    } else {
+      setPersons(undefined);
+      setCards(undefined);
+    }
   };
+
+  useEffect(() => {
+    if (active) getSearch();
+  }, [inputValue]);
 
   const onClickHandler = () => {
     setActive((prev) => !prev);
@@ -60,12 +69,9 @@ const Search = () => {
                     className={styles.image + ' ' + styles.image1}
                     alt="filter"
                   />
-                  <Image
-                    onClick={getSearch}
-                    src={yellowSearch}
-                    className={styles.image}
-                    alt="search"
-                  />
+                  <Link href={'/search'}>
+                    <Image src={yellowSearch} className={styles.image} alt="search" />
+                  </Link>
                 </div>
               </div>
             </div>

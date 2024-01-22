@@ -13,6 +13,10 @@
   line-height: normal;
 }
 
+.whoose {
+  font-family: 'Qanelas Light';
+}
+
 .circle {
   position: relative;
   width: 54px;
@@ -129,7 +133,6 @@
 
 @media screen and (max-width: 768px) {
   .whoose {
-    font-family: 'Qanelas Light';
     font-size: 14px;
   }
 }

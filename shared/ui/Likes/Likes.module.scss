@@ -74,3 +74,22 @@
     gap: 6px;
   }
 }
+
+.active {
+  &__like {
+    background-color: var(--green-like-bg);
+    .button__image__like {
+      path {
+        fill: var(--green-like);
+      }
+    }
+  }
+  &__dislike {
+    background-color: var(--buttons-bg-hover);
+    .button__image {
+      path {
+        fill: var(--favorite-red);
+      }
+    }
+  }
+}

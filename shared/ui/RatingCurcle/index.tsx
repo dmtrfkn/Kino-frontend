@@ -6,7 +6,7 @@ interface RatingProps {
   rate: Rating;
 }
 
-const RatingComponent: FC<RatingProps> = ({ rate }) => {
+const RatingCurcle: FC<RatingProps> = ({ rate }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.circle}>
@@ -24,4 +24,4 @@ const RatingComponent: FC<RatingProps> = ({ rate }) => {
   );
 };
 
-export default RatingComponent;
+export default RatingCurcle;

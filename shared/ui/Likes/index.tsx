@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './Likes.module.scss';
 
 interface LikesProps {
@@ -6,24 +6,57 @@ interface LikesProps {
   countDislike: number;
   addLike: (like: number) => void;
   addDisLike: (like: number) => void;
+  preLikes?: boolean;
+  onClick: (like: number, dislike: number) => void;
+  preDislikes?: boolean;
 }
 
-const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike }) => {
-  const [likesFlag, setLikesFlag] = useState<boolean>(false);
-  const [dislikesFlag, setDislikesFlag] = useState<boolean>(false);
+const Likes: FC<LikesProps> = ({
+  countDislike,
+  countLike,
+  addDisLike,
+  addLike,
+  preDislikes = false,
+  preLikes = false,
+  onClick,
+}) => {
+  const [likesFlag, setLikesFlag] = useState<boolean>(preLikes);
+  const [dislikesFlag, setDislikesFlag] = useState<boolean>(preDislikes);
 
   const addLikeHandler = () => {
+    onClick(!likesFlag ? 1 : -1, dislikesFlag ? -1 : 0);
     !likesFlag ? addLike(countLike + 1) : addLike(countLike - 1);
     setLikesFlag((prev) => !prev);
+    if (dislikesFlag) {
+      addDisLike(countDislike - 1);
+      setDislikesFlag((prev) => !prev);
+    }
   };
   const addDisLikeHandler = () => {
+    onClick(likesFlag ? -1 : 0, !dislikesFlag ? 1 : -1);
     !dislikesFlag ? addDisLike(countDislike + 1) : addDisLike(countDislike - 1);
     setDislikesFlag((prev) => !prev);
+    if (likesFlag) {
+      addLike(countLike - 1);
+      setLikesFlag((prev) => !prev);
+    }
   };
+
+  useEffect(() => {
+    if (preLikes) setLikesFlag((prev) => !prev);
+    if (preDislikes) setDislikesFlag((prev) => !prev);
+  }, [preLikes, preDislikes]);
+
   return (
     <div className={styles.likes}>
       <div className={styles.flex}>
-        <span className={styles.button + ' ' + styles.like} onClick={addLikeHandler}>
+        <span
+          className={
+            likesFlag
+              ? styles.button + ' ' + styles.like + ' ' + styles.active__like
+              : styles.button + ' ' + styles.like
+          }
+          onClick={addLikeHandler}>
           <svg
             className={styles.button__image__like}
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +90,13 @@ const Likes: FC<LikesProps> = ({ countDislike, countLike, addDisLike, addLike })
         )}
       </div>
       <div className={styles.flex}>
-        <span className={styles.button + ' ' + styles.dislike} onClick={addDisLikeHandler}>
+        <span
+          className={
+            dislikesFlag
+              ? styles.button + ' ' + styles.dislike + ' ' + styles.active__dislike
+              : styles.button + ' ' + styles.dislike
+          }
+          onClick={addDisLikeHandler}>
           <svg
             className={styles.button__image}
             xmlns="http://www.w3.org/2000/svg"
