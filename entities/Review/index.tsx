@@ -14,7 +14,7 @@ import CreateComment from '@/features/createComment';
 import { useAppSelector } from '@/shared/api/redux';
 import { selectUser } from '../User';
 import Comment from '../Comment';
-import { onUpdateReview, onUpdateUser } from './api/funcs';
+import { onUpdateReview, updateUserThere } from './api/funcs';
 import { useDispatch } from 'react-redux';
 
 interface ReviewProps {
@@ -28,6 +28,12 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
   const [likes, setLikes] = useState(review.likes);
   const [dislikes, setDislikes] = useState(review.dislikes);
   const [openComments, setOpenComments] = useState(false);
+  const [preActiveLike, setPreActiveLike] = useState(
+    user && user.likedReviews.includes(review._id),
+  );
+  const [preActiveDislike, setPreActiveDislike] = useState(
+    user && user.dislikedReviews.includes(review._id),
+  );
   const dispatch = useDispatch();
   const onClickActive = () => {
     setActiveCreatePanel((prev) => !prev);
@@ -35,7 +41,7 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
 
   const onClickHandler = (like: number, dislike: number) => {
     onUpdateReview(dislike, like, review, setReview);
-    user && onUpdateUser(user, review, dispatch, like, dislike);
+    if (user && review) updateUserThere(user, review, dispatch, like, dislike);
   };
 
   // const onClickLike = (likes: number) => {
@@ -112,8 +118,8 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
           <div className={styles.likes}>
             <Likes
               onClick={onClickHandler}
-              preDislikes={user && user.dislikedReviews.includes(review._id)}
-              preLikes={user && user.likedReviews.includes(review._id)}
+              preDislikes={preActiveDislike}
+              preLikes={preActiveLike}
               addDisLike={setDislikes}
               addLike={setLikes}
               countDislike={dislikes}

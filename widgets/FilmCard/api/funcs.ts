@@ -65,34 +65,32 @@ export const updateUserThere = async (
   dislike?: number,
   fav?: boolean,
 ) => {
-  if (user && card) {
-    const updatedUser = await updateUser({
-      aboutMe: user.aboutMe,
-      avatarImage: user.avatarImage,
-      birthday: user.birthday,
-      city: user.city,
-      country: user.country,
-      dislikedFilm: dislike ? card._id : '',
-      email: user.email,
-      facebook: user.facebook,
-      favoriteFilm: fav ? card._id : '',
-      favoriteGenres: user.favoriteGenres,
-      friends: user.friends,
-      gender: user.gender,
-      instagram: user.instagram,
-      likedFilm: like ? card._id : '',
-      name: user.name,
-      person: '',
-      secondName: user.secondName,
-      twitter: user.twitter,
-      vk: user.vk,
-      youtube: user.youtube,
-      dislikedComment: '',
-      dislikedReview: '',
-      likedComment: '',
-      likedReview: '',
-    });
+  const updatedUser = await updateUser({
+    aboutMe: user.aboutMe,
+    avatarImage: user.avatarImage,
+    birthday: user.birthday,
+    city: user.city,
+    country: user.country,
+    dislikedFilm: dislike ? card._id : '',
+    email: user.email,
+    facebook: user.facebook,
+    favoriteFilm: fav ? card._id : '',
+    favoriteGenres: user.favoriteGenres,
+    friends: user.friends,
+    gender: user.gender,
+    instagram: user.instagram,
+    likedFilm: like ? card._id : '',
+    name: user.name,
+    person: '',
+    secondName: user.secondName,
+    twitter: user.twitter,
+    vk: user.vk,
+    youtube: user.youtube,
+    dislikedComment: '',
+    dislikedReview: '',
+    likedComment: '',
+    likedReview: '',
+  });
 
-    dispatch(setUser(updatedUser));
-  }
+  dispatch(setUser(updatedUser));
 };

@@ -25,9 +25,9 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
     setAddCommToComm((prev) => !prev);
   };
 
-  useEffect(() => {
-    onClickUpdateCommentHandler();
-  }, [likes, dislikes]);
+  // useEffect(() => {
+  //   onClickUpdateCommentHandler();
+  // }, [likes, dislikes]);
 
   const onClickUpdateCommentHandler = async (flag?: boolean) => {
     const createdComment: Comment = flag
