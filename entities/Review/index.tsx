@@ -28,6 +28,14 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
   const [likes, setLikes] = useState(review.likes);
   const [dislikes, setDislikes] = useState(review.dislikes);
   const [openComments, setOpenComments] = useState(false);
+  const [preLikeActive, setPreLikeActive] = useState(
+    user && user.likedReviews.includes(review._id),
+  );
+
+  console.log(review);
+  const [preDislikeActive, setPreDislikeActive] = useState(
+    user && user.dislikedReviews.includes(review._id),
+  );
   const dispatch = useDispatch();
   const onClickActive = () => {
     setActiveCreatePanel((prev) => !prev);
@@ -35,7 +43,7 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
 
   const onClickHandler = (like: number, dislike: number) => {
     onUpdateReview(dislike, like, review, setReview);
-    user && onUpdateUser(user, review, dispatch, like, dislike);
+    user && review && onUpdateUser(user, review, dispatch, like, dislike);
   };
 
   // const onClickLike = (likes: number) => {
@@ -112,8 +120,8 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
           <div className={styles.likes}>
             <Likes
               onClick={onClickHandler}
-              preDislikes={user && user.dislikedReviews.includes(review._id)}
-              preLikes={user && user.likedReviews.includes(review._id)}
+              preDislikes={preDislikeActive}
+              preLikes={preLikeActive}
               addDisLike={setDislikes}
               addLike={setLikes}
               countDislike={dislikes}
@@ -152,6 +160,7 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
       {activeCreatePanel && (
         <div className={styles.create__comment}>
           <CreateComment
+            setActiveMenu={onClickActive}
             type="reviews"
             user={user}
             entityId={review._id}
@@ -160,13 +169,16 @@ const ReviewCard: FC<ReviewProps> = ({ currentReview }) => {
           />
         </div>
       )}
-      {openComments &&
-        review.comments &&
-        review.comments.map((comment, index) => (
-          <div key={index} className={styles.comment}>
-            <Comment currentComment={comment} />
-          </div>
-        ))}
+      {openComments && (
+        <div className={styles.comments}>
+          {review.comments &&
+            review.comments.map((comment, index) => (
+              <div key={index} className={styles.comment}>
+                <Comment currentComment={comment} />
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

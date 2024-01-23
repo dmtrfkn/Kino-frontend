@@ -2,7 +2,7 @@ import Likes from '@/shared/ui/Likes';
 import styles from './Comment.module.scss';
 import Image from 'next/image';
 import { Comment } from './types/comment';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import TextArea from '@/shared/ui/TextArea';
 import Button from '@/shared/ui/Button';
 import { useAppSelector } from '@/shared/api/redux';
@@ -22,6 +22,12 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
   const [textareaValue, setTextAreaValue] = useState('');
   const [likes, setLikes] = useState(comment.likes);
   const [dislikes, setDisLikes] = useState(comment.dislikes);
+  const [preLikeActive, setPreLikeActive] = useState(
+    user && user.likedComments.includes(comment._id),
+  );
+  const [preDislikeActive, setPreDislikeActive] = useState(
+    user && user.dislikedComments.includes(comment._id),
+  );
   const dispatch = useDispatch();
 
   const onClickAddCommentToCommentHandler = () => {
@@ -68,8 +74,8 @@ const Comment: FC<CommentProps> = ({ currentComment }) => {
             </div>
           </div>
           <Likes
-            preDislikes={user && user.dislikedComments.includes(comment._id)}
-            preLikes={user && user.likedComments.includes(comment._id)}
+            preDislikes={preDislikeActive}
+            preLikes={preLikeActive}
             onClick={onClickUpdate}
             countDislike={dislikes}
             countLike={likes}

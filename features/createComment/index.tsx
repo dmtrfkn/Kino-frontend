@@ -14,9 +14,16 @@ interface createCommentProps {
   type: string;
   entityId: string;
   setEntity(entity: { _id: string }): void;
+  setActiveMenu?: () => void;
 }
 
-const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity }) => {
+const CreateComment: FC<createCommentProps> = ({
+  user,
+  entityId,
+  type,
+  setEntity,
+  setActiveMenu,
+}) => {
   const [textAreaValue, setTextAreaValue] = useState('');
 
   const createCommentFunc = async (data: createCommentDto) => {
@@ -40,6 +47,7 @@ const CreateComment: FC<createCommentProps> = ({ user, entityId, type, setEntity
       // console.log(newEntity);
       setEntity(newEntity);
       setTextAreaValue('');
+      setActiveMenu && setActiveMenu();
       // console.log(`${process.env.NEXT_PUBLIC_URL}/persons/update/${person?._id}`);
       // console.log(person?._id);
     } catch (error) {

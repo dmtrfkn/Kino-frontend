@@ -92,6 +92,10 @@
     margin: 20px 0;
     margin-left: 105px;
     outline: none;
+    padding-left: 50px;
+    .comment {
+      margin-top: 40px;
+    }
 
     &::before {
       position: absolute;
@@ -116,6 +120,10 @@
     margin: 0 auto;
     margin-top: 20px;
 
+    &__add_comment {
+      max-width: 850px;
+    }
+
     &__flex {
       gap: 3px;
 
@@ -128,6 +136,10 @@
       margin: 0 auto;
       padding-left: 50px;
       max-width: 850px;
+
+      .comment {
+        margin-top: 40px;
+      }
 
       &::before {
         margin-left: 0px;
