@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import styles from './Modal.module.scss';
 
@@ -12,6 +12,7 @@ const Modal: FC<ModalProps> = ({ isOpen, setOpen, children }) => {
   if (!isOpen) {
     return null;
   }
+
   return (
     <div className={styles.modal}>
       <div className={styles.wrapper}>

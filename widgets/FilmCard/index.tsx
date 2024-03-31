@@ -229,7 +229,7 @@ const FilmCard: FC<FilmCardProps> = ({ filmId }) => {
         </div>
       </div>
       <div className={styles.persons}>
-        <FlexTitle header="Все актёры" link="/persons" title="В главных ролях:" />
+        <FlexTitle header="Все актёры" link={`/persons`} title="В главных ролях:" />
         <div className={styles.persons__cards}>
           {card?.persons.map((i) => (
             <div key={i._id} className={styles.persons__card}>

@@ -1,8 +1,8 @@
+import ProfileLayout from '@/widgets/ProfileLayout';
 import getServerSideProps from '@/shared/utils/getProps/getProps';
 import UserProfileHomePage from '@/widgets/UserProfile';
-import ProfileLayout from '@/widgets/ProfileLayout';
 
-const myProfile = () => {
+const profile = () => {
   return (
     <>
       <ProfileLayout>
@@ -12,6 +12,6 @@ const myProfile = () => {
   );
 };
 
-export default myProfile;
+export default profile;
 
 export { getServerSideProps };

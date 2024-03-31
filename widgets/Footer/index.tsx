@@ -11,6 +11,7 @@ const Footer = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const [activeCheckbox, setActiveCheckbox] = useState<boolean>(false);
   const onClickHandler = () => {};
+
   return (
     <div className={styles.root}>
       <Container>
