@@ -1,0 +1,50 @@
+.comments {
+  &__create {
+    background-color: var(--card-bg);
+    padding: 50px 60px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+    &__header {
+      text-align: left;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin-bottom: 30px;
+
+      &__title {
+        margin: 0;
+        margin-bottom: 7px;
+        font-size: 30px;
+      }
+
+      &__link {
+        font-size: 18px;
+        color: var(--text);
+        text-decoration: none;
+        font-family: 'Qanelas Light';
+        margin: 0;
+      }
+
+      &__image {
+        border-radius: 50%;
+      }
+    }
+
+    &__flex {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .comments {
+    &__create {
+      max-width: 850px;
+      margin: 0 auto;
+      margin-bottom: 40px;
+    }
+  }
+}

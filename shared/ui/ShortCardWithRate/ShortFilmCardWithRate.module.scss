@@ -1,0 +1,176 @@
+.films__block__flex {
+  border-bottom: 1px solid var(--border--gray);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  padding-bottom: 25px;
+  padding-top: 25px;
+
+  &:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
+
+  &__first {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+    h2 {
+      margin: 0;
+      padding: 0px;
+    }
+    &__image {
+      border-radius: 10px;
+    }
+
+    &__description {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &__header {
+        font-size: 25px;
+        font-family: 'Qanelas Bold';
+        margin-bottom: 5px;
+
+        &_english {
+          color: var(--new__gray);
+          font-size: 17px;
+          font-family: 'Qanelas Light';
+        }
+      }
+
+      &__genres {
+        font-size: 15px;
+        font-family: 'Qanelas Thin';
+        margin-top: 5px;
+        margin-bottom: 10px;
+        color: var(--yellow);
+      }
+
+      &__author {
+        font-size: 15px;
+        color: var(--new__gray);
+        font-family: 'Qanelas Thin';
+      }
+    }
+  }
+
+  &__second {
+    display: flex;
+    gap: 75px;
+    align-items: center;
+
+    &__rate {
+      margin-left: auto;
+
+      display: flex;
+      gap: 15px;
+
+      &__flex {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+        align-items: center;
+        p {
+          font-family: 'Qanelas Light';
+          margin: 0;
+        }
+      }
+
+      &__item {
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-family: 'Qanelas Bold';
+      }
+    }
+  }
+}
+
+.whoose {
+  font-size: 15px;
+  font-family: 'Qanelas Light';
+}
+
+.button {
+  margin: 0;
+}
+
+// .circle {
+//   position: relative;
+//   width: 54px;
+//   height: 54px;
+// }
+
+// .circle__item {
+//   width: 54px;
+//   height: 54px;
+//   border-radius: 50%;
+//   padding-top: auto;
+
+//   z-index: -1;
+
+//   &_inner {
+//     font-family: 'Qanelas Bold';
+//     font-size: 13px;
+//     font-style: normal;
+//     line-height: normal;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     z-index: 1;
+//     border-radius: 50%;
+//     width: 40px;
+//     background-color: #fff;
+//     height: 40px;
+//   }
+// }
+
+@media screen and (max-width: 1440px) {
+  .films__block__flex {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    &__first {
+      gap: 20px;
+      &__image {
+        width: 144px;
+        height: 205px;
+      }
+
+      &__description {
+        &__author {
+          font-size: 13px;
+        }
+        &__genres {
+          font-size: 13px;
+          margin: 0;
+        }
+        &__header {
+          font-size: 17px;
+          &_english {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    &__second {
+      gap: 25px;
+
+      &__rate {
+      }
+    }
+  }
+}

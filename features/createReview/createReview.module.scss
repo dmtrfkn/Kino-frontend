@@ -1,0 +1,283 @@
+.flex {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 70px;
+  border-radius: 5px;
+  border: 5px solid var(--blue);
+  padding: 50px;
+  align-items: flex-start;
+  background-color: var(--card-bg);
+
+  &__header {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+
+    .flex__header__avatar {
+      border-radius: 50%;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      &__name {
+        font-family: 'Qanelas Bold';
+        font-size: 30px;
+      }
+
+      &__link {
+        font-family: 'Qanelas Regular';
+        color: var(--white);
+        text-decoration: none;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+    position: relative;
+
+    &__title {
+      max-width: 878px;
+      width: 100%;
+      input {
+        max-width: inherit;
+        width: 100%;
+      }
+
+      &__type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .arrow {
+          transition: 0.3s all;
+        }
+
+        .active__arrow {
+          transition: 0.3s all;
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    .custom_select {
+      width: 427px;
+      height: 67px;
+      border-radius: 10px;
+      padding: 16px 26px;
+      color: var(--text);
+      font-family: 'Qanelas Medium';
+      font-size: 20px;
+      font-style: normal;
+      line-height: 166.5%;
+      cursor: pointer;
+      text-align: left;
+      background-color: var(--buttons-bg);
+    }
+
+    .active {
+      display: block;
+      position: relative;
+      width: 200px;
+      height: 100px;
+      transform: translateY(0px);
+      transition: 0.3s all;
+      opacity: 1;
+    }
+
+    .default {
+      transition: 0.3s all;
+      position: relative;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    &__typeOfReview {
+      width: 431px;
+      height: 196px;
+      font-size: 20px;
+      background-color: var(--buttons-bg);
+      border-radius: 10px;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      color: var(--text);
+      top: 20px;
+      color: var(--text);
+      left: -20px;
+      background-color: var(--buttons-bg);
+      border-radius: 10px;
+      outline: none;
+      position: absolute;
+      border: 2px solid var(--card-bg);
+      overflow: hidden;
+
+      &__item {
+        border-radius: 10px;
+        padding: 20px 26px;
+        color: var(--text);
+        font-family: 'Qanelas Medium';
+        font-size: 20px;
+        font-style: normal;
+        line-height: 166.5%;
+        cursor: pointer;
+        text-align: left;
+
+        &:hover,
+        &:active,
+        &:visited,
+        &::selection,
+        &:focus {
+          background-color: var(--all-bg-active);
+        }
+      }
+    }
+  }
+
+  &__text {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    font-family: 'Qanelas Light';
+    // background-color: var(--input);
+    width: 100%;
+    // padding: 25px;
+    // text-align: left;
+    // border-radius: 10px;
+    margin-bottom: 30px;
+
+    .textArea_markdown {
+      width: 100%;
+      background-color: var(--all-bg);
+      margin-top: 20px;
+      border-radius: 10px;
+      text-align: left;
+      padding: 13px 26px;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 166.5%;
+
+      p {
+        margin: 0;
+        padding: 0;
+        font-family: 'Qanelas Light';
+        strong {
+          u {
+            font-family: inherit;
+          }
+
+          em {
+            font-family: inherit;
+          }
+        }
+        u {
+          font-family: 'Qanelas Light';
+        }
+
+        em {
+          font-family: 'Qanelas Light';
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+
+    &__item {
+      width: 45px;
+      height: 45px;
+      background-color: var(--buttons-bg);
+      font-size: 18px;
+      text-align: center;
+      padding-top: 12px;
+      border-radius: 5px;
+      font-family: 'Qanelas SemiBold';
+      cursor: pointer;
+
+      &:hover {
+        padding-top: 11px;
+        background-color: var(--buttons-bg-active);
+        border: 1px solid var(--buttons-bg);
+      }
+
+      &__first {
+      }
+      &__second {
+      }
+      &__third {
+        font-family: 'Qanelas Light';
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__agree__block {
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+
+    &__buttons {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
+
+.error__checkbox {
+  position: absolute;
+  top: -20px;
+  text-align: left;
+  margin-left: 30px;
+  color: var(--red);
+}
+
+@media screen and (max-width: 1440px) {
+  .flex {
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 50px;
+
+    .custom_select {
+      width: 100%;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &__title {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flex {
+    max-width: 660px;
+
+    &__agree__block {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+}

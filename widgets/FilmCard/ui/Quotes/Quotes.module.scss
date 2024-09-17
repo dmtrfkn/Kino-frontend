@@ -1,0 +1,52 @@
+.text {
+  font-family: 'Qanelas Thin';
+  font-size: 17px;
+  font-style: italic;
+}
+
+.whoseText {
+  font-family: 'Qanelas SemiBold';
+  font-size: 18px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.quotes__block {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  &__item {
+    text-align: left;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: var(--card-bg);
+    padding: 50px 50px;
+  }
+
+  .image {
+    position: absolute;
+    top: -25px;
+    left: 50px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .quotes {
+    margin: 0 auto;
+    max-width: 850px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .quotes {
+    max-width: 660px;
+    margin-top: 60px;
+  }
+}

@@ -1,0 +1,145 @@
+.shots__block {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+
+  &__item-1,
+  &__item-2,
+  &__item-3,
+  &__item-4,
+  &__item-5,
+  &__item-6 {
+    border-radius: 10px;
+  }
+
+  &__item-1 {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+  &__item-2 {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+  &__item-3 {
+    grid-area: 1 / 4 / 2 / 5;
+  }
+  &__item-4 {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  &__item-5 {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  &__item-6 {
+    grid-area: 2 / 3 / 3 / 5;
+  }
+}
+
+.person__shots {
+  max-width: inherit;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+
+  &__item-1,
+  &__item-2,
+  &__item-3,
+  &__item-4,
+  &__item-5,
+  &__item-6 {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__item-1 {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+  &__item-2 {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+  &__item-3 {
+    grid-area: 1 / 4 / 2 / 5;
+  }
+  &__item-4 {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  &__item-5 {
+    grid-area: 2 / 2 / 3 / 4;
+  }
+  &__item-6 {
+    grid-area: 2 / 4 / 3 / 5;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .shots__block {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+
+    &__item-1 {
+      grid-area: 1 / 1 / 2 / 3;
+      width: 100%;
+      height: 100%;
+      // height: 660px;
+    }
+    &__item-2 {
+      grid-area: 2 / 1 / 3 / 2;
+      width: 100%;
+      height: 100%;
+    }
+    &__item-3 {
+      grid-area: 2 / 2 / 3 / 3;
+      width: 100%;
+      height: 100%;
+    }
+    &__item-4 {
+      display: none;
+      grid-area: none;
+    }
+    &__item-5 {
+      display: none;
+      grid-area: none;
+    }
+    &__item-6 {
+      display: none;
+      grid-area: none;
+    }
+  }
+
+  .person__shots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 17px;
+    grid-row-gap: 33px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    &__item-1,
+    &__item-2,
+    &__item-3 {
+      width: 100%;
+      height: 100%;
+    }
+    &__item-1 {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+    &__item-2 {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+    &__item-3 {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+    &__item-4,
+    &__item-5,
+    &__item-6 {
+      display: none;
+      grid-area: none;
+    }
+  }
+}

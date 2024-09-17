@@ -1,0 +1,82 @@
+.filter {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 40px;
+
+  .title {
+    font-family: 'Qanelas SemiBold';
+    font-size: 20px;
+  }
+
+  .filter__button {
+    display: flex;
+    background-color: var(--buttons-bg);
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 20px;
+    height: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    .bg-green {
+      color: var(--green);
+      background-color: var(--green-like-bg);
+    }
+    .bg-blue {
+      color: var(--blue);
+      background-color: var(--blue-bg);
+    }
+    .bg-red {
+      color: var(--red-border);
+      background-color: var(--red-bg-filter);
+    }
+    .bg_yellow {
+      color: var(--yellow-border);
+      background-color: var(--yellow-bg);
+    }
+
+    &__count {
+      font-family: 'Qanelas Light';
+      font-size: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .filter {
+    max-width: 850px;
+    display: flex;
+    gap: 0;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .filter__button {
+      padding: 10px;
+      height: auto;
+      gap: 20px;
+    }
+
+    .title {
+      gap: 0px;
+      font-size: 15px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .filter {
+    max-width: 660px;
+    justify-content: start;
+    gap: 15px;
+  }
+}

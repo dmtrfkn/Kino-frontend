@@ -1,0 +1,163 @@
+@import './variables.scss';
+
+* {
+  font-family: 'Qanelas Medium', sans-serif;
+  box-sizing: border-box;
+}
+h1 {
+  color: #fff;
+  font-family: Qanelas Bold;
+  font-size: 40px;
+  font-style: normal;
+  /* font-weight: 800; */
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #fff;
+  background: #1e2538;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Qanelas Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Regular'), url('QanelasRegular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Regular Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Regular Italic'), url('QanelasRegularItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Thin';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Thin'), url('QanelasThin.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas UltraLight';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas UltraLight'), url('QanelasUltraLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Thin Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Thin Italic'), url('QanelasThinItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas UltraLight Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas UltraLight Italic'), url('QanelasUltraLightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Light'), url('QanelasLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Light Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Light Italic'), url('QanelasLightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Medium'), url('QanelasMedium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Medium Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Medium Italic'), url('QanelasMediumItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas SemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas SemiBold'), url('QanelasSemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas SemiBold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas SemiBold Italic'), url('QanelasSemiBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Bold'), url('QanelasBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Bold Italic'), url('QanelasBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas ExtraBold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas ExtraBold'), url('QanelasExtraBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas ExtraBold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas ExtraBold Italic'), url('QanelasExtraBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Black';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Black'), url('QanelasBlack.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Heavy';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Heavy'), url('QanelasHeavy.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Black Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Black Italic'), url('QanelasBlackItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Qanelas Heavy Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Qanelas Heavy Italic'), url('QanelasHeavyItalic.woff') format('woff');
+}

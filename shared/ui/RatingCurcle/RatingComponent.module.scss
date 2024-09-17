@@ -1,0 +1,138 @@
+.wrapper {
+  max-width: 87px;
+  width: 100%;
+  height: 77px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  font-family: 'Qanelas Light';
+  font-size: 15px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.whoose {
+  font-family: 'Qanelas Light';
+}
+
+.circle {
+  position: relative;
+  width: 54px;
+  height: 54px;
+}
+
+.circle__item {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  padding-top: auto;
+
+  z-index: -1;
+
+  &_inner {
+    font-family: 'Qanelas Bold';
+    font-size: 13px;
+    font-style: normal;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 50%;
+    width: 40px;
+    background-color: #fff;
+    height: 40px;
+  }
+}
+
+.p-1 {
+  background: conic-gradient(var(--one-border) 0deg 36deg, var(--one-bg) 36deg 360deg);
+}
+
+.p-2 {
+  background: conic-gradient(var(--two-border) 0deg 72deg, var(--two-bg) 72deg 360deg);
+}
+
+.p-3 {
+  background: conic-gradient(var(--three-border) 0deg 108deg, var(--three-bg) 108deg 360deg);
+}
+
+.p-4 {
+  background: conic-gradient(var(--four-border) 0deg 144deg, var(--four-bg) 144deg 360deg);
+}
+
+.p-5 {
+  background: conic-gradient(var(--five-border) 0deg 180deg, var(--five-bg) 180deg 360deg);
+}
+
+.p-6 {
+  background: conic-gradient(var(--six-border) 0deg 216deg, var(--six-bg) 216deg 360deg);
+}
+
+.p-7 {
+  background: conic-gradient(var(--seven-border) 0deg 252deg, var(--seven-bg) 252deg 360deg);
+}
+
+.p-8 {
+  background: conic-gradient(var(--eight-border) 0deg 288deg, var(--eight-bg) 288deg 360deg);
+}
+
+.p-9 {
+  background: conic-gradient(var(--nine-border) 0deg 324deg, var(--nine-bg) 324deg 360deg);
+}
+
+.p-10 {
+  background: conic-gradient(var(--ten-border) 0deg 360deg, var(--ten-bg) 360deg 360deg);
+}
+
+.pp-1 {
+  background: var(--one-bg);
+}
+
+.pp-2 {
+  background: var(--two-bg);
+}
+
+.pp-3 {
+  background: var(--three-bg);
+}
+
+.pp-4 {
+  background: var(--four-bg);
+}
+
+.pp-5 {
+  background: var(--five-bg);
+}
+
+.pp-6 {
+  background: var(--six-bg);
+}
+
+.pp-7 {
+  background: var(--seven-bg);
+}
+
+.pp-8 {
+  background: var(--eight-bg);
+}
+
+.pp-9 {
+  background: var(--nine-bg);
+}
+
+.pp-10 {
+  background: var(--ten-bg);
+}
+
+@media screen and (max-width: 768px) {
+  .whoose {
+    font-size: 14px;
+  }
+}

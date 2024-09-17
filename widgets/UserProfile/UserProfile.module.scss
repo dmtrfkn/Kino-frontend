@@ -1,0 +1,92 @@
+.root {
+  max-width: 1300px;
+  width: 100%;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  // padding: 34px 54px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.title {
+  font-size: 30px;
+}
+
+.name {
+  font-size: 50px;
+}
+
+.flex,
+.block {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.block {
+  gap: 45px;
+  justify-content: left;
+}
+
+.image {
+  border-radius: 10px;
+}
+
+.ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 25px;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.information {
+  text-align: left;
+  padding: 30px 0;
+
+  &_flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 22px;
+    font-size: 18px;
+
+    li {
+      list-style: none;
+    }
+
+    &__naming__item {
+      color: var(--gray-text_second);
+      font-family: 'Qanelas Medium';
+    }
+
+    &__user__item {
+      color: var(--yellow);
+      font-family: 'Qanelas Thin';
+    }
+  }
+}
+.links {
+  display: flex;
+  gap: 10px;
+}
+
+.about {
+  font-family: 'Qanelas Light';
+  font-size: 17px;
+  color: var(--gray-text_second);
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
